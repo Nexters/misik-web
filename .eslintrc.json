@@ -1,0 +1,93 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["import"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent", "index"],
+          "type",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "{react*,react*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "{@tanstack*,@tanstack*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "{@vite*,@vite*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@/apis/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
+            "pattern": "@/components/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
+            "pattern": "@/constants/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
+            "pattern": "@/hooks/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
+            "pattern": "@/styles/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
+            "pattern": "@/types/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
+            "pattern": "@/utils/**/*",
+            "group": "type",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react", "unknown"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
+    },
+    "import/resolver": {
+      "typescript": "./tsconfig.json"
+    }
+  }
+}
