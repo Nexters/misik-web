@@ -2,10 +2,12 @@
   "env": {
     "browser": true,
     "es6": true,
+    // "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
+
     "node": true
   },
   "parser": "@typescript-eslint/parser",
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "plugins": ["import"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": "error",
