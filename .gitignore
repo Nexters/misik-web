@@ -36,3 +36,7 @@ dist-ssr
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
