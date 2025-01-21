@@ -2,8 +2,6 @@
   "env": {
     "browser": true,
     "es6": true,
-    // "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
-
     "node": true
   },
   "parser": "@typescript-eslint/parser",
