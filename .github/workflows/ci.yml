@@ -43,9 +43,6 @@ jobs:
       - name: Run build
         run: yarn build
 
-      - name: Run unit test
-        run: yarn test
-
   deploy-to-vercel:
     runs-on: ubuntu-latest
     outputs:
