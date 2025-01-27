@@ -7,6 +7,8 @@ import App from "@/App";
 
 import ReactQueryClientProvider from "@/components/provider/ReactQueryClientProvider";
 
+import "@/styles/reset.scss";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ReactQueryClientProvider>
