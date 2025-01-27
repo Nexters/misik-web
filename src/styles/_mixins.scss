@@ -1,3 +1,5 @@
+@use "@/styles/_variables.scss" as *;
+
 @mixin titleLg {
   font-size: $font-size-xl;
   font-weight: $font-weight-bold;
