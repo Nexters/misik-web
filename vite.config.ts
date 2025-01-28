@@ -11,15 +11,18 @@ export default defineConfig({
   base: "/",
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "src"),
     },
   },
   css: {
+    modules: {
+      localsConvention: "camelCase",
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @use "@/styles/_variables.scss" as *;
-          @use "@/styles/_mixins.scss" as *;
+          @use "@/styles/_variables.scss";
+          @use "@/styles/_mixins.scss";
         `,
       },
     },
