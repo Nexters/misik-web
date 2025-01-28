@@ -25,7 +25,7 @@
       "@/*": ["./src/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "types": ["@testing-library/jest-dom", "vite/client"]
+    "types": ["@testing-library/jest-dom", "vite-plugin-svgr/client", "vite/client"]
   },
   "include": ["src", "src/types"]
 }
