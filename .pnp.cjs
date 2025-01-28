@@ -47,6 +47,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@typescript-eslint/parser", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@vitejs/plugin-react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:4.3.4"],\
+          ["chromatic", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:11.25.1"],\
           ["classnames", "npm:2.5.1"],\
           ["cypress", "npm:14.0.0"],\
           ["eslint", "npm:8.57.1"],\
@@ -5375,6 +5376,32 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["chromatic", [\
+      ["npm:11.25.1", {\
+        "packageLocation": "./.yarn/cache/chromatic-npm-11.25.1-1866a739e4-869939cf65.zip/node_modules/chromatic/",\
+        "packageDependencies": [\
+          ["chromatic", "npm:11.25.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:11.25.1", {\
+        "packageLocation": "./.yarn/__virtual__/chromatic-virtual-48fe2c5adf/0/cache/chromatic-npm-11.25.1-1866a739e4-869939cf65.zip/node_modules/chromatic/",\
+        "packageDependencies": [\
+          ["chromatic", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:11.25.1"],\
+          ["@chromatic-com/cypress", null],\
+          ["@chromatic-com/playwright", null],\
+          ["@types/chromatic-com__cypress", null],\
+          ["@types/chromatic-com__playwright", null]\
+        ],\
+        "packagePeers": [\
+          "@chromatic-com/cypress",\
+          "@chromatic-com/playwright",\
+          "@types/chromatic-com__cypress",\
+          "@types/chromatic-com__playwright"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["ci-info", [\
       ["npm:3.9.0", {\
         "packageLocation": "./.yarn/cache/ci-info-npm-3.9.0-646784ca0e-6f0109e36e.zip/node_modules/ci-info/",\
@@ -10078,6 +10105,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@typescript-eslint/parser", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@vitejs/plugin-react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:4.3.4"],\
+          ["chromatic", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:11.25.1"],\
           ["classnames", "npm:2.5.1"],\
           ["cypress", "npm:14.0.0"],\
           ["eslint", "npm:8.57.1"],\
