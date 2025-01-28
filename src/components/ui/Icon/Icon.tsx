@@ -5,7 +5,7 @@ import LeftArrowIcon from "@/assets/svg/ic-left-arrow.svg?react";
 import PasteIcon from "@/assets/svg/ic-paste.svg?react";
 import PlusIcon from "@/assets/svg/ic-plus.svg?react";
 
-type IconNameType = "camera" | "close" | "gallery" | "leftArrow" | "paste" | "plus";
+export type IconNameType = "camera" | "close" | "gallery" | "leftArrow" | "paste" | "plus";
 
 export const ICONS = {
   camera: CameraIcon,
