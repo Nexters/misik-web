@@ -1,0 +1,15 @@
+.Button {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  &.style-primary {
+    background-color: var(--color-text01);
+    color: var(--color-white);
+  }
+
+  &.style-secondary {
+    background-color: red;
+  }
+}
