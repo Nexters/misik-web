@@ -1,9 +1,0 @@
-@use "@/styles/mixins" as *;
-
-.ButtonTest {
-  @include titleLg;
-  padding: 12px 16px;
-  border-radius: 8px;
-  background-color: var(--color-bg-error);
-  color: #fff;
-}
