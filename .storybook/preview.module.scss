@@ -10,5 +10,13 @@
 .Story {
   height: 100%;
   padding: 2.5rem;
-  background-color: gray;
+  background-color: white;
+  color: black;
+}
+
+.InverseStory {
+  height: 100%;
+  padding: 2.5rem;
+  background-color: black;
+  color: white;
 }

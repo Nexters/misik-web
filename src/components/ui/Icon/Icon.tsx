@@ -7,6 +7,10 @@ import PlusIcon from "@/assets/svg/ic-plus.svg?react";
 
 export type IconNameType = "camera" | "close" | "gallery" | "leftArrow" | "paste" | "plus";
 
+export interface IconProps {
+  name: IconNameType;
+}
+
 export const ICONS = {
   camera: CameraIcon,
   close: CloseIcon,
@@ -17,7 +21,7 @@ export const ICONS = {
 };
 
 // 추후 사이즈, 컬러등 추가 가능
-const Icon = ({ name }: { name: IconNameType }) => {
+const Icon = ({ name }: IconProps) => {
   const SvgIcon = ICONS[name];
 
   return <SvgIcon />;

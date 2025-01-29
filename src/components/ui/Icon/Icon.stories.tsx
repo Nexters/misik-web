@@ -1,6 +1,7 @@
 import Icon from "@/components/ui/Icon/Icon";
 import { ICONS } from "@/components/ui/Icon/Icon";
-import type { IconNameType } from "@/components/ui/Icon/Icon";
+import type { IconNameType, IconProps } from "@/components/ui/Icon/Icon";
+import styles from "@/components/ui/Icon/Icon.module.scss";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -10,34 +11,23 @@ const meta: Meta<typeof Icon> = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {
-    name: {
-      control: {
-        type: "select",
-        options: ["camera", "close", "gallery", "leftArrow", "paste", "plus"],
-      },
-    },
-  },
+  tags: ["!autodocs"],
 };
 
 export default meta;
 
-export const AllIcons: StoryObj<typeof Icon> = {
+export const Primary: StoryObj<IconProps> = {
+  args: {
+    name: "camera",
+  },
+};
+
+export const AllIcons: StoryObj<IconProps> = {
   render: () => (
-    <div style={{ display: "flex", alignItems: "center", gap: "4rem" }}>
+    <div className={styles.IconStory}>
       {(Object.keys(ICONS) as IconNameType[]).map((iconName) => (
-        <div
-          style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}
-        >
-          <div
-            style={{
-              width: "1.5rem",
-              height: "1.5rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+        <div className={styles.Wrapper}>
+          <div className={styles.InnerWrapper}>
             <Icon name={iconName} />
           </div>
           <p>{iconName}</p>
