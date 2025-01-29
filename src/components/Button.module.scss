@@ -1,10 +1,9 @@
-@use "@/styles/_mixins" as *;
-@use "@/styles/_variables" as *;
+@use "@/styles/mixins" as *;
 
 .ButtonTest {
   @include titleLg;
   padding: 12px 16px;
   border-radius: 8px;
-  background-color: $color-bg-error;
+  background-color: var(--color-bg-error);
   color: #fff;
 }

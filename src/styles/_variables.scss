@@ -1,29 +1,31 @@
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-semi-bold: 600;
-$font-weight-bold: 700;
+:root {
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
 
-$font-size-xl: 28px;
-$font-size-lg: 24px;
-$font-size-md: 22px;
-$font-size-default: 16px;
-$font-size-sm: 15px;
-$font-size-xs: 14px;
-$font-size-xxs: 13px;
+  --font-size-xl: 28px;
+  --font-size-lg: 24px;
+  --font-size-md: 22px;
+  --font-size-default: 16px;
+  --font-size-sm: 15px;
+  --font-size-xs: 14px;
+  --font-size-xxs: 13px;
 
-$color-white: #fff;
-$color-black: #000;
-$color-text01: #363642;
-$color-text02: #68696e;
-$color-text03: #a6a6ad;
-$color-text04: #e0e0e0;
-$color-text-gradient: linear-gradient(#d444ba, #443fb6);
-$color-gray100: #f8f8f8;
-$color-gray200: #ebecf0;
-$color-gray300: #e1e2e8;
-$color-gray400: #00000026;
-$color-gray500: #00000040;
-$color-gray600: #363642;
-$color-gray700: #161636;
-$color-bg-gradient: linear-gradient(#ffffff, #443fb6);
-$color-bg-error: #d45085;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-text01: #363642;
+  --color-text02: #68696e;
+  --color-text03: #a6a6ad;
+  --color-text04: #e0e0e0;
+  --color-text-gradient: linear-gradient(#d444ba, #443fb6);
+  --color-gray100: #f8f8f8;
+  --color-gray200: #ebecf0;
+  --color-gray300: #e1e2e8;
+  --color-gray400: #00000026;
+  --color-gray500: #00000040;
+  --color-gray600: #363642;
+  --color-gray700: #161636;
+  --color-bg-gradient: linear-gradient(#ffffff, #443fb6);
+  --color-bg-error: #d45085;
+}
