@@ -33,17 +33,17 @@
   font-weight: var(--font-weight-medium);
 }
 
-@mixin buttonMd {
+@mixin buttonPrimary {
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-semi-bold);
 }
 
-@mixin buttonSm {
+@mixin buttonSecondary {
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-medium);
 }
 
-@mixin buttonXs {
+@mixin buttonTertiary {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
 }

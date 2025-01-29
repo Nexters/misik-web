@@ -1,15 +1,29 @@
+@use "@/styles/mixins" as *;
+
 .Button {
   cursor: pointer;
   margin: 0;
-  padding: 0;
   border: none;
+  border-radius: 0.875rem;
+  padding: 0.875rem;
+  width: 100%;
+  height: 3.25rem;
 
   &.style-primary {
     background-color: var(--color-text01);
     color: var(--color-white);
+    @include buttonPrimary;
   }
 
   &.style-secondary {
-    background-color: red;
+    background-color: var(--color-gray400);
+    color: var(--color-white);
+    @include buttonSecondary;
+  }
+
+  &.style-disabled {
+    background-color: var(--color-gray350);
+    color: var(--color-text03);
+    @include buttonSecondary;
   }
 }
