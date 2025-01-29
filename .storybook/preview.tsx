@@ -18,6 +18,10 @@ const preview: Preview = {
         <div className={styles.Story}>
           <Story />
         </div>
+
+        <div className={styles.InverseStory}>
+          <Story />
+        </div>
       </div>
     ),
   ],
