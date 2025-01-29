@@ -1,51 +1,49 @@
-@use "@/styles/_variables.scss" as *;
-
 @mixin titleLg {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
 }
 
 @mixin titleMd {
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
 }
 
 @mixin titleSm {
-  font-size: $font-size-md;
-  font-weight: $font-weight-bold;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
 }
 
 @mixin bodyLg {
-  font-size: $font-size-default;
-  font-weight: $font-weight-medium;
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-medium);
 }
 
 @mixin bodyMd {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 @mixin bodySm {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
 }
 
 @mixin bodyXsm {
-  font-size: $font-size-xxs;
-  font-weight: $font-weight-medium;
+  font-size: var(--font-size-xxs);
+  font-weight: var(--font-weight-medium);
 }
 
 @mixin buttonMd {
-  font-size: $font-size-default;
-  font-weight: $font-weight-semi-bold;
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-semi-bold);
 }
 
 @mixin buttonSm {
-  font-size: $font-size-default;
-  font-weight: $font-weight-medium;
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-medium);
 }
 
 @mixin buttonXs {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
 }
