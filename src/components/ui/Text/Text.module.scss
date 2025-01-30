@@ -24,7 +24,10 @@
   }
 
   &.color-gradient {
-    color: var(--color-text-gradient);
+    background: var(--color-text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &.size-xxs {
@@ -97,5 +100,18 @@
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
     line-clamp: 2;
+  }
+}
+
+.TextStory {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 200px;
+
+  .Wrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
   }
 }

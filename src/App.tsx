@@ -17,7 +17,17 @@ const App = () => {
       <div className={styles.Test3}>
         <IconButton size="sm" text="복사하기" iconName="paste" />
       </div>
-      <Text>test</Text>
+      <div className={styles.Test3}>
+        <Text align="center" color="gradient" size="lg" weight="bold">
+          영수증으로
+        </Text>
+        <Text align="center" color="gradient" size="lg" weight="bold">
+          AI 음식 리뷰 남겨요
+        </Text>
+        <Text color="primary" weight="medium">
+          손쉬운 음식 리뷰 작성
+        </Text>
+      </div>
     </div>
   );
 };
