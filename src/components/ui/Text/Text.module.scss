@@ -1,89 +1,37 @@
 .Text {
-  &.color-white {
-    color: var(--color-text-white);
+  @each $color-name
+    in ("white", "black", "primary", "secondary", "tertiary", "quarternary", "gradient")
+  {
+    @if $color-name == "gradient" {
+      &.color-#{$color-name} {
+        background: var(--color-text-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    } @else {
+      &.color-#{$color-name} {
+        color: var(--color-text-#{$color-name});
+      }
+    }
   }
 
-  &.color-black {
-    color: var(--color-text-black);
+  @each $size-name in ("xxs", "xs", "sm", "default", "md", "lg", "xl") {
+    &.size-#{"#{$size-name}"} {
+      font-size: var(--font-size-#{$size-name});
+    }
   }
 
-  &.color-primary {
-    color: var(--color-text-primary);
+  @each $weight-name in ("regular", "medium", "semi-bold", "bold") {
+    &.weight-#{"#{$weight-name}"} {
+      font-weight: var(--font-weight-#{$weight-name});
+    }
   }
 
-  &.color-secondary {
-    color: var(--color-text-secondary);
-  }
-
-  &.color-tertiary {
-    color: var(--color-text-tertiary);
-  }
-
-  &.color-quarternary {
-    color: var(--color-text-quarternary);
-  }
-
-  &.color-gradient {
-    background: var(--color-text-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  &.size-xxs {
-    font-size: var(--font-size-xxs);
-  }
-
-  &.size-xs {
-    font-size: var(--font-size-xs);
-  }
-
-  &.size-sm {
-    font-size: var(--font-size-sm);
-  }
-
-  &.size-default {
-    font-size: var(--font-size-default);
-  }
-
-  &.size-md {
-    font-size: var(--font-size-md);
-  }
-
-  &.size-lg {
-    font-size: var(--font-size-lg);
-  }
-
-  &.size-xl {
-    font-size: var(--font-size-xl);
-  }
-
-  &.weight-regular {
-    font-weight: var(--font-weight-regular);
-  }
-
-  &.weight-medium {
-    font-weight: var(--font-weight-medium);
-  }
-
-  &.weight-semi-bold {
-    font-weight: var(--font-weight-semi-bold);
-  }
-
-  &.weight-bold {
-    font-weight: var(--font-weight-bold);
-  }
-
-  &.align-left {
-    text-align: left;
-  }
-
-  &.align-center {
-    text-align: center;
-  }
-
-  &.align-right {
-    text-align: right;
+  @each $align-name in ("left", "center", "right") {
+    &.align-#{"#{$align-name}"} {
+      text-align: #{$align-name};
+    }
   }
 
   &.truncated {
