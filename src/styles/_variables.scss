@@ -12,13 +12,16 @@
   --font-size-xs: 0.875rem;
   --font-size-xxs: 0.8125rem;
 
-  --color-white: #fff;
-  --color-black: #000;
-  --color-text01: #363642;
-  --color-text02: #68696e;
-  --color-text03: #a6a6ad;
-  --color-text04: #e0e0e0;
+  --color-text-white: #fff;
+  --color-text-black: #000;
+  --color-text-primary: #363642;
+  --color-text-secondary: #68696e;
+  --color-text-tertiary: #a6a6ad;
+  --color-text-quarternary: #e0e0e0;
   --color-text-gradient: linear-gradient(#d444ba, #443fb6);
+
+  --color-white: #ffffff;
+  --color-black: #000000;
   --color-gray100: #f8f8f8;
   --color-gray200: #ebecf0;
   --color-gray300: #e1e2e8;
