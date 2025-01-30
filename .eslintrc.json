@@ -58,6 +58,11 @@
             "position": "before"
           },
           {
+            "pattern": "@/pages/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
             "pattern": "@/styles/**/*",
             "group": "type",
             "position": "before"
