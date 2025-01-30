@@ -4,7 +4,7 @@
   @include buttonSecondary;
 
   &.style-primary {
-    background-color: var(--color-text01);
+    background-color: var(--color-text-primary);
     color: var(--color-white);
   }
 
@@ -15,12 +15,12 @@
 
   &.style-tertiary {
     background-color: var(--color-gray200);
-    color: var(--color-text02);
+    color: var(--color-text-secondary);
   }
 
   &:disabled {
     background-color: var(--color-gray350);
-    color: var(--color-text03);
+    color: var(--color-text-tertiary);
     cursor: not-allowed;
   }
 }
