@@ -10,6 +10,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
     {
       as: Comp = "span",
       children,
+      color = "black",
       size = "default",
       className,
       weight = "regular",
@@ -26,6 +27,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
         ref={ref}
         className={classNames(
           styles.Text,
+          styles[`color-${color}`],
           styles[`size-${size}`],
           styles[`weight-${weight}`],
           align && styles[`align-${align}`],
