@@ -1,0 +1,31 @@
+.Home {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 2.5rem;
+  height: calc(100vh - 5.25rem);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &::before {
+    content: "";
+    background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
+    background-size: 100% 262px;
+    filter: blur(74px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .HomeBottom {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-top: auto;
+  }
+}
