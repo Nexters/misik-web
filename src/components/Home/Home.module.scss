@@ -12,14 +12,39 @@
   &::before {
     content: "";
     background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
-    background-size: 100% 262px;
-    filter: blur(74px);
+    background-size: 100% 16.375rem;
+    filter: blur(4.625rem);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: -1;
+  }
+
+  .HomeTitle {
+    padding-top: 5rem;
+    padding-bottom: 1.25rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+    & > h1 {
+      white-space: pre-line;
+    }
+  }
+
+  .HomeImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.75rem;
+
+    & > img {
+      width: 16.25rem;
+      height: 16.25rem;
+    }
   }
 
   .HomeBottom {
