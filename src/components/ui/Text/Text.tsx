@@ -14,7 +14,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
       size = "default",
       className,
       weight = "regular",
-      align,
+      align = "left",
       truncated,
       ...props
     },
@@ -30,7 +30,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
           styles[`color-${color}`],
           styles[`size-${size}`],
           styles[`weight-${weight}`],
-          align && styles[`align-${align}`],
+          styles[`align-${align}`],
           truncated === true
             ? styles.truncated
             : isMultiLineTruncated && styles["multi-line-truncated"],

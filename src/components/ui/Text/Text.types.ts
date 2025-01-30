@@ -18,7 +18,6 @@ export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
   color?: TextColor;
   size?: TextSize;
   weight?: TextWeight;
-  bold?: boolean;
   align?: TextAlign;
   truncated?: boolean | number;
 }

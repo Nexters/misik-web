@@ -16,8 +16,9 @@
 }
 
 .Test3 {
-  width: 99px;
+  width: 216px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  gap: 8px;
 }
