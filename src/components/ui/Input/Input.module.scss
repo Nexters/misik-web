@@ -7,14 +7,18 @@
   box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.04);
   background-color: var(--color-white);
   padding: 0.75rem 0.875rem;
+  border: 1px solid transparent;
   display: flex;
   align-items: center;
   gap: 0.625rem;
   z-index: 1;
 
+  &.Focused {
+    border-color: var(--color-purple);
+  }
+
   .Input {
     @include bodyMd;
-
     color: var(--color-text-primary);
     line-height: 1.5rem;
     width: calc(100% - 2.25rem);
@@ -24,9 +28,8 @@
     }
   }
 
-  & > button {
+  button {
     @include bodySm;
-
     color: var(--color-purple);
     line-height: 1.3125rem;
   }
