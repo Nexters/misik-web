@@ -1,19 +1,19 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import ReactDom from "react-dom/client";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import App from "@/App";
+import AppRouter from "@/router/AppRouter";
 
 import ReactQueryClientProvider from "@/components/provider/ReactQueryClientProvider";
 
 import "@/styles/reset.scss";
 import "@/styles/global.scss";
 
-createRoot(document.getElementById("root")!).render(
+ReactDom.createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ReactQueryClientProvider>
-      <App />
+      <AppRouter />
       <ReactQueryDevtools initialIsOpen={false} />
     </ReactQueryClientProvider>
   </StrictMode>,
