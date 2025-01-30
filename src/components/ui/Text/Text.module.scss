@@ -1,4 +1,6 @@
 .Text {
+  line-height: 1.5;
+
   @each $color-name
     in ("white", "black", "primary", "secondary", "tertiary", "quarternary", "gradient")
   {
