@@ -2,6 +2,7 @@ import styles from "./App.module.scss";
 
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
+import Text from "@/components/ui/Text/Text";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <div className={styles.Test3}>
         <IconButton size="sm" text="복사하기" iconName="paste" />
       </div>
+      <Text>test</Text>
     </div>
   );
 };
