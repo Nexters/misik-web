@@ -1,4 +1,32 @@
 .Text {
+  &.color-white {
+    color: var(--color-text-white);
+  }
+
+  &.color-black {
+    color: var(--color-text-black);
+  }
+
+  &.color-primary {
+    color: var(--color-text-primary);
+  }
+
+  &.color-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  &.color-tertiary {
+    color: var(--color-text-tertiary);
+  }
+
+  &.color-quarternary {
+    color: var(--color-text-quarternary);
+  }
+
+  &.color-gradient {
+    color: var(--color-text-gradient);
+  }
+
   &.size-xxs {
     font-size: var(--font-size-xxs);
   }
