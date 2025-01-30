@@ -18,7 +18,7 @@
   --color-text-secondary: #68696e;
   --color-text-tertiary: #a6a6ad;
   --color-text-quarternary: #e0e0e0;
-  --color-text-gradient: linear-gradient(90deg, #d444ba, #443fb6);
+  --color-text-gradient: linear-gradient(90deg, var(--color-pink), var(--color-purple));
 
   --color-white: #ffffff;
   --color-black: #000000;
@@ -32,4 +32,6 @@
   --color-gray700: #161636;
   --color-bg-gradient: linear-gradient(180deg, #ffffff, #dcdce8);
   --color-bg-error: #d45085;
+  --color-purple: #443fb6;
+  --color-pink: #d444ba;
 }
