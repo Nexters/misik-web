@@ -1,13 +1,8 @@
-import { useState } from "react";
-
 import styles from "@/components/Home/Home.module.scss";
 import IconButton from "@/components/ui/IconButton/IconButton";
-import Input from "@/components/ui/Input/Input";
 import Text from "@/components/ui/Text/Text";
 
 const Home = () => {
-  const [value, setValue] = useState("");
-
   return (
     <div className={styles.Home}>
       <div className={styles.HomeTitle}>
@@ -18,12 +13,6 @@ const Home = () => {
           손쉬운 음식 리뷰 작성
         </Text>
       </div>
-      <Input
-        type="text"
-        placeholder="가게명을 입력해주세요"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
       <div className={styles.HomeImage}>
         <img src="/src/assets/img/img-graphic-logo.png" alt="mainLogo" />
       </div>
