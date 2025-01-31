@@ -35,8 +35,8 @@ export const VariantProps: StoryObj<typeof Button> = {
         <Button variant="secondary" text="정보가 맞아요" />
       </div>
       <div className={styles.Wrapper}>
-        <p className={styles.Text}>disabled</p>
-        <Button variant="disabled" text="정보가 맞아요" />
+        <p className={styles.Text}>tertiary</p>
+        <Button variant="tertiary" text="정보가 맞아요" />
       </div>
     </div>
   ),
