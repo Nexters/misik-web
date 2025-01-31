@@ -1,22 +1,27 @@
 @use "@/styles/mixins" as *;
 
 .Button {
+  @include buttonSecondary;
+
   &.style-primary {
     background-color: var(--color-text01);
     color: var(--color-white);
-    @include buttonPrimary;
   }
 
   &.style-secondary {
     background-color: var(--color-gray400);
     color: var(--color-white);
-    @include buttonSecondary;
   }
 
-  &.style-disabled {
+  &.style-tertiary {
+    background-color: var(--color-gray200);
+    color: var(--color-text02);
+  }
+
+  &:disabled {
     background-color: var(--color-gray350);
     color: var(--color-text03);
-    @include buttonSecondary;
+    cursor: not-allowed;
   }
 }
 
@@ -29,6 +34,7 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
     width: 300px;
   }
 

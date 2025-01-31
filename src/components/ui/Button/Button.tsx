@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { forwardRef, useCallback } from "react";
 
 import classNames from "classnames";
 
@@ -6,7 +6,7 @@ import BaseButton from "@/components/ui/BaseButton/BaseButton";
 import styles from "@/components/ui/Button/Button.module.scss";
 import type { ButtonProps } from "@/components/ui/Button/Button.types";
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { as = BaseButton, className, variant = "primary", text, disabled = false, onClick, ...props },
     ref,

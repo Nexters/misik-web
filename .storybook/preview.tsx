@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
 
+import "@/styles/reset.scss";
+import "@/styles/global.scss";
 import styles from "./preview.module.scss";
 
 const preview: Preview = {

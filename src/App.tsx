@@ -8,7 +8,7 @@ const App = () => {
     <div className={styles.Test}>
       <Button variant="primary" text="정보가 맞아요" />
       <Button variant="secondary" text="정보가 맞아요" />
-      <Button variant="disabled" text="다시 스캔하기" />
+      <Button variant="tertiary" text="다시 스캔하기" />
       <div className={styles.Test2}>
         <IconButton text="갤러리" iconName="gallery" />
         <IconButton text="카메라" iconName="camera" />
