@@ -9,7 +9,7 @@ const Home = () => {
         <Text size="xl" color="gradient" weight="bold" align="center" as="h1">
           {`영수증으로\nAI 음식 리뷰 남겨요`}
         </Text>
-        <Text color="primary" weight="medium" align="center">
+        <Text color="secondary" weight="medium" align="center">
           손쉬운 음식 리뷰 작성
         </Text>
       </div>
