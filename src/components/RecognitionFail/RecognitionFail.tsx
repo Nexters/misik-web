@@ -6,10 +6,10 @@ const RecognitionFail = () => {
   return (
     <div className={styles.RecognitionFail}>
       <div className={styles.Title}>
-        <Text size="lg" color="primary" weight="bold" align="center" as="h1">
+        <Text color="primary" variant="titleM" align="center" as="h1">
           영수증 인식에 실패했어요
         </Text>
-        <Text weight="medium" align="center" color="secondary">
+        <Text color="secondary" variant="bodyLg" align="center">
           {`깨끗한 배경에 영수증을 놓고\n전체가 잘 나오도록 촬영해 주세요`}
         </Text>
       </div>

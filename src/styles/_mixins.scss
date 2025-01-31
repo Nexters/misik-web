@@ -1,49 +1,49 @@
 @mixin titleLg {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-28);
   font-weight: var(--font-weight-bold);
 }
 
-@mixin titleMd {
-  font-size: var(--font-size-lg);
+@mixin titleM {
+  font-size: var(--font-size-24);
   font-weight: var(--font-weight-bold);
 }
 
 @mixin titleSm {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-22);
   font-weight: var(--font-weight-bold);
 }
 
 @mixin bodyLg {
-  font-size: var(--font-size-default);
+  font-size: var(--font-size-16);
   font-weight: var(--font-weight-medium);
 }
 
-@mixin bodyMd {
-  font-size: var(--font-size-sm);
+@mixin bodyM {
+  font-size: var(--font-size-15);
   font-weight: var(--font-weight-medium);
 }
 
 @mixin bodySm {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
 }
 
 @mixin bodyXsm {
-  font-size: var(--font-size-xxs);
+  font-size: var(--font-size-13);
   font-weight: var(--font-weight-medium);
 }
 
 @mixin buttonPrimary {
-  font-size: var(--font-size-default);
+  font-size: var(--font-size-16);
   font-weight: var(--font-weight-semi-bold);
 }
 
 @mixin buttonSecondary {
-  font-size: var(--font-size-default);
+  font-size: var(--font-size-16);
   font-weight: var(--font-weight-medium);
 }
 
 @mixin buttonTertiary {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
 }

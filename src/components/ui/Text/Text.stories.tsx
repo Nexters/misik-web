@@ -24,57 +24,46 @@ const Template: StoryFn<TextProps> = ({ children, ...props }) => (
 export const Primary: StoryObj<TextProps> = {
   render: Template,
   args: {
-    size: "default",
     color: "black",
-    weight: "regular",
+    variant: "bodyLg",
     align: "left",
     truncated: false,
     children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   },
 };
 
-export const SizeProps: StoryObj<typeof Text> = {
+export const VariantProps: StoryObj<typeof Text> = {
   render: () => (
     <div className={styles.TextStory}>
       <div className={styles.Wrapper}>
-        <Text size="xxs" children="xxs" />
+        <Text variant="titleLg" children="titleLg" />
       </div>
       <div className={styles.Wrapper}>
-        <Text size="xs" children="xs" />
+        <Text variant="titleM" children="titleM" />
       </div>
       <div className={styles.Wrapper}>
-        <Text size="sm" children="sm" />
+        <Text variant="titleSm" children="titleSm" />
       </div>
       <div className={styles.Wrapper}>
-        <Text size="default" children="default" />
+        <Text variant="bodyLg" children="bodyLg" />
       </div>
       <div className={styles.Wrapper}>
-        <Text size="md" children="md" />
+        <Text variant="bodyM" children="bodyM" />
       </div>
       <div className={styles.Wrapper}>
-        <Text size="lg" children="lg" />
+        <Text variant="bodySm" children="bodySm" />
       </div>
       <div className={styles.Wrapper}>
-        <Text size="xl" children="xl" />
-      </div>
-    </div>
-  ),
-};
-
-export const WeightProps: StoryObj<typeof Text> = {
-  render: () => (
-    <div className={styles.TextStory}>
-      <div className={styles.Wrapper}>
-        <Text weight="regular" children="regular" />
+        <Text variant="bodyXsm" children="bodyXsm" />
       </div>
       <div className={styles.Wrapper}>
-        <Text weight="medium" children="medium" />
+        <Text variant="buttonPrimary" children="buttonPrimary" />
       </div>
       <div className={styles.Wrapper}>
-        <Text weight="semi-bold" children="semi-bold" />
+        <Text variant="buttonSecondary" children="buttonSecondary" />
       </div>
       <div className={styles.Wrapper}>
-        <Text weight="bold" children="bold" />
+        <Text variant="buttonTertiary" children="buttonTertiary" />
       </div>
     </div>
   ),
