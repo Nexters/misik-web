@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "@/App";
 
 import HomePage from "@/pages/HomePage";
+import ReceiptEditPage from "@/pages/ReceiptEditPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
 
 const AppRouter = () => {
@@ -18,6 +19,10 @@ const AppRouter = () => {
         {
           path: "/recognition-fail",
           element: <RecognitionFailPage />,
+        },
+        {
+          path: "/receipt-edit",
+          element: <ReceiptEditPage />,
         },
       ],
     },
