@@ -27,9 +27,10 @@
 .Top {
   z-index: 1;
 
-  & > h1 {
+  .TitleBox {
+    display: flex;
+    justify-content: center;
     margin-top: 2.5rem;
-    white-space: pre-line;
   }
 }
 
