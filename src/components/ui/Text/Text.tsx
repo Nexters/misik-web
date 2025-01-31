@@ -11,9 +11,8 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
       as: Comp = "span",
       children,
       color = "black",
-      size = "default",
+      variant = "bodyLg",
       className,
-      weight = "regular",
       align = "left",
       truncated,
       ...props
@@ -28,8 +27,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
         className={classNames(
           styles.Text,
           styles[`color-${color}`],
-          styles[`size-${size}`],
-          styles[`weight-${weight}`],
+          styles[`variant-${variant}`],
           styles[`align-${align}`],
           truncated === true
             ? styles.truncated

@@ -1,3 +1,5 @@
+@use "@/styles/_mixins.scss" as *;
+
 .Text {
   line-height: 1.5;
 
@@ -18,15 +20,42 @@
     }
   }
 
-  @each $size-name in ("xxs", "xs", "sm", "default", "md", "lg", "xl") {
-    &.size-#{"#{$size-name}"} {
-      font-size: var(--font-size-#{$size-name});
-    }
-  }
-
-  @each $weight-name in ("regular", "medium", "semi-bold", "bold") {
-    &.weight-#{"#{$weight-name}"} {
-      font-weight: var(--font-weight-#{$weight-name});
+  @each $variant-name
+    in (
+      titleLg,
+      titleM,
+      titleSm,
+      bodyLg,
+      bodyM,
+      bodySm,
+      bodyXsm,
+      buttonPrimary,
+      buttonSecondary,
+      buttonTertiary
+    )
+  {
+    &.variant-#{$variant-name} {
+      @if $variant-name == titleLg {
+        @include titleLg;
+      } @else if $variant-name == titleM {
+        @include titleM;
+      } @else if $variant-name == titleSm {
+        @include titleSm;
+      } @else if $variant-name == bodyLg {
+        @include bodyLg;
+      } @else if $variant-name == bodyM {
+        @include bodyM;
+      } @else if $variant-name == bodySm {
+        @include bodySm;
+      } @else if $variant-name == bodyXsm {
+        @include bodyXsm;
+      } @else if $variant-name == buttonPrimary {
+        @include buttonPrimary;
+      } @else if $variant-name == buttonSecondary {
+        @include buttonSecondary;
+      } @else if $variant-name == buttonTertiary {
+        @include buttonTertiary;
+      }
     }
   }
 

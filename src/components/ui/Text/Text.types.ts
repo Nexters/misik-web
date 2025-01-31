@@ -1,6 +1,14 @@
-type TextSize = "xxs" | "xs" | "sm" | "default" | "md" | "lg" | "xl";
-
-type TextWeight = "regular" | "medium" | "semi-bold" | "bold";
+type TextVariant =
+  | "titleLg"
+  | "titleM"
+  | "titleSm"
+  | "bodyLg"
+  | "bodyM"
+  | "bodySm"
+  | "bodyXsm"
+  | "buttonPrimary"
+  | "buttonSecondary"
+  | "buttonTertiary";
 
 type TextAlign = "left" | "center" | "right";
 
@@ -16,8 +24,7 @@ type TextColor =
 export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
   as?: React.ElementType;
   color?: TextColor;
-  size?: TextSize;
-  weight?: TextWeight;
+  variant?: TextVariant;
   align?: TextAlign;
   truncated?: boolean | number;
 }

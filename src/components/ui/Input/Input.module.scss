@@ -28,11 +28,11 @@
   }
 
   &.Focused {
-    border-color: var(--color-purple);
+    border-color: var(--color-primary-purple);
   }
 
   .Input {
-    @include bodyMd;
+    @include bodyM;
     color: var(--color-text-primary);
     line-height: 1.5rem;
 
