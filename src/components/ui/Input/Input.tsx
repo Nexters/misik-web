@@ -9,11 +9,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, variant = "primary", isFocus, ...props }, ref) => {
     return (
       <div
-        className={classNames(styles.InputWrapper, styles[`style-${variant}`], {
-          [styles.Focused]: isFocus,
-        })}
+        className={classNames(
+          styles.InputWrapper,
+          styles[`style-${variant}`],
+          {
+            [styles.Focused]: isFocus,
+          },
+          className,
+        )}
       >
-        <input type={type} ref={ref} className={classNames(styles.Input, className)} {...props} />
+        <input type={type} ref={ref} className={styles.Input} {...props} />
         {variant === "primary" && <button>수정</button>}
       </div>
     );
