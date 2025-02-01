@@ -17,7 +17,7 @@ const TagSheet = ({ isOpen, handleClose }: TagSheetProps) => {
     <Dialog.Root open={isOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.BottomSheet}>
+        <Dialog.Content className={styles.BottomSheet} data-state={isOpen ? "open" : "closed"}>
           {/* 미사용 코드 콘솔 warning 제거용 */}
           <VisuallyHidden.Root>
             <Dialog.Title>Title</Dialog.Title>
