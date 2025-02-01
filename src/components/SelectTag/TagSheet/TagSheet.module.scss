@@ -20,11 +20,11 @@
   justify-content: space-between;
   transition: transform 0.3s ease-out;
 
-  &[data-state="open"] {
+  &.Open {
     animation: slide-in-from-bottom 0.3s ease-out forwards;
   }
 
-  &[data-state="closed"] {
+  &.Closed {
     animation: slide-out-to-bottom 0.3s ease-in forwards;
   }
 

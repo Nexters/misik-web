@@ -28,11 +28,11 @@ const SelectTag = () => {
   const handleTagClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const tag = e.currentTarget.textContent || "";
 
-    if (selectedTagList.includes(tag)) {
-      setSelectedTagList(selectedTagList.filter((selectedTag) => selectedTag !== tag));
-    } else {
-      setSelectedTagList([...selectedTagList, tag]);
-    }
+    setSelectedTagList((prevSelectedTags) =>
+      prevSelectedTags.includes(tag)
+        ? prevSelectedTags.filter((selectedTag) => selectedTag !== tag)
+        : [...prevSelectedTags, tag],
+    );
   };
 
   const handleSheetClose = () => {
