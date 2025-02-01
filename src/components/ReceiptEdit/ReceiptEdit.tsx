@@ -11,8 +11,12 @@ const ReceiptEdit = () => {
   const [placeName, setPlaceName] = useState("청담커피 앤 토스트");
   const [foodName, setFoodName] = useState("카야토스트+음료세트");
 
-  const { isFocus: isPlaceFocus, onFocus: handlePlaceFocus, onBlur: handlePlaceBlur } = useFocus();
-  const { isFocus: isFoodFocus, onFocus: handleFoodFocus, onBlur: handleFoodBlur } = useFocus();
+  const {
+    isFocus: isPlaceFocus,
+    onFocus: handlePlaceFocus,
+    onBlur: handlePlaceBlur,
+  } = useFocus({});
+  const { isFocus: isFoodFocus, onFocus: handleFoodFocus, onBlur: handleFoodBlur } = useFocus({});
 
   return (
     <div className={styles.ReceiptEdit}>

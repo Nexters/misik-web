@@ -6,7 +6,7 @@ import styles from "@/components/ui/Input/Input.module.scss";
 import type { InputProps } from "@/components/ui/Input/Input.types";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, variant = "primary", isFocus, ...props }, ref) => {
+  ({ className, type, variant = "primary", isFocus, isError, ...props }, ref) => {
     return (
       <div
         className={classNames(
@@ -14,6 +14,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           styles[`style-${variant}`],
           {
             [styles.Focused]: isFocus,
+            [styles.Error]: isError,
           },
           className,
         )}

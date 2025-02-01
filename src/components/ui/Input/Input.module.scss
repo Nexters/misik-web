@@ -31,6 +31,10 @@
     border-color: var(--color-primary-purple);
   }
 
+  &.Error {
+    border-color: var(--color-text-error);
+  }
+
   .Input {
     @include bodyM;
     color: var(--color-text-primary);

@@ -19,7 +19,8 @@ type TextColor =
   | "secondary"
   | "tertiary"
   | "quarternary"
-  | "gradient";
+  | "gradient"
+  | "error";
 
 export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
   as?: React.ElementType;
