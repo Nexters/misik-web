@@ -93,6 +93,9 @@ export const ColorPorps: StoryObj<typeof Text> = {
       <div className={styles.Wrapper}>
         <Text color="gradient" children="gradient" />
       </div>
+      <div className={styles.Wrapper}>
+        <Text color="error" children="error" />
+      </div>
     </div>
   ),
 };
