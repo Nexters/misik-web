@@ -5,6 +5,7 @@ import App from "@/App";
 import HomePage from "@/pages/HomePage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
+import SelectTagPage from "@/pages/SelectTagPage";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const AppRouter = () => {
         {
           path: "/receipt-edit",
           element: <ReceiptEditPage />,
+        },
+        {
+          path: "/select-tag",
+          element: <SelectTagPage />,
         },
       ],
     },

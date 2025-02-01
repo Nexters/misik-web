@@ -1,0 +1,48 @@
+.SelectTag {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 2.5rem;
+  height: calc(100vh - 2.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-bg-gradient);
+
+  &::before {
+    content: "";
+    background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
+    background-size: 100% 16.375rem;
+    filter: blur(4.625rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+}
+
+.Top {
+  z-index: 1;
+
+  .Title {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .TagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-top: 2.5rem;
+  }
+}
+
+.Bottom {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  z-index: 1;
+}
