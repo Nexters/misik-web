@@ -1,0 +1,27 @@
+.Tag {
+  border-radius: 0.75rem;
+  height: 2.5rem;
+  background-color: var(--color-white);
+
+  &.Selected {
+    background-color: var(--color-gray600);
+  }
+
+  &.style-primary {
+    width: fit-content;
+    padding: 0.5rem 0.875rem;
+  }
+
+  &.style-add {
+    width: 2.5rem;
+    padding: 0.625rem;
+  }
+
+  & > span {
+    line-height: 1.5rem;
+  }
+
+  & > svg > path {
+    fill: var(--color-gray500);
+  }
+}
