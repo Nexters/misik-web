@@ -23,6 +23,7 @@
     var(--color-primary-pink),
     var(--color-primary-purple)
   );
+  --color-text-error: #d45085;
 
   --color-white: #ffffff;
   --color-black: #000000;
@@ -35,7 +36,6 @@
   --color-gray600: #363642;
   --color-gray700: #161636;
   --color-bg-gradient: linear-gradient(180deg, #ffffff, #dcdce8);
-  --color-bg-error: #d45085;
   --color-primary-purple: #443fb6;
   --color-primary-pink: #d444ba;
 }

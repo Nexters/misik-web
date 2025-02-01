@@ -4,7 +4,7 @@
   line-height: 1.5;
 
   @each $color-name
-    in ("white", "black", "primary", "secondary", "tertiary", "quarternary", "gradient")
+    in ("white", "black", "primary", "secondary", "tertiary", "quarternary", "gradient", "error")
   {
     @if $color-name == "gradient" {
       &.color-#{$color-name} {
