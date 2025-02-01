@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 import styles from "@/components/SelectTag/SelectTag.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Tag from "@/components/ui/Tag/Tag";
 import Text from "@/components/ui/Text/Text";
 
+// 임시 데이터
 const TAG_LIST = [
   "음식이 맛있어요",
   "양이 많아요",
@@ -18,6 +21,18 @@ const TAG_LIST = [
 ];
 
 const SelectTag = () => {
+  const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
+
+  const handleTagClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const tag = e.currentTarget.textContent || "";
+
+    if (selectedTagList.includes(tag)) {
+      setSelectedTagList(selectedTagList.filter((selectedTag) => selectedTag !== tag));
+    } else {
+      setSelectedTagList([...selectedTagList, tag]);
+    }
+  };
+
   return (
     <div className={styles.SelectTag}>
       <div className={styles.Top}>
@@ -31,7 +46,12 @@ const SelectTag = () => {
         </div>
         <div className={styles.TagList}>
           {TAG_LIST.map((tag) => (
-            <Tag text={tag} key={tag} />
+            <Tag
+              text={tag}
+              key={tag}
+              onClick={handleTagClick}
+              isSelect={selectedTagList.includes(tag)}
+            />
           ))}
           <Tag variant="add" />
         </div>
