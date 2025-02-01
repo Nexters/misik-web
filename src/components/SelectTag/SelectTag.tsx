@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import styles from "@/components/SelectTag/SelectTag.module.scss";
+import TagSheet from "@/components/SelectTag/TagSheet/TagSheet";
 import Button from "@/components/ui/Button/Button";
 import Tag from "@/components/ui/Tag/Tag";
 import Text from "@/components/ui/Text/Text";
@@ -22,6 +23,7 @@ const TAG_LIST = [
 
 const SelectTag = () => {
   const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
 
   const handleTagClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const tag = e.currentTarget.textContent || "";
@@ -31,6 +33,10 @@ const SelectTag = () => {
     } else {
       setSelectedTagList([...selectedTagList, tag]);
     }
+  };
+
+  const handleSheetClose = () => {
+    setIsBottomSheetOpen(false);
   };
 
   return (
@@ -53,13 +59,15 @@ const SelectTag = () => {
               isSelect={selectedTagList.includes(tag)}
             />
           ))}
-          <Tag variant="add" />
+          <Tag variant="add" onClick={() => setIsBottomSheetOpen(true)} />
         </div>
       </div>
 
       <div className={styles.Bottom}>
         <Button text="다음" />
       </div>
+
+      <TagSheet isOpen={isBottomSheetOpen} handleClose={handleSheetClose} />
     </div>
   );
 };
