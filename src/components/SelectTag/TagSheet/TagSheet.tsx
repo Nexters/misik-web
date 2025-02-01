@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import classNames from "classnames";
 
 import styles from "@/components/SelectTag/TagSheet/TagSheet.module.scss";
 import Button from "@/components/ui/Button/Button";
@@ -17,7 +18,12 @@ const TagSheet = ({ isOpen, handleClose }: TagSheetProps) => {
     <Dialog.Root open={isOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.BottomSheet} data-state={isOpen ? "open" : "closed"}>
+        <Dialog.Content
+          className={classNames(styles.BottomSheet, {
+            [styles.Open]: isOpen,
+            [styles.Closed]: !isOpen,
+          })}
+        >
           {/* 미사용 코드 콘솔 warning 제거용 */}
           <VisuallyHidden.Root>
             <Dialog.Title>Title</Dialog.Title>
