@@ -14,7 +14,7 @@ const RecognitionFail = () => {
         </Text>
       </div>
       <div className={styles.Image}>
-        <img src="/src/assets/img/img-recognition-fail.png" alt="recognitionFailImg" />
+        <img src="/assets/img/img-recognition-fail.png" alt="recognitionFailImg" />
       </div>
       <div className={styles.Bottom}>
         <Button text="직접 입력하기" variant="secondary" />
