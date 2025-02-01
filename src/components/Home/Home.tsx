@@ -14,7 +14,7 @@ const Home = () => {
         </Text>
       </div>
       <div className={styles.HomeImage}>
-        <img src="/src/assets/img/img-graphic-logo.png" alt="mainLogo" />
+        <img src="/assets/img/img-graphic-logo.png" alt="mainLogo" />
       </div>
       <div className={styles.HomeBottom}>
         <IconButton text="갤러리" iconName="gallery" />
