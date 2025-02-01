@@ -1,0 +1,72 @@
+.SelectStyle {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 2.5rem;
+  height: calc(100vh - 2.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-bg-gradient);
+
+  &::before {
+    content: "";
+    background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
+    background-size: 100% 16.375rem;
+    filter: blur(4.625rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+}
+
+.Title {
+  z-index: 1;
+  margin-top: 2.5rem;
+
+  & > h2 {
+    margin-top: 0.625rem;
+  }
+}
+
+.Image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  & > img {
+    width: 13.125rem;
+    height: 13.125rem;
+  }
+}
+
+.StyleButtonList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  z-index: 1;
+
+  & > div {
+    height: 3rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: 0.875rem;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.isSelected {
+      background-color: var(--color-text-primary);
+    }
+  }
+}
+
+.Bottom {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  z-index: 1;
+}
