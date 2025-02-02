@@ -27,3 +27,13 @@ textarea {
   outline: none;
   background-color: transparent;
 }
+
+body[data-scroll-locked] {
+  overflow: visible !important;
+  padding: 0 !important;
+  position: static !important;
+}
+
+html body[data-scroll-locked] {
+  margin: 0 auto !important;
+}
