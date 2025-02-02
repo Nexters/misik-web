@@ -1,6 +1,8 @@
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
 
+import classNames from "classnames";
+
 import styles from "@/components/ui/Modal/Modal.module.scss";
 import Portal from "@/components/ui/Modal/Portal";
 
@@ -21,9 +23,19 @@ const Modal = ({ isOpen, children }: ModalProps) => {
     <>
       {isOpen && (
         <Portal elementId="modal">
-          <div className={styles.ModalBackdrop} />
+          <div
+            className={classNames(styles.ModalBackdrop, {
+              [styles.Open]: isOpen,
+            })}
+          />
 
-          <div className={styles.Modal}>{children}</div>
+          <div
+            className={classNames(styles.Modal, {
+              [styles.Open]: isOpen,
+            })}
+          >
+            {children}
+          </div>
         </Portal>
       )}
     </>
