@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import classNames from "classnames";
 
@@ -9,26 +8,21 @@ import Icon from "@/components/ui/Icon/Icon";
 import Modal from "@/components/ui/Modal/Modal";
 import Text from "@/components/ui/Text/Text";
 
+import { useOverlay } from "@/hooks/common/useOverlay";
+
+import type { Meta, StoryObj, StoryFn } from "@storybook/react";
+
 interface HomeNavigateConfirmModalProps {
   isOpen: boolean;
   handleClose: () => void;
 }
 
-const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmModalProps) => {
-  const navigate = useNavigate();
-
-  // 이후 상태 초기값 재설정
+const HomeNavigateConfirmModalStory = ({ isOpen, handleClose }: HomeNavigateConfirmModalProps) => {
   const [isShowButtonChecked, setIsShowButtonChecked] = useState(false);
 
   const handleShowButtonClick = () => {
     setIsShowButtonChecked((prev) => !prev);
   };
-
-  const handleNavigateHome = () => {
-    handleClose();
-    navigate("/");
-  };
-
   return (
     <Modal isOpen={isOpen}>
       <div className={styles.Modal}>
@@ -40,7 +34,7 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
         </Text>
         <div className={styles.ButtonWrapper}>
           <Button text="아니요" variant="tertiary" onClick={handleClose} />
-          <Button text="네" variant="primary" onClick={handleNavigateHome} />
+          <Button text="네" variant="primary" onClick={handleClose} />
         </div>
         <button
           className={classNames(styles.ShowButtonWrapper, {
@@ -58,4 +52,30 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
   );
 };
 
-export default HomeNavigateConfirmModal;
+const meta: Meta<typeof HomeNavigateConfirmModalStory> = {
+  title: "Example/HomeNavigateConfirmModal",
+  component: HomeNavigateConfirmModalStory,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["!autodocs"],
+};
+
+export default meta;
+
+const ModalTemplate = () => {
+  const { isOpen, handleOpen, handleClose } = useOverlay();
+
+  return (
+    <>
+      <Button text="open modal" onClick={handleOpen} />
+      <HomeNavigateConfirmModalStory isOpen={isOpen} handleClose={handleClose} />
+    </>
+  );
+};
+
+const Template: StoryFn<typeof ModalTemplate> = ModalTemplate;
+
+export const ModalStory: StoryObj<HomeNavigateConfirmModalProps> = {
+  render: Template,
+};
