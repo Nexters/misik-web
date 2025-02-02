@@ -42,6 +42,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/jest-dom", "npm:6.6.3"],\
           ["@testing-library/react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:16.2.0"],\
+          ["@types/canvas-confetti", "npm:1.9.0"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:22.10.7"],\
           ["@types/react", "npm:18.3.18"],\
@@ -49,6 +50,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@typescript-eslint/parser", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@vitejs/plugin-react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:4.3.4"],\
+          ["canvas-confetti", "npm:1.9.3"],\
           ["chromatic", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:11.25.1"],\
           ["classnames", "npm:2.5.1"],\
           ["cypress", "npm:14.0.0"],\
@@ -10589,6 +10591,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/jest-dom", "npm:6.6.3"],\
           ["@testing-library/react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:16.2.0"],\
+          ["@types/canvas-confetti", "npm:1.9.0"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:22.10.7"],\
           ["@types/react", "npm:18.3.18"],\
@@ -10596,6 +10599,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@typescript-eslint/parser", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@vitejs/plugin-react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:4.3.4"],\
+          ["canvas-confetti", "npm:1.9.3"],\
           ["chromatic", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:11.25.1"],\
           ["classnames", "npm:2.5.1"],\
           ["cypress", "npm:14.0.0"],\
