@@ -1,10 +1,10 @@
-import Navbar from "@/components/common/Navbar";
 import RecognitionFail from "@/components/RecognitionFail/RecognitionFail";
+import CloseNavbar from "@/components/ui/CloseNavbar/CloseNavbar";
 
 const RecognitionFailPage = () => {
   return (
     <>
-      <Navbar />
+      <CloseNavbar />
       <RecognitionFail />
     </>
   );
