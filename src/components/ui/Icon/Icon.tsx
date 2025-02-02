@@ -4,6 +4,7 @@ import CloseIcon from "@/assets/svg/ic-close.svg?react";
 import EmptyCircleIcon from "@/assets/svg/ic-empty-circle.svg?react";
 import GalleryIcon from "@/assets/svg/ic-gallery.svg?react";
 import LeftArrowIcon from "@/assets/svg/ic-left-arrow.svg?react";
+import LogoIcon from "@/assets/svg/ic-logo.svg?react";
 import PasteIcon from "@/assets/svg/ic-paste.svg?react";
 import PlusIcon from "@/assets/svg/ic-plus.svg?react";
 
@@ -15,7 +16,8 @@ export type IconNameType =
   | "paste"
   | "plus"
   | "checkCircle"
-  | "emptyCircle";
+  | "emptyCircle"
+  | "logo";
 
 export interface IconProps {
   name: IconNameType;
@@ -30,6 +32,7 @@ export const ICONS = {
   plus: PlusIcon,
   checkCircle: CheckCircleIcon,
   emptyCircle: EmptyCircleIcon,
+  logo: LogoIcon,
 };
 
 // 추후 사이즈, 컬러등 추가 가능

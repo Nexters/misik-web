@@ -1,10 +1,16 @@
 import RecognitionFail from "@/components/RecognitionFail/RecognitionFail";
-import CloseNavbar from "@/components/ui/CloseNavbar/CloseNavbar";
+import Icon from "@/components/ui/Icon/Icon";
+import NavbarV2 from "@/components/ui/NavbarV2/NavbarV2";
 
 const RecognitionFailPage = () => {
   return (
     <>
-      <CloseNavbar />
+      <NavbarV2>
+        <NavbarV2.RightButton>
+          <Icon name="close" />
+        </NavbarV2.RightButton>
+      </NavbarV2>
+
       <RecognitionFail />
     </>
   );

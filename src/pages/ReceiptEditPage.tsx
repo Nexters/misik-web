@@ -1,10 +1,16 @@
 import ReceiptEdit from "@/components/ReceiptEdit/ReceiptEdit";
-import ArrowNavbar from "@/components/ui/ArrowNavbar/ArrowNavbar";
+import Icon from "@/components/ui/Icon/Icon";
+import NavbarV2 from "@/components/ui/NavbarV2/NavbarV2";
 
 const ReceiptEditPage = () => {
   return (
     <>
-      <ArrowNavbar />
+      <NavbarV2>
+        <NavbarV2.LeftButton>
+          <Icon name="leftArrow" />
+        </NavbarV2.LeftButton>
+      </NavbarV2>
+
       <ReceiptEdit />
     </>
   );
