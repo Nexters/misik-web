@@ -1,8 +1,13 @@
 import styles from "@/components/Home/Home.module.scss";
+import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
+import { useOverlay } from "@/hooks/common/useOverlay";
+
 const Home = () => {
+  const { isOpen, handleClose, handleOpen } = useOverlay();
+
   return (
     <div className={styles.Home}>
       <div className={styles.HomeTitle}>
@@ -17,9 +22,11 @@ const Home = () => {
         <img src="/assets/img/img-graphic-logo.png" alt="mainLogo" />
       </div>
       <div className={styles.HomeBottom}>
-        <IconButton text="갤러리" iconName="gallery" />
+        <IconButton text="갤러리" iconName="gallery" onClick={handleOpen} />
         <IconButton text="카메라" iconName="camera" />
       </div>
+
+      <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />
     </div>
   );
 };

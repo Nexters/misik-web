@@ -1,9 +1,8 @@
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
 
+import styles from "@/components/ui/Modal/Modal.module.scss";
 import Portal from "@/components/ui/Modal/Portal";
-
-import styles from "@/components/ui/Modal/Modal.module.css";
 
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean;
