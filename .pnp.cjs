@@ -64,6 +64,7 @@ const RAW_RUNTIME_STATE =
           ["lint-staged", "npm:15.4.1"],\
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
+          ["react-canvas-confetti", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7"],\
           ["react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.1"],\
           ["react-router-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:7.1.3"],\
           ["sass", "npm:1.83.4"],\
@@ -4297,6 +4298,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/canvas-confetti", [\
+      ["npm:1.9.0", {\
+        "packageLocation": "./.yarn/cache/@types-canvas-confetti-npm-1.9.0-128dcb43d0-ffe2c674d4.zip/node_modules/@types/canvas-confetti/",\
+        "packageDependencies": [\
+          ["@types/canvas-confetti", "npm:1.9.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/conventional-commits-parser", [\
       ["npm:5.0.1", {\
         "packageLocation": "./.yarn/cache/@types-conventional-commits-parser-npm-5.0.1-3f074d40bc-4b7b561f19.zip/node_modules/@types/conventional-commits-parser/",\
@@ -5719,6 +5729,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001695-6348509850-acf90a7670.zip/node_modules/caniuse-lite/",\
         "packageDependencies": [\
           ["caniuse-lite", "npm:1.0.30001695"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["canvas-confetti", [\
+      ["npm:1.9.3", {\
+        "packageLocation": "./.yarn/cache/canvas-confetti-npm-1.9.3-b7b2362f3e-94c6f16591.zip/node_modules/canvas-confetti/",\
+        "packageDependencies": [\
+          ["canvas-confetti", "npm:1.9.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10592,6 +10611,7 @@ const RAW_RUNTIME_STATE =
           ["lint-staged", "npm:15.4.1"],\
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
+          ["react-canvas-confetti", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7"],\
           ["react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.1"],\
           ["react-router-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:7.1.3"],\
           ["sass", "npm:1.83.4"],\
@@ -11556,6 +11576,30 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["react", "npm:18.3.1"],\
           ["loose-envify", "npm:1.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-canvas-confetti", [\
+      ["npm:2.0.7", {\
+        "packageLocation": "./.yarn/cache/react-canvas-confetti-npm-2.0.7-566ef1fc5e-709a0f3c41.zip/node_modules/react-canvas-confetti/",\
+        "packageDependencies": [\
+          ["react-canvas-confetti", "npm:2.0.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7", {\
+        "packageLocation": "./.yarn/__virtual__/react-canvas-confetti-virtual-ba580d0809/0/cache/react-canvas-confetti-npm-2.0.7-566ef1fc5e-709a0f3c41.zip/node_modules/react-canvas-confetti/",\
+        "packageDependencies": [\
+          ["react-canvas-confetti", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7"],\
+          ["@types/canvas-confetti", "npm:1.9.0"],\
+          ["@types/react", "npm:18.3.18"],\
+          ["canvas-confetti", "npm:1.9.3"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
