@@ -5,6 +5,7 @@ import App from "@/App";
 import CreateReviewLoadingPage from "@/pages/CreateReviewLoadingPage/CreateReviewLoadingPage";
 import HomePage from "@/pages/HomePage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
+import ReceiptResultPage from "@/pages/ReceiptResultPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
 import SelectStylePage from "@/pages/SelectStylePage";
 import SelectTagPage from "@/pages/SelectTagPage";
@@ -38,6 +39,10 @@ const AppRouter = () => {
         {
           path: "/create-review-loading",
           element: <CreateReviewLoadingPage />,
+        },
+        {
+          path: "/receipt-result",
+          element: <ReceiptResultPage />,
         },
       ],
     },
