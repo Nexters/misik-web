@@ -3,6 +3,10 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 99;
+
+  &.Open {
+    animation: animation-show 300ms cubic-bezier(0.3, 0, 0, 1);
+  }
 }
 
 .Modal {
@@ -13,4 +17,18 @@
   z-index: 100;
   background-color: var(--color-white);
   border-radius: 1.25rem;
+
+  &.Open {
+    animation: animation-show 300ms cubic-bezier(0.3, 0, 0, 1);
+  }
+}
+
+@keyframes animation-show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
