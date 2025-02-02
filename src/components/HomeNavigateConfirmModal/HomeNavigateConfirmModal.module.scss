@@ -1,0 +1,36 @@
+.Modal {
+  padding: 1.875rem 1.25rem 1.25rem;
+
+  & > span {
+    margin-top: 0.375rem;
+  }
+}
+
+.ButtonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 1.5rem;
+
+  & > button {
+    width: 8.75rem;
+  }
+}
+
+.ShowButtonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+
+  & > svg > path {
+    fill: rgba(0, 0, 0, 0.15);
+  }
+
+  &.isChecked {
+    & > svg > path {
+      fill: rgb(54, 54, 66);
+    }
+  }
+}
