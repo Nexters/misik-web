@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "@/App";
 
+import CreateReviewLoadingPage from "@/pages/CreateReviewLoadingPage/CreateReviewLoadingPage";
 import HomePage from "@/pages/HomePage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
@@ -33,6 +34,10 @@ const AppRouter = () => {
         {
           path: "/select-style",
           element: <SelectStylePage />,
+        },
+        {
+          path: "/create-review-loading",
+          element: <CreateReviewLoadingPage />,
         },
       ],
     },

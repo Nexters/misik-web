@@ -1,0 +1,45 @@
+.CreateReviewLoading {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 2.5rem;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-bg-gradient);
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "";
+    background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
+    background-size: 100% 16.375rem;
+    filter: blur(4.625rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+}
+
+.Title {
+  margin-top: 7.5rem;
+  z-index: 1;
+
+  & > h2 {
+    margin-top: 0.625rem;
+  }
+}
+
+.Image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6.25rem;
+  z-index: 1;
+
+  & > img {
+    width: 13.125rem;
+    height: 13.125rem;
+  }
+}
