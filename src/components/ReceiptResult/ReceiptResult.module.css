@@ -1,0 +1,56 @@
+.ReceiptResult {
+  padding: 1.25rem;
+  height: calc(100vh - 2.75rem);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-gradient);
+  justify-content: space-between;
+}
+.ReceiptResult::before {
+  content: "";
+  background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
+  background-size: 100% 16.375rem;
+  filter: blur(4.625rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.Top {
+  z-index: 1;
+}
+.Top .TitleBox {
+  display: flex;
+  justify-content: center;
+  margin: 1.875rem 0;
+}
+
+.Bottom {
+  align-items: center;
+  gap: 0.875rem;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+
+.ReceiptImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.ReceiptImage > img {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+.IconBtn {
+  width: 98.5px;
+  margin-top: 10px;
+  margin-left: auto;
+}
