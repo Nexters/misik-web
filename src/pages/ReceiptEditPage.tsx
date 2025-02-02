@@ -1,10 +1,10 @@
-import Navbar from "@/components/common/Navbar";
 import ReceiptEdit from "@/components/ReceiptEdit/ReceiptEdit";
+import ArrowNavbar from "@/components/ui/ArrowNavbar/ArrowNavbar";
 
 const ReceiptEditPage = () => {
   return (
     <>
-      <Navbar />
+      <ArrowNavbar />
       <ReceiptEdit />
     </>
   );
