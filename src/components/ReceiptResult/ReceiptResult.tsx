@@ -32,7 +32,7 @@ const ReceiptResult = () => {
     <div className={styles.ReceiptResult}>
       <div className={styles.Top}>
         <div className={styles.ReceiptImage}>
-          <img src="/src/assets/img/img-grahic-receipt.png" alt="mainLogo" />
+          <img src="/src/assets/img/img-style-cute-circle.png" alt="mainLogo" />
         </div>
         <div className={styles.TitleBox}>
           <Text variant="titleM" color="gradient" as="h1" truncated>
