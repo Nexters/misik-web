@@ -1,11 +1,32 @@
-import { handleConfetti } from "@/components/ReceiptResult/Confetti";
+import { useEffect } from "react";
+
+import confetti from "canvas-confetti";
+
 import styles from "@/components/ReceiptResult/ReceiptResult.module.scss";
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
+import type { Options as ConfettiOptions } from "canvas-confetti";
+
 const ReceiptResult = () => {
-  handleConfetti();
+  const handleConfetti = () => {
+    const setting: ConfettiOptions = {
+      particleCount: 100,
+      spread: 100,
+      origin: { y: 0.2 },
+      colors: ["#f4abfe", "#cd90f2", "#eff0ff", "#6f91ff"],
+      ticks: 50,
+    };
+
+    confetti({
+      ...setting,
+    });
+  };
+
+  useEffect(() => {
+    handleConfetti();
+  }, []);
 
   return (
     <div className={styles.ReceiptResult}>
@@ -28,12 +49,9 @@ const ReceiptResult = () => {
           <IconButton text="복사하기" iconName="paste" size="sm" />
         </div>
       </div>
-
       <div className={styles.Bottom}>
-        <>
-          <Button text="다시생성" variant="secondary" />
-          <Button text="홈으로 가기" />
-        </>
+        <Button text="다시생성" variant="secondary" />
+        <Button text="홈으로 가기" />
       </div>
     </div>
   );
