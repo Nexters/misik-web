@@ -66,7 +66,6 @@ const RAW_RUNTIME_STATE =
           ["lint-staged", "npm:15.4.1"],\
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
-          ["react-canvas-confetti", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7"],\
           ["react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.1"],\
           ["react-router-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:7.1.3"],\
           ["sass", "npm:1.83.4"],\
@@ -10615,7 +10614,6 @@ const RAW_RUNTIME_STATE =
           ["lint-staged", "npm:15.4.1"],\
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
-          ["react-canvas-confetti", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7"],\
           ["react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.1"],\
           ["react-router-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:7.1.3"],\
           ["sass", "npm:1.83.4"],\
@@ -11580,30 +11578,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["react", "npm:18.3.1"],\
           ["loose-envify", "npm:1.4.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["react-canvas-confetti", [\
-      ["npm:2.0.7", {\
-        "packageLocation": "./.yarn/cache/react-canvas-confetti-npm-2.0.7-566ef1fc5e-709a0f3c41.zip/node_modules/react-canvas-confetti/",\
-        "packageDependencies": [\
-          ["react-canvas-confetti", "npm:2.0.7"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7", {\
-        "packageLocation": "./.yarn/__virtual__/react-canvas-confetti-virtual-ba580d0809/0/cache/react-canvas-confetti-npm-2.0.7-566ef1fc5e-709a0f3c41.zip/node_modules/react-canvas-confetti/",\
-        "packageDependencies": [\
-          ["react-canvas-confetti", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:2.0.7"],\
-          ["@types/canvas-confetti", "npm:1.9.0"],\
-          ["@types/react", "npm:18.3.18"],\
-          ["canvas-confetti", "npm:1.9.3"],\
-          ["react", "npm:18.3.1"]\
-        ],\
-        "packagePeers": [\
-          "@types/react",\
-          "react"\
         ],\
         "linkType": "HARD"\
       }]\
