@@ -1,8 +1,7 @@
+import styles from "@/components/CreateReviewLoading/CreateReviewLoading.module.scss";
 import Text from "@/components/ui/Text/Text";
 
-import styles from "@/pages/CreateReviewLoadingPage/CreateReviewLoadingPage.module.scss";
-
-const CreateReviewLoadingPage = () => {
+const CreateReviewLoading = () => {
   return (
     <div className={styles.CreateReviewLoading}>
       <div className={styles.Title}>
@@ -21,4 +20,4 @@ const CreateReviewLoadingPage = () => {
   );
 };
 
-export default CreateReviewLoadingPage;
+export default CreateReviewLoading;

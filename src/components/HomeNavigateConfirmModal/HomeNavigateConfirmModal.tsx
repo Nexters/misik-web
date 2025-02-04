@@ -9,6 +9,8 @@ import Icon from "@/components/ui/Icon/Icon";
 import Modal from "@/components/ui/Modal/Modal";
 import Text from "@/components/ui/Text/Text";
 
+import { PATH } from "@/constants/path";
+
 interface HomeNavigateConfirmModalProps {
   isOpen: boolean;
   handleClose: () => void;
@@ -26,7 +28,7 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
 
   const handleNavigateHome = () => {
     handleClose();
-    navigate("/");
+    navigate(PATH.HOME);
   };
 
   return (

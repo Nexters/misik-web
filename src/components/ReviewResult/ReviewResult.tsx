@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import confetti from "canvas-confetti";
 
 import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
-import styles from "@/components/ReceiptResult/ReceiptResult.module.scss";
+import styles from "@/components/ReviewResult/ReviewResult.module.scss";
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
@@ -12,7 +12,7 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
-const ReceiptResult = () => {
+const ReviewResult = () => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
   const handleConfetti = () => {
@@ -34,7 +34,7 @@ const ReceiptResult = () => {
   }, []);
 
   return (
-    <div className={styles.ReceiptResult}>
+    <div className={styles.ReviewResult}>
       <div className={styles.Top}>
         <div className={styles.ReceiptImage}>
           <img src="/assets/img/img-style-cute-circle.png" alt="mainLogo" />
@@ -64,4 +64,4 @@ const ReceiptResult = () => {
   );
 };
 
-export default ReceiptResult;
+export default ReviewResult;
