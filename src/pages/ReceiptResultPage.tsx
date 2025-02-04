@@ -1,10 +1,15 @@
+import Navbar from "@/components/common/Navbar/Navbar";
 import ReceiptResult from "@/components/ReceiptResult/ReceiptResult";
-// import ArrowNavbar from "@/components/ui/ArrowNavbar/ArrowNavbar";
+import Icon from "@/components/ui/Icon/Icon";
 
 export default function ReceiptResultPage() {
   return (
     <>
-      {/* <ArrowNavbar /> */}
+      <Navbar>
+        <Navbar.LeftButton>
+          <Icon name="leftArrow" />
+        </Navbar.LeftButton>
+      </Navbar>
       <ReceiptResult />
     </>
   );

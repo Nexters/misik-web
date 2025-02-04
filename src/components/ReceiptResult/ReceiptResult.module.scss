@@ -1,6 +1,6 @@
 .ReceiptResult {
   padding: 1.25rem;
-
+  padding-bottom: 2.5rem;
   height: calc(100vh - 2.75rem);
   overflow: hidden;
   position: relative;
@@ -8,6 +8,7 @@
   flex-direction: column;
   background: var(--color-bg-gradient);
   justify-content: space-between;
+
   &::before {
     content: "";
     background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
