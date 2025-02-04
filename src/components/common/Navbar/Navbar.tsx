@@ -2,15 +2,14 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
 
 import classNames from "classnames";
 
-import styles from "@/components/ui/NavbarV2/NavbarV2.module.scss";
+import styles from "@/components/common/Navbar/Navbar.module.scss";
 
-const NavbarV2 = ({ children }: PropsWithChildren) => {
-  return <div className={styles.NavbarV2}>{children}</div>;
+const Navbar = ({ children }: PropsWithChildren) => {
+  return <div className={styles.Navbar}>{children}</div>;
 };
 
-NavbarV2.LeftButton = ({
+Navbar.LeftButton = ({
   children,
-  // 확장성 고려해서 className 추가 현재 디자인상에서는 사실 필요 없기는 함
   className,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement>) => {
@@ -21,7 +20,7 @@ NavbarV2.LeftButton = ({
   );
 };
 
-NavbarV2.RightButton = ({
+Navbar.RightButton = ({
   children,
   className,
   ...props
@@ -33,4 +32,4 @@ NavbarV2.RightButton = ({
   );
 };
 
-export default NavbarV2;
+export default Navbar;
