@@ -2,18 +2,19 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "@/App";
 
-import CreateReviewLoadingPage from "@/pages/CreateReviewLoadingPage/CreateReviewLoadingPage";
+import { PATH } from "@/constants/path";
+
 import HomePage from "@/pages/HomePage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
-import ReceiptResultPage from "@/pages/ReceiptResultPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
+import ReviewResultPage from "@/pages/ReviewResultPage";
 import SelectStylePage from "@/pages/SelectStylePage";
 import SelectTagPage from "@/pages/SelectTagPage";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: PATH.HOME,
       element: <App />,
       children: [
         {
@@ -21,28 +22,24 @@ const AppRouter = () => {
           element: <HomePage />,
         },
         {
-          path: "/recognition-fail",
+          path: PATH.RECOGNITION_FAIL,
           element: <RecognitionFailPage />,
         },
         {
-          path: "/receipt-edit",
+          path: PATH.RECEIPT_EDIT,
           element: <ReceiptEditPage />,
         },
         {
-          path: "/select-tag",
+          path: PATH.SELECT_TAG,
           element: <SelectTagPage />,
         },
         {
-          path: "/select-style",
+          path: PATH.SELECT_STYLE,
           element: <SelectStylePage />,
         },
         {
-          path: "/create-review-loading",
-          element: <CreateReviewLoadingPage />,
-        },
-        {
-          path: "/receipt-result",
-          element: <ReceiptResultPage />,
+          path: PATH.REVIEW_RESULT,
+          element: <ReviewResultPage />,
         },
       ],
     },

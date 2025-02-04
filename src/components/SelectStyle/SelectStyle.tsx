@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import classNames from "classnames";
 
@@ -6,6 +7,8 @@ import styles from "@/components/SelectStyle/SelectStyle.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Icon from "@/components/ui/Icon/Icon";
 import Text from "@/components/ui/Text/Text";
+
+import { PATH } from "@/constants/path";
 
 interface StyleProps {
   name: string;
@@ -20,10 +23,16 @@ const IMG_STYLE_DATA = [
 ];
 
 const SelectStyle = () => {
+  const navigate = useNavigate();
+
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
 
   const handleStyleClick = (style: StyleProps) => {
     setSelectedStyle((prevStyle) => (prevStyle.name === style.name ? IMG_STYLE_DATA[0] : style));
+  };
+
+  const handleCreateReviewButtonClick = () => {
+    navigate(PATH.REVIEW_RESULT);
   };
 
   return (
@@ -59,7 +68,7 @@ const SelectStyle = () => {
       </div>
 
       <div className={styles.Bottom}>
-        <Button text="리뷰 만들기" />
+        <Button text="리뷰 만들기" onClick={handleCreateReviewButtonClick} />
       </div>
     </div>
   );

@@ -1,8 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 import styles from "@/components/Home/Home.module.scss";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
+import { PATH } from "@/constants/path";
+
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleCameraButtonClick = () => {
+    navigate(PATH.RECEIPT_EDIT);
+  };
+
   return (
     <div className={styles.Home}>
       <div className={styles.HomeTitle}>
@@ -18,7 +28,7 @@ const Home = () => {
       </div>
       <div className={styles.HomeBottom}>
         <IconButton text="갤러리" iconName="gallery" />
-        <IconButton text="카메라" iconName="camera" />
+        <IconButton text="카메라" iconName="camera" onClick={handleCameraButtonClick} />
       </div>
     </div>
   );
