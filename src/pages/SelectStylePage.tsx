@@ -1,15 +1,15 @@
+import Navbar from "@/components/common/Navbar/Navbar";
 import SelectStyle from "@/components/SelectStyle/SelectStyle";
 import Icon from "@/components/ui/Icon/Icon";
-import NavbarV2 from "@/components/ui/NavbarV2/NavbarV2";
 
 const SelectStylePage = () => {
   return (
     <>
-      <NavbarV2>
-        <NavbarV2.LeftButton>
+      <Navbar>
+        <Navbar.LeftButton>
           <Icon name="leftArrow" />
-        </NavbarV2.LeftButton>
-      </NavbarV2>
+        </Navbar.LeftButton>
+      </Navbar>
       <SelectStyle />
     </>
   );
