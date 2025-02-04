@@ -2,7 +2,11 @@ import styles from "@/components/RecognitionFail/RecognitionFail.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Text from "@/components/ui/Text/Text";
 
+import { useRoute } from "@/hooks/common/useRoute";
+
 const RecognitionFail = () => {
+  const { navigateToHome, navigateToReceiptEdit } = useRoute();
+
   return (
     <div className={styles.RecognitionFail}>
       <div className={styles.Title}>
@@ -17,8 +21,8 @@ const RecognitionFail = () => {
         <img src="/assets/img/img-recognition-fail.png" alt="recognitionFailImg" />
       </div>
       <div className={styles.Bottom}>
-        <Button text="직접 입력하기" variant="secondary" />
-        <Button text="다시 촬영하기" variant="secondary" />
+        <Button text="직접 입력하기" variant="secondary" onClick={navigateToReceiptEdit} />
+        <Button text="다시 촬영하기" variant="secondary" onClick={navigateToHome} />
       </div>
     </div>
   );

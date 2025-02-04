@@ -5,8 +5,12 @@ import CreateReviewLoading from "@/components/CreateReviewLoading/CreateReviewLo
 import ReviewResult from "@/components/ReviewResult/ReviewResult";
 import Icon from "@/components/ui/Icon/Icon";
 
+import { useRoute } from "@/hooks/common/useRoute";
+
 // 로딩 코드 api 연결 후 삭제
 export default function ReviewResultPage() {
+  const { navigateToBack } = useRoute();
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export default function ReviewResultPage() {
       {!isLoading && (
         <>
           <Navbar>
-            <Navbar.LeftButton>
+            <Navbar.LeftButton onClick={navigateToBack}>
               <Icon name="leftArrow" />
             </Navbar.LeftButton>
           </Navbar>

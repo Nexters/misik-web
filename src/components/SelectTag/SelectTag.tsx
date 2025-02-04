@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import styles from "@/components/SelectTag/SelectTag.module.scss";
 import TagSheet from "@/components/SelectTag/TagSheet/TagSheet";
@@ -7,7 +6,7 @@ import Button from "@/components/ui/Button/Button";
 import Tag from "@/components/ui/Tag/Tag";
 import Text from "@/components/ui/Text/Text";
 
-import { PATH } from "@/constants/path";
+import { useRoute } from "@/hooks/common/useRoute";
 
 // 임시 데이터
 const TAG_LIST = [
@@ -25,7 +24,7 @@ const TAG_LIST = [
 ];
 
 const SelectTag = () => {
-  const navigate = useNavigate();
+  const { navigateToSelectStyle } = useRoute();
 
   const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
@@ -42,10 +41,6 @@ const SelectTag = () => {
 
   const handleSheetClose = () => {
     setIsBottomSheetOpen(false);
-  };
-
-  const handleNextButtonClick = () => {
-    navigate(PATH.SELECT_STYLE);
   };
 
   return (
@@ -73,7 +68,7 @@ const SelectTag = () => {
       </div>
 
       <div className={styles.Bottom}>
-        <Button text="다음" onClick={handleNextButtonClick} />
+        <Button text="다음" onClick={navigateToSelectStyle} />
       </div>
 
       <TagSheet isOpen={isBottomSheetOpen} handleClose={handleSheetClose} />
