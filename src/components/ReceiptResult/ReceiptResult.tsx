@@ -2,14 +2,19 @@ import { useEffect } from "react";
 
 import confetti from "canvas-confetti";
 
+import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
 import styles from "@/components/ReceiptResult/ReceiptResult.module.scss";
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
+import { useOverlay } from "@/hooks/common/useOverlay";
+
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
 const ReceiptResult = () => {
+  const { isOpen, handleClose, handleOpen } = useOverlay();
+
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
       particleCount: 100,
@@ -32,7 +37,7 @@ const ReceiptResult = () => {
     <div className={styles.ReceiptResult}>
       <div className={styles.Top}>
         <div className={styles.ReceiptImage}>
-          <img src="/src/assets/img/img-style-cute-circle.png" alt="mainLogo" />
+          <img src="/assets/img/img-style-cute-circle.png" alt="mainLogo" />
         </div>
         <div className={styles.TitleBox}>
           <Text variant="titleM" color="gradient" as="h1" truncated>
@@ -51,8 +56,10 @@ const ReceiptResult = () => {
       </div>
       <div className={styles.Bottom}>
         <Button text="다시생성" variant="secondary" />
-        <Button text="홈으로 가기" />
+        <Button text="홈으로 가기" onClick={handleOpen} />
       </div>
+
+      <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />
     </div>
   );
 };
