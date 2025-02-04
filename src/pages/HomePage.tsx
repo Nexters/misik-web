@@ -1,21 +1,17 @@
-import { useNavigate } from "react-router-dom";
-
 import Navbar from "@/components/common/Navbar/Navbar";
 import Home from "@/components/Home/Home";
 import Icon from "@/components/ui/Icon/Icon";
 import Text from "@/components/ui/Text/Text";
 
-const HomePage = () => {
-  const navigate = useNavigate();
+import { useRoute } from "@/hooks/common/useRoute";
 
-  const handleLogoClick = () => {
-    navigate("/");
-  };
+const HomePage = () => {
+  const { navigateToHome } = useRoute();
 
   return (
     <>
       <Navbar>
-        <Navbar.LeftButton onClick={handleLogoClick}>
+        <Navbar.LeftButton onClick={navigateToHome}>
           <Icon name="logo" />
         </Navbar.LeftButton>
         <Navbar.RightButton>

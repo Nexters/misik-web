@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import styles from "@/components/ReceiptEdit/ReceiptEdit.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Input from "@/components/ui/Input/Input";
 import Text from "@/components/ui/Text/Text";
 
-import { PATH } from "@/constants/path";
-
 import { useFocus } from "@/hooks/common/useFocus";
+import { useRoute } from "@/hooks/common/useRoute";
 
 const ReceiptEdit = () => {
-  const navigate = useNavigate();
+  const { navigateToSelectTag } = useRoute();
 
   const [placeName, setPlaceName] = useState("청담커피 앤 토스트");
   const [foodName, setFoodName] = useState("카야토스트+음료세트");
@@ -22,10 +20,6 @@ const ReceiptEdit = () => {
     onBlur: handlePlaceBlur,
   } = useFocus({});
   const { isFocus: isFoodFocus, onFocus: handleFoodFocus, onBlur: handleFoodBlur } = useFocus({});
-
-  const handleInfoRightButtonClick = () => {
-    navigate(PATH.SELECT_TAG);
-  };
 
   return (
     <div className={styles.ReceiptEdit}>
@@ -81,7 +75,7 @@ const ReceiptEdit = () => {
             <Button
               text="정보가 맞아요"
               disabled={!placeName || !foodName}
-              onClick={handleInfoRightButtonClick}
+              onClick={navigateToSelectTag}
             />
           </>
         )}

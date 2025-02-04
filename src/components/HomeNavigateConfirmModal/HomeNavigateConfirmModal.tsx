@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import classNames from "classnames";
 
@@ -9,7 +8,7 @@ import Icon from "@/components/ui/Icon/Icon";
 import Modal from "@/components/ui/Modal/Modal";
 import Text from "@/components/ui/Text/Text";
 
-import { PATH } from "@/constants/path";
+import { useRoute } from "@/hooks/common/useRoute";
 
 interface HomeNavigateConfirmModalProps {
   isOpen: boolean;
@@ -17,7 +16,7 @@ interface HomeNavigateConfirmModalProps {
 }
 
 const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmModalProps) => {
-  const navigate = useNavigate();
+  const { navigateToHome } = useRoute();
 
   // 이후 상태 초기값 재설정
   const [isShowButtonChecked, setIsShowButtonChecked] = useState(false);
@@ -28,7 +27,7 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
 
   const handleNavigateHome = () => {
     handleClose();
-    navigate(PATH.HOME);
+    navigateToHome();
   };
 
   return (

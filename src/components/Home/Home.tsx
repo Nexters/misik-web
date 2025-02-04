@@ -1,17 +1,12 @@
-import { useNavigate } from "react-router-dom";
-
 import styles from "@/components/Home/Home.module.scss";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
-import { PATH } from "@/constants/path";
+import { useRoute } from "@/hooks/common/useRoute";
 
 const Home = () => {
-  const navigate = useNavigate();
-
-  const handleCameraButtonClick = () => {
-    navigate(PATH.RECEIPT_EDIT);
-  };
+  // 이후 네이티브 라우팅으로 변경
+  const { navigateToReceiptEdit, navigateToRecognitionFail } = useRoute();
 
   return (
     <div className={styles.Home}>
@@ -27,8 +22,8 @@ const Home = () => {
         <img src="/assets/img/img-graphic-logo.png" alt="mainLogo" />
       </div>
       <div className={styles.HomeBottom}>
-        <IconButton text="갤러리" iconName="gallery" />
-        <IconButton text="카메라" iconName="camera" onClick={handleCameraButtonClick} />
+        <IconButton text="갤러리" iconName="gallery" onClick={navigateToRecognitionFail} />
+        <IconButton text="카메라" iconName="camera" onClick={navigateToReceiptEdit} />
       </div>
     </div>
   );
