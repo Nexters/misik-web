@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import confetti from "canvas-confetti";
 
 import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
+import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
+import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import styles from "@/components/ReviewResult/ReviewResult.module.scss";
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
@@ -15,15 +17,13 @@ import useToast from "@/hooks/common/useToast";
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
 const ReviewResult = () => {
+  const { send } = useAppBridge();
+
   const { isOpen, handleClose, handleOpen } = useOverlay();
-  const { isToast, showToast } = useToast(1000);
+  const { isToast } = useToast(1000);
 
   const reviewText = `오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요!
     음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.`;
-
-  const handleCopy = () => {
-    showToast();
-  };
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -57,7 +57,14 @@ const ReviewResult = () => {
           {reviewText}
         </Text>
         <div className={styles.IconBtn}>
-          <IconButton text="복사하기" iconName="paste" size="sm" onClick={handleCopy} />
+          <IconButton
+            text="복사하기"
+            iconName="paste"
+            size="sm"
+            onClick={() =>
+              send({ type: AppBridgeMessageType.COPY, payload: { review: reviewText } })
+            }
+          />
         </div>
       </div>
 

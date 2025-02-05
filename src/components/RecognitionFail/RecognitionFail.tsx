@@ -1,3 +1,5 @@
+import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
+import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import styles from "@/components/RecognitionFail/RecognitionFail.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Text from "@/components/ui/Text/Text";
@@ -5,7 +7,9 @@ import Text from "@/components/ui/Text/Text";
 import { useRoute } from "@/hooks/common/useRoute";
 
 const RecognitionFail = () => {
-  const { navigateToHome, navigateToReceiptEdit } = useRoute();
+  const { send } = useAppBridge();
+
+  const { navigateToReceiptEdit } = useRoute();
 
   return (
     <div className={styles.RecognitionFail}>
@@ -22,7 +26,11 @@ const RecognitionFail = () => {
       </div>
       <div className={styles.Bottom}>
         <Button text="직접 입력하기" variant="secondary" onClick={navigateToReceiptEdit} />
-        <Button text="다시 촬영하기" variant="secondary" onClick={navigateToHome} />
+        <Button
+          text="다시 촬영하기"
+          variant="secondary"
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA })}
+        />
       </div>
     </div>
   );

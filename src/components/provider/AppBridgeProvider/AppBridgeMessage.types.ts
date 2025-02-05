@@ -35,6 +35,6 @@ export interface CreateReviewMessage {
 export interface CopyMessage {
   type: AppBridgeMessageType.COPY;
   payload: {
-    json: string;
+    review: string;
   };
 }
