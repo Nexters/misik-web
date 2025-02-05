@@ -1,12 +1,11 @@
 import styles from "@/components/Home/Home.module.scss";
+import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
+import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
-import { useRoute } from "@/hooks/common/useRoute";
-
 const Home = () => {
-  // 이후 네이티브 라우팅으로 변경
-  const { navigateToReceiptEdit, navigateToRecognitionFail } = useRoute();
+  const { send } = useAppBridge();
 
   return (
     <div className={styles.Home}>
@@ -22,8 +21,16 @@ const Home = () => {
         <img src="/assets/img/img-graphic-logo.png" alt="mainLogo" />
       </div>
       <div className={styles.HomeBottom}>
-        <IconButton text="갤러리" iconName="gallery" onClick={navigateToRecognitionFail} />
-        <IconButton text="카메라" iconName="camera" onClick={navigateToReceiptEdit} />
+        <IconButton
+          text="갤러리"
+          iconName="gallery"
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_GALLERY })}
+        />
+        <IconButton
+          text="카메라"
+          iconName="camera"
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA })}
+        />
       </div>
     </div>
   );
