@@ -24,6 +24,7 @@ const androidHandlers = {
 
 export function convertToIOSAppBridge(message: AppBridgeMessage) {
   const handler = iosHandlers[message.type];
+
   if (handler) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     handler(message as any);
@@ -34,6 +35,7 @@ export function convertToIOSAppBridge(message: AppBridgeMessage) {
 
 export function convertToAndroidAppBridge(message: AppBridgeMessage) {
   const handler = androidHandlers[message.type];
+
   if (handler) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     handler(message as any);
