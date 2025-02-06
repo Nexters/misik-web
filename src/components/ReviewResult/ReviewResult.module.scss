@@ -34,6 +34,12 @@
 }
 
 .Bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ButtonBox {
   align-items: center;
   gap: 0.875rem;
   z-index: 1;
