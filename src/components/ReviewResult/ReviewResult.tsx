@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-
 import confetti from "canvas-confetti";
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
 import Toast from "../ui/Toast/Toast";
-
 import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
 import styles from "@/components/ReviewResult/ReviewResult.module.scss";
 import Button from "@/components/ui/Button/Button";
@@ -16,9 +14,13 @@ import useToast from "@/hooks/common/useToast";
 
 const ReviewResult = () => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
-  const { isToast, showToast } = useToast(1000); // 1초 후 사라짐
+  const { isToast, showToast } = useToast(1000); 
+
+  const reviewText = `오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요!
+    음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.`;
 
   const handleCopy = () => {
+    navigator.clipboard.writeText(reviewText);
     showToast();
   };
 
@@ -31,9 +33,7 @@ const ReviewResult = () => {
       ticks: 50,
     };
 
-    confetti({
-      ...setting,
-    });
+    confetti(setting);
   };
 
   useEffect(() => {
@@ -53,9 +53,7 @@ const ReviewResult = () => {
         </div>
 
         <Text variant="bodyLg" color="primary">
-          오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요!
-          음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을
-          거예요.
+          {reviewText}
         </Text>
         <div className={styles.IconBtn}>
           <IconButton text="복사하기" iconName="paste" size="sm" onClick={handleCopy} />
