@@ -9,6 +9,8 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
+import { useCreateReviewStore } from "@/store/useReviewStore";
+
 interface StyleProps {
   name: string;
   image: string;
@@ -24,10 +26,20 @@ const IMG_STYLE_DATA = [
 const SelectStyle = () => {
   const { navigateToReviewResult } = useRoute();
 
+  const { setReviewStyle } = useCreateReviewStore();
+
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
 
   const handleStyleClick = (style: StyleProps) => {
     setSelectedStyle((prevStyle) => (prevStyle.name === style.name ? IMG_STYLE_DATA[0] : style));
+  };
+
+  const handleCreateReview = () => {
+    if (selectedStyle.name !== "default") {
+      setReviewStyle(selectedStyle.name);
+    }
+
+    navigateToReviewResult();
   };
 
   return (
@@ -63,7 +75,7 @@ const SelectStyle = () => {
       </div>
 
       <div className={styles.Bottom}>
-        <Button text="리뷰 만들기" onClick={navigateToReviewResult} />
+        <Button text="리뷰 만들기" onClick={handleCreateReview} />
       </div>
     </div>
   );

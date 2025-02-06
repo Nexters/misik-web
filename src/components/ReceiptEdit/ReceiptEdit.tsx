@@ -8,8 +8,12 @@ import Text from "@/components/ui/Text/Text";
 import { useFocus } from "@/hooks/common/useFocus";
 import { useRoute } from "@/hooks/common/useRoute";
 
+import { useCreateReviewStore } from "@/store/useReviewStore";
+
 const ReceiptEdit = () => {
   const { navigateToSelectTag } = useRoute();
+
+  const { setOcrText } = useCreateReviewStore();
 
   const [placeName, setPlaceName] = useState("청담커피 앤 토스트");
   const [foodName, setFoodName] = useState("카야토스트+음료세트");
@@ -20,6 +24,13 @@ const ReceiptEdit = () => {
     onBlur: handlePlaceBlur,
   } = useFocus({});
   const { isFocus: isFoodFocus, onFocus: handleFoodFocus, onBlur: handleFoodBlur } = useFocus({});
+
+  const handleInfoRightClick = () => {
+    const ocrText = `${placeName} ${foodName}`;
+    setOcrText(ocrText);
+
+    navigateToSelectTag();
+  };
 
   return (
     <div className={styles.ReceiptEdit}>
@@ -75,7 +86,7 @@ const ReceiptEdit = () => {
             <Button
               text="정보가 맞아요"
               disabled={!placeName || !foodName}
-              onClick={navigateToSelectTag}
+              onClick={handleInfoRightClick}
             />
           </>
         )}

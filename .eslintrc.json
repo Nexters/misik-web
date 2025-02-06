@@ -63,6 +63,11 @@
             "position": "before"
           },
           {
+            "pattern": "@/store/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
             "pattern": "@/styles/**/*",
             "group": "type",
             "position": "before"
