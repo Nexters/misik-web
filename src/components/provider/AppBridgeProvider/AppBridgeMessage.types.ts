@@ -29,8 +29,8 @@ export interface CreateReviewMessage {
   type: AppBridgeMessageType.CREATE_REVIEW;
   payload: {
     ocrText: string;
-    hastTag: string[];
-    reveiwStyle: string;
+    hashTag: string[];
+    reviewStyle: string;
   };
 }
 
