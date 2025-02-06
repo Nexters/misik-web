@@ -28,7 +28,9 @@ export interface ShareMessage {
 export interface CreateReviewMessage {
   type: AppBridgeMessageType.CREATE_REVIEW;
   payload: {
-    json: string;
+    ocrText: string;
+    hastTag: string[];
+    reveiwStyle: string;
   };
 }
 
