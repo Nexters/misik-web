@@ -8,26 +8,24 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
-// 임시 데이터
-const TAG_LIST = [
-  "음식이 맛있어요",
-  "양이 많아요",
-  "가성비가 좋아요",
-  "메뉴 구성이 알차요",
-  "매장이 넓어요",
-  "단체모임 하기 좋아요",
-  "뷰가 좋아요",
-  "아늑해요",
-  "분위기가 좋아요",
-  "친절해요",
-  "매장이 청결해요",
-];
-
 const SelectTag = () => {
   const { navigateToSelectStyle } = useRoute();
 
   const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+  const [tagList, setTagList] = useState<string[]>([
+    "음식이 맛있어요",
+    "양이 많아요",
+    "가성비가 좋아요",
+    "메뉴 구성이 알차요",
+    "매장이 넓어요",
+    "단체모임 하기 좋아요",
+    "뷰가 좋아요",
+    "아늑해요",
+    "분위기가 좋아요",
+    "친절해요",
+    "매장이 청결해요",
+  ]);
 
   const handleTagClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const tag = e.currentTarget.textContent || "";
@@ -35,8 +33,15 @@ const SelectTag = () => {
     setSelectedTagList((prevSelectedTags) =>
       prevSelectedTags.includes(tag)
         ? prevSelectedTags.filter((selectedTag) => selectedTag !== tag)
-        : [...prevSelectedTags, tag],
+        : [...prevSelectedTags, tag]
     );
+  };
+
+  const handleTagAdd = (newTag: string) => {
+    setIsBottomSheetOpen(false);
+    if (!tagList.includes(newTag)) {
+      setTagList((prevTagList: string[]) => [...prevTagList, newTag]);
+    }
   };
 
   const handleSheetClose = () => {
@@ -55,7 +60,7 @@ const SelectTag = () => {
           </Text>
         </div>
         <div className={styles.TagList}>
-          {TAG_LIST.map((tag) => (
+          {tagList.map((tag) => (
             <Tag
               text={tag}
               key={tag}
@@ -71,7 +76,11 @@ const SelectTag = () => {
         <Button text="다음" onClick={navigateToSelectStyle} />
       </div>
 
-      <TagSheet isOpen={isBottomSheetOpen} handleClose={handleSheetClose} />
+      <TagSheet
+        isOpen={isBottomSheetOpen}
+        handleClose={handleSheetClose}
+        handleTagAdd={handleTagAdd}
+      />
     </div>
   );
 };

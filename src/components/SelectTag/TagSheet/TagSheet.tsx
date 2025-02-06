@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -15,15 +15,22 @@ import { useFocus } from "@/hooks/common/useFocus";
 interface TagSheetProps {
   isOpen: boolean;
   handleClose: () => void;
+  handleTagAdd: (newTag: string) => void;
 }
 
-const TagSheet = ({ isOpen, handleClose }: TagSheetProps) => {
+const TagSheet = ({ isOpen, handleClose, handleTagAdd }: TagSheetProps) => {
   const { isFocus, onFocus, onBlur } = useFocus({ defaultFocus: true });
 
   const [newTag, setNewTag] = useState("");
 
   const isInputError = newTag.length > 20;
   const isInputEmpty = newTag.length === 0;
+
+  useEffect(() => {
+    if (isOpen) {
+      setNewTag("");
+    }
+  }, [isOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTag(e.target.value);
@@ -82,7 +89,11 @@ const TagSheet = ({ isOpen, handleClose }: TagSheetProps) => {
             )}
           </div>
 
-          <Button text="추가하기" disabled={isInputError || isInputEmpty} />
+          <Button
+            text="추가하기"
+            disabled={isInputError || isInputEmpty}
+            onClick={() => handleTagAdd(newTag)}
+          />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
