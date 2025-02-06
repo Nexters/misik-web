@@ -8,8 +8,12 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
+import { useCreateReviewStore } from "@/store/useReviewStore";
+
 const SelectTag = () => {
   const { navigateToSelectStyle } = useRoute();
+
+  const { setHashTag } = useCreateReviewStore();
 
   const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
@@ -33,7 +37,7 @@ const SelectTag = () => {
     setSelectedTagList((prevSelectedTags) =>
       prevSelectedTags.includes(tag)
         ? prevSelectedTags.filter((selectedTag) => selectedTag !== tag)
-        : [...prevSelectedTags, tag]
+        : [...prevSelectedTags, tag],
     );
   };
 
@@ -46,6 +50,11 @@ const SelectTag = () => {
 
   const handleSheetClose = () => {
     setIsBottomSheetOpen(false);
+  };
+
+  const handleNextClick = () => {
+    setHashTag(selectedTagList);
+    navigateToSelectStyle();
   };
 
   return (
@@ -73,7 +82,7 @@ const SelectTag = () => {
       </div>
 
       <div className={styles.Bottom}>
-        <Button text="다음" onClick={navigateToSelectStyle} />
+        <Button text="다음" onClick={handleNextClick} />
       </div>
 
       <TagSheet
