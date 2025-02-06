@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 
 import confetti from "canvas-confetti";
+import type { Options as ConfettiOptions } from "canvas-confetti";
+
+import Toast from "../ui/Toast/Toast";
 
 import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
 import styles from "@/components/ReviewResult/ReviewResult.module.scss";
@@ -9,11 +12,15 @@ import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
-
-import type { Options as ConfettiOptions } from "canvas-confetti";
+import useToast from "@/hooks/common/useToast";
 
 const ReviewResult = () => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
+  const { isToast, showToast } = useToast(1000); // 1초 후 사라짐
+
+  const handleCopy = () => {
+    showToast();
+  };
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -51,12 +58,16 @@ const ReviewResult = () => {
           거예요.
         </Text>
         <div className={styles.IconBtn}>
-          <IconButton text="복사하기" iconName="paste" size="sm" />
+          <IconButton text="복사하기" iconName="paste" size="sm" onClick={handleCopy} />
         </div>
       </div>
+
       <div className={styles.Bottom}>
-        <Button text="다시생성" variant="secondary" />
-        <Button text="홈으로 가기" onClick={handleOpen} />
+        {isToast && <Toast text="링크가 복사되었어요." />}
+        <div className={styles.ButtonBox}>
+          <Button text="다시생성" variant="secondary" />
+          <Button text="홈으로 가기" onClick={handleOpen} />
+        </div>
       </div>
 
       <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />
