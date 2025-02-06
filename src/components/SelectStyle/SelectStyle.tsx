@@ -2,12 +2,12 @@ import { useState } from "react";
 
 import classNames from "classnames";
 
+import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
+import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import styles from "@/components/SelectStyle/SelectStyle.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Icon from "@/components/ui/Icon/Icon";
 import Text from "@/components/ui/Text/Text";
-
-import { useRoute } from "@/hooks/common/useRoute";
 
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
@@ -24,11 +24,13 @@ const IMG_STYLE_DATA = [
 ];
 
 const SelectStyle = () => {
-  const { navigateToReviewResult } = useRoute();
+  const { send } = useAppBridge();
 
-  const { setReviewStyle } = useCreateReviewStore();
+  const { createReviewData, setReviewStyle } = useCreateReviewStore();
 
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
+
+  const { ocrText, hashTag, reviewStyle } = createReviewData;
 
   const handleStyleClick = (style: StyleProps) => {
     setSelectedStyle((prevStyle) => (prevStyle.name === style.name ? IMG_STYLE_DATA[0] : style));
@@ -39,7 +41,10 @@ const SelectStyle = () => {
       setReviewStyle(selectedStyle.name);
     }
 
-    navigateToReviewResult();
+    send({
+      type: AppBridgeMessageType.CREATE_REVIEW,
+      payload: { ocrText, hashTag, reviewStyle },
+    });
   };
 
   return (
