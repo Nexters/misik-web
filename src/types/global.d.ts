@@ -21,9 +21,9 @@ declare global {
       };
     };
     AndroidBridge?: {
-      openCamera: () => void;
-      openGallery: () => void;
-      share: () => void;
+      openCamera: (request: string) => void;
+      openGallery: (request: string) => void;
+      share: (request: string) => void;
       createReview: (json: string) => void;
       copy: (json: string) => void;
     };
