@@ -6,6 +6,7 @@ import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/Home
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import styles from "@/components/ReviewResult/ReviewResult.module.scss";
+import { IMG_STYLE_DATA } from "@/components/SelectStyle/SelectStyle";
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
@@ -13,6 +14,8 @@ import Toast from "@/components/ui/Toast/Toast";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 import useToast from "@/hooks/common/useToast";
+
+import { useCreateReviewStore } from "@/store/useReviewStore";
 
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
@@ -22,8 +25,19 @@ const ReviewResult = () => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
   const { isToast } = useToast(1000);
 
-  const reviewText = `오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요!
-    음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.`;
+  const { createReviewData } = useCreateReviewStore();
+
+  const { reviewStyle } = createReviewData;
+  const dummyDataMap: Record<string, string> = {
+    [IMG_STYLE_DATA[1].name]: "1",
+    [IMG_STYLE_DATA[2].name]: "2",
+    [IMG_STYLE_DATA[3].name]: "3",
+  };
+
+  const getDummyText = (reviewStyle: string): string => {
+    return dummyDataMap[reviewStyle];
+  };
+  const reviewText = getDummyText(reviewStyle.name);
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -45,7 +59,10 @@ const ReviewResult = () => {
     <div className={styles.ReviewResult}>
       <div className={styles.Top}>
         <div className={styles.ReceiptImage}>
-          <img src="/assets/img/img-style-cute-circle.png" alt="mainLogo" />
+          <img
+            src={`/assets/img/img-${reviewStyle.image}-circle.png`}
+            alt={`${reviewStyle.name}-img`}
+          />
         </div>
         <div className={styles.TitleBox}>
           <Text variant="titleM" color="gradient" as="h1" truncated>

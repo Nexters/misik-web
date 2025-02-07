@@ -9,6 +9,8 @@ import Button from "@/components/ui/Button/Button";
 import Icon from "@/components/ui/Icon/Icon";
 import Text from "@/components/ui/Text/Text";
 
+import { useRoute } from "@/hooks/common/useRoute";
+
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
 interface StyleProps {
@@ -16,16 +18,16 @@ interface StyleProps {
   image: string;
 }
 
-const IMG_STYLE_DATA = [
-  { name: "default", image: "/assets/img/img-graphic-logo.png" },
-  { name: "친절한 미식가", image: "/assets/img/img-style-friendly.png" },
-  { name: "믿음직한 미식가", image: "/assets/img/img-style-trust.png" },
-  { name: "귀여운 미식가", image: "/assets/img/img-style-cute.png" },
+export const IMG_STYLE_DATA = [
+  { name: "default", image: "graphic-logo" },
+  { name: "친절한 미식가", image: "style-friendly" },
+  { name: "믿음직한 미식가", image: "style-trust" },
+  { name: "귀여운 미식가", image: "style-cute" },
 ];
 
 const SelectStyle = () => {
   const { send } = useAppBridge();
-
+  const { navigateToReviewResult } = useRoute();
   const { createReviewData, setReviewStyle } = useCreateReviewStore();
 
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
@@ -38,12 +40,12 @@ const SelectStyle = () => {
 
   const handleCreateReview = () => {
     if (selectedStyle.name !== "default") {
-      setReviewStyle(selectedStyle.name);
+      setReviewStyle(selectedStyle);
     }
-
+    navigateToReviewResult();
     send({
       type: AppBridgeMessageType.CREATE_REVIEW,
-      payload: { ocrText, hashTag, reviewStyle },
+      payload: { ocrText, hashTag, reviewStyle: reviewStyle.name },
     });
   };
 
@@ -59,7 +61,7 @@ const SelectStyle = () => {
       </div>
 
       <div className={styles.Image}>
-        <img src={selectedStyle.image} alt={`${selectedStyle.name}-img`} />
+        <img src={`/assets/img/img-${selectedStyle.image}.png`} alt={`${selectedStyle.name}-img`} />
       </div>
 
       <div className={styles.StyleButtonList}>
