@@ -1,22 +1,30 @@
 import { create } from "zustand";
 
+interface ReviewStyle {
+  name: string;
+  image: string;
+}
+
 interface CreateReviewData {
   ocrText: string;
   hashTag: string[];
-  reviewStyle: string;
+  reviewStyle: ReviewStyle;
 }
 
 interface CreateReviewDataStore {
   createReviewData: CreateReviewData;
   setOcrText: (ocrText: string) => void;
   setHashTag: (hashTag: string[]) => void;
-  setReviewStyle: (reviewStyle: string) => void;
+  setReviewStyle: (reviewStyle: ReviewStyle) => void;
 }
 
 export const CREATE_REVIEW_DATA = {
   ocrText: "",
   hashTag: [],
-  reviewStyle: "",
+  reviewStyle: {
+    name: "",
+    image: "",
+  },
 };
 
 export const useCreateReviewStore = create<CreateReviewDataStore>((set) => ({
@@ -29,7 +37,7 @@ export const useCreateReviewStore = create<CreateReviewDataStore>((set) => ({
     set((state) => ({
       createReviewData: { ...state.createReviewData, hashTag },
     })),
-  setReviewStyle: (reviewStyle: string) =>
+  setReviewStyle: (reviewStyle: ReviewStyle) =>
     set((state) => ({
       createReviewData: { ...state.createReviewData, reviewStyle },
     })),
