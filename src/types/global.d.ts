@@ -13,9 +13,9 @@ declare global {
   interface Window {
     webkit?: {
       messageHandlers: {
-        openCamera: MessageHandler;
-        openGallery: MessageHandler;
-        share: MessageHandler;
+        openCamera: MessageHandler<string>;
+        openGallery: MessageHandler<string>;
+        share: MessageHandler<string>;
         createReview: MessageHandler<string>;
         copy: MessageHandler<string>;
       };

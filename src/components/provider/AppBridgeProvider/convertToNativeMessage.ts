@@ -2,10 +2,12 @@ import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/Ap
 import type { AppBridgeMessage } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 
 const iosHandlers = {
-  [AppBridgeMessageType.OPEN_CAMERA]: () => window.webkit?.messageHandlers.openCamera.postMessage(),
-  [AppBridgeMessageType.OPEN_GALLERY]: () =>
-    window.webkit?.messageHandlers.openGallery.postMessage(),
-  [AppBridgeMessageType.SHARE]: () => window.webkit?.messageHandlers.share.postMessage(),
+  [AppBridgeMessageType.OPEN_CAMERA]: (message: string) =>
+    window.webkit?.messageHandlers.openCamera.postMessage(message),
+  [AppBridgeMessageType.OPEN_GALLERY]: (message: string) =>
+    window.webkit?.messageHandlers.openGallery.postMessage(message),
+  [AppBridgeMessageType.SHARE]: (message: string) =>
+    window.webkit?.messageHandlers.share.postMessage(message),
   [AppBridgeMessageType.CREATE_REVIEW]: (message: { payload: { json: string } }) =>
     window.webkit?.messageHandlers.createReview.postMessage(message.payload.json),
   [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
