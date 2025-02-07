@@ -8,6 +8,7 @@ import AppRouter from "@/router/AppRouter";
 import { AppBridgeProvider } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import ReactQueryClientProvider from "@/components/provider/ReactQueryClientProvider";
 import { UserAgentProvider } from "@/components/provider/UserAgentProvider";
+import { WebBridgeProvider } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
 
 import "@/styles/reset.scss";
 import "@/styles/global.scss";
@@ -17,8 +18,10 @@ ReactDom.createRoot(document.getElementById("root")!).render(
     <ReactQueryClientProvider>
       <UserAgentProvider>
         <AppBridgeProvider>
-          <AppRouter />
-          <ReactQueryDevtools initialIsOpen={false} />
+          <WebBridgeProvider>
+            <AppRouter />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </WebBridgeProvider>
         </AppBridgeProvider>
       </UserAgentProvider>
     </ReactQueryClientProvider>
