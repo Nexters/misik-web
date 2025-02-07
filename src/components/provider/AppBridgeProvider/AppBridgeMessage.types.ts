@@ -15,14 +15,17 @@ export type AppBridgeMessage =
 
 export interface OpenCameraMessage {
   type: AppBridgeMessageType.OPEN_CAMERA;
+  payload: "";
 }
 
 export interface OpenGalleryMessage {
   type: AppBridgeMessageType.OPEN_GALLERY;
+  payload: "";
 }
 
 export interface ShareMessage {
   type: AppBridgeMessageType.SHARE;
+  payload: "";
 }
 
 export interface CreateReviewMessage {

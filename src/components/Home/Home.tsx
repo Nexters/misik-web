@@ -24,12 +24,12 @@ const Home = () => {
         <IconButton
           text="갤러리"
           iconName="gallery"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_GALLERY })}
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" })}
         />
         <IconButton
           text="카메라"
           iconName="camera"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA })}
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
         />
       </div>
     </div>
