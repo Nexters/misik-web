@@ -18,7 +18,7 @@ const HomePage = () => {
         <Navbar.LeftButton onClick={navigateToHome}>
           <Icon name="logo" />
         </Navbar.LeftButton>
-        <Navbar.RightButton onClick={() => send({ type: AppBridgeMessageType.SHARE })}>
+        <Navbar.RightButton onClick={() => send({ type: AppBridgeMessageType.SHARE, payload: "" })}>
           <Text variant="bodySm" color="secondary">
             앱 공유하기
           </Text>

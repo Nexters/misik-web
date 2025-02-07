@@ -13,17 +13,17 @@ declare global {
   interface Window {
     webkit?: {
       messageHandlers: {
-        openCamera: MessageHandler;
-        openGallery: MessageHandler;
-        share: MessageHandler;
+        openCamera: MessageHandler<string>;
+        openGallery: MessageHandler<string>;
+        share: MessageHandler<string>;
         createReview: MessageHandler<string>;
         copy: MessageHandler<string>;
       };
     };
     AndroidBridge?: {
-      openCamera: () => void;
-      openGallery: () => void;
-      share: () => void;
+      openCamera: (request: string) => void;
+      openGallery: (request: string) => void;
+      share: (request: string) => void;
       createReview: (json: string) => void;
       copy: (json: string) => void;
     };

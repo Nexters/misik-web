@@ -29,7 +29,7 @@ const RecognitionFail = () => {
         <Button
           text="다시 촬영하기"
           variant="secondary"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA })}
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
         />
       </div>
     </div>
