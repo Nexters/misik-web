@@ -72,7 +72,9 @@ const Home = () => {
           iconName="gallery"
           onClick={() => {
             send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" });
-            testNavigate();
+            setTimeout(() => {
+              testNavigate();
+            }, 5000);
           }}
         />
         <IconButton
@@ -80,7 +82,9 @@ const Home = () => {
           iconName="camera"
           onClick={() => {
             send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
-            testNavigate();
+            setTimeout(() => {
+              testNavigate();
+            }, 5000);
           }}
         />
       </div>
