@@ -25,15 +25,26 @@ const Home = () => {
         JSON.stringify([
           { 상호명: "바나프레소" },
           {
-            품명: "아이스 디카페인 아메리카노, 아이스 아메리카노, 버터리소금빵, 에그듬뿍모닝샌드위치, 아이스 빅바나 콜드브루",
+            품명: "아이스 디카페인 아메리카노",
+          },
+          {
+            품명: "아이스 아메리카노",
+          },
+          {
+            품명: "버터리소금빵",
+          },
+          {
+            품명: "에그듬뿍모닝샌드위치",
+          },
+          {
+            품명: "아이스 빅바나 콜드브루",
           },
           { 가격: 13500 },
         ]),
       );
     }
-    setTimeout(() => {
-      navigateToReceiptEdit();
-    }, 3000);
+
+    navigateToReceiptEdit();
   };
 
   const { scanData, setScanData } = useScanDataStore();
@@ -83,7 +94,7 @@ const Home = () => {
           text="카메라"
           iconName="camera"
           onClick={() => {
-            // send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
+            send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
             setTimeout(() => {
               testNavigate();
             }, 5000);
