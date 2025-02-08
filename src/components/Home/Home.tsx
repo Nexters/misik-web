@@ -23,7 +23,7 @@ const Home = () => {
     }, 3000);
   };
 
-  const { setScanData } = useScanDataStore();
+  const { scanData, setScanData } = useScanDataStore();
 
   const { navigateToReceiptEdit } = useRoute();
 
@@ -36,7 +36,7 @@ const Home = () => {
         try {
           const data: ScanResult[] = JSON.parse(jsonData);
           setScanData(data);
-          navigateToReceiptEdit();
+          // navigateToReceiptEdit();
         } catch (error) {
           console.error("Error parsing scan result JSON:", error);
         }
@@ -51,6 +51,21 @@ const Home = () => {
           {`영수증으로\nAI 음식 리뷰 남겨요`}
         </Text>
         <Text variant="bodyLg" color="secondary" align="center">
+          {scanData.length > 0 &&
+            scanData.map((data) => (
+              <>
+                {Object.keys(data).map((key) => (
+                  <div key={key}>
+                    <Text variant="bodyXsm" color="secondary">
+                      {key}
+                    </Text>
+                    <Text variant="bodyXsm" color="secondary">
+                      {data[key]}
+                    </Text>
+                  </div>
+                ))}
+              </>
+            ))}
           손쉬운 음식 리뷰 작성
         </Text>
       </div>
