@@ -41,8 +41,8 @@ const SelectStyle = () => {
   const handleCreateReview = () => {
     if (selectedStyle.name !== "default") {
       setReviewStyle(selectedStyle);
+      navigateToReviewResult();
     }
-    navigateToReviewResult();
     send({
       type: AppBridgeMessageType.CREATE_REVIEW,
       payload: { ocrText, hashTag, reviewStyle: reviewStyle.name },
