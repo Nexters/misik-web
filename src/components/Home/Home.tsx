@@ -17,6 +17,8 @@ export interface ScanResult {
 const Home = () => {
   const { send } = useAppBridge();
 
+  const { navigateToReceiptEdit } = useRoute();
+
   const testNavigate = () => {
     if (window.response) {
       window.response.receiveScanResult(
@@ -49,7 +51,7 @@ const Home = () => {
         }
       };
     }
-  }, []);
+  }, [scanData, setScanData, navigateToReceiptEdit]);
 
   return (
     <div className={styles.Home}>
