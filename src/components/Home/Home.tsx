@@ -94,7 +94,10 @@ const Home = () => {
 
                   // 데이터 저장 및 페이지 이동
                   setScanData(data);
-                  navigateToReceiptEdit();
+                  setTimeout(() => {
+                    navigateToReceiptEdit();
+                  }, 0);
+                  // navigateToReceiptEdit();
                 } catch (error) {
                   console.error("Error parsing scan result JSON:", error);
                 }
