@@ -20,6 +20,8 @@ const ReceiptEdit = () => {
   const [formData, setFormData] = useState<{ [key: string]: string }[]>([]);
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
+  console.log(formData);
+
   useEffect(() => {
     if (Array.isArray(scanData) && scanData.length > 0) {
       setFormData(scanData);
