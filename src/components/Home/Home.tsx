@@ -15,18 +15,20 @@ export interface ScanResult {
 }
 
 const Home = () => {
-  const [abc, setAbc] = useState(false);
   const { send } = useAppBridge();
 
   const testNavigate = () => {
+    if (window.response) {
+      window.response.receiveScanResult(
+        JSON.stringify([{ 가게명: "청담커피 앤 토스트" }, { 메뉴명: "아아" }]),
+      );
+    }
     setTimeout(() => {
       navigateToReceiptEdit();
     }, 3000);
   };
 
   const { scanData, setScanData } = useScanDataStore();
-
-  const { navigateToReceiptEdit } = useRoute();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -36,7 +38,6 @@ const Home = () => {
       window.response.receiveScanResult = (jsonData: string) => {
         try {
           const data: ScanResult[] = JSON.parse(jsonData);
-          setAbc(true);
           setScanData(data);
           // navigateToReceiptEdit();
         } catch (error) {
@@ -50,25 +51,9 @@ const Home = () => {
     <div className={styles.Home}>
       <div className={styles.HomeTitle}>
         <Text variant="titleLg" color="gradient" align="center" as="h1">
-          {abc && "스캔 완료 테스트용"}
           {`영수증으로\nAI 음식 리뷰 남겨요`}
         </Text>
         <Text variant="bodyLg" color="secondary" align="center">
-          {scanData.length > 0 &&
-            scanData.map((data) => (
-              <>
-                {Object.keys(data).map((key) => (
-                  <div key={key}>
-                    <Text variant="bodyXsm" color="secondary">
-                      {key}
-                    </Text>
-                    <Text variant="bodyXsm" color="secondary">
-                      {data[key]}
-                    </Text>
-                  </div>
-                ))}
-              </>
-            ))}
           손쉬운 음식 리뷰 작성
         </Text>
       </div>
@@ -92,18 +77,6 @@ const Home = () => {
             testNavigate();
           }}
         />
-
-        <button
-          onClick={() => {
-            if (window.response) {
-              window.response.receiveScanResult(
-                JSON.stringify([{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }]),
-              );
-            }
-          }}
-        >
-          테스트 데이터 전송
-        </button>
       </div>
     </div>
   );
