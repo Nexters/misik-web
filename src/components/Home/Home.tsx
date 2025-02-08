@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "@/components/Home/Home.module.scss";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
@@ -15,6 +15,7 @@ export interface ScanResult {
 }
 
 const Home = () => {
+  const [abc, setAbc] = useState(false);
   const { send } = useAppBridge();
 
   const { scanData, setScanData } = useScanDataStore();
@@ -26,6 +27,7 @@ const Home = () => {
       receiveScanResult: (jsonData: string) => {
         try {
           const data: ScanResult[] = JSON.parse(jsonData);
+          setAbc(true);
           setScanData(data);
           // navigateToReceiptEdit();
         } catch (error) {
@@ -39,6 +41,7 @@ const Home = () => {
     <div className={styles.Home}>
       <div className={styles.HomeTitle}>
         <Text variant="titleLg" color="gradient" align="center" as="h1">
+          {abc && "스캔 완료 테스트용"}
           {`영수증으로\nAI 음식 리뷰 남겨요`}
         </Text>
         <Text variant="bodyLg" color="secondary" align="center">
