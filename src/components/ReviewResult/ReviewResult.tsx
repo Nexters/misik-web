@@ -23,7 +23,7 @@ const ReviewResult = () => {
   const { send } = useAppBridge();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
-  const { isToast } = useToast(1000);
+  const { isToast, showToast } = useToast(1000);
 
   const { createReviewData } = useCreateReviewStore();
 
@@ -81,9 +81,10 @@ const ReviewResult = () => {
             text="복사하기"
             iconName="paste"
             size="sm"
-            onClick={() =>
-              send({ type: AppBridgeMessageType.COPY, payload: { review: reviewText } })
-            }
+            onClick={() => {
+              send({ type: AppBridgeMessageType.COPY, payload: { review: reviewText } });
+              showToast();
+            }}
           />
         </div>
       </div>
