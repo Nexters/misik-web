@@ -20,7 +20,11 @@ const Home = () => {
   const testNavigate = () => {
     if (window.response) {
       window.response.receiveScanResult(
-        JSON.stringify([{ 가게명: "청담커피 앤 토스트" }, { 메뉴명: "아아" }]),
+        JSON.stringify([
+          { 가게명: "청담커피 앤 토스트" },
+          { 품명: "카야토스트+음료세트" },
+          { 가격: 3000 },
+        ]),
       );
     }
     setTimeout(() => {
