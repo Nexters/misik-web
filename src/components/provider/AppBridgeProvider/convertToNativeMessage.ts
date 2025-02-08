@@ -15,11 +15,9 @@ const iosHandlers = {
 };
 
 const androidHandlers = {
-  [AppBridgeMessageType.OPEN_CAMERA]: (message: string) =>
-    window.AndroidBridge?.openCamera(message),
-  [AppBridgeMessageType.OPEN_GALLERY]: (message: string) =>
-    window.AndroidBridge?.openGallery(message),
-  [AppBridgeMessageType.SHARE]: (message: string) => window.AndroidBridge?.share(message),
+  [AppBridgeMessageType.OPEN_CAMERA]: () => window.AndroidBridge?.openCamera(),
+  [AppBridgeMessageType.OPEN_GALLERY]: () => window.AndroidBridge?.openGallery(),
+  [AppBridgeMessageType.SHARE]: () => window.AndroidBridge?.share(),
   [AppBridgeMessageType.CREATE_REVIEW]: (message: { payload: { json: string } }) =>
     window.AndroidBridge?.createReview(message.payload.json),
   [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
