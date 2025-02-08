@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import styles from "@/components/Home/Home.module.scss";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
+import { WebBridgeMessageType } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
+import { useWebBridge } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
@@ -15,33 +17,35 @@ export interface ScanResult {
 }
 
 const Home = () => {
-  const [abc, setAbc] = useState(false);
   const { send } = useAppBridge();
+  const { receive } = useWebBridge();
 
   const { scanData, setScanData } = useScanDataStore();
 
   const { navigateToReceiptEdit } = useRoute();
 
+  // receive({ type: WebBridgeMessageType.RECEIVE_SCAN_RESULT, payload: scanData });
+
   useEffect(() => {
-    window.response = {
-      receiveScanResult: (jsonData: string) => {
-        try {
-          const data: ScanResult[] = JSON.parse(jsonData);
-          setAbc(true);
-          setScanData(data);
-          // navigateToReceiptEdit();
-        } catch (error) {
-          console.error("Error parsing scan result JSON:", error);
-        }
-      },
-    };
-  }, [scanData, setScanData, navigateToReceiptEdit]);
+    // receive({ type: WebBridgeMessageType.RECEIVE_SCAN_RESULT, payload: scanData });
+    // window.response = {
+    //   receiveScanResult: (jsonData: string) => {
+    //     try {
+    //       const data: ScanResult[] = JSON.parse(jsonData);
+    //       setAbc(true);
+    //       setScanData(data);
+    //       // navigateToReceiptEdit();
+    //     } catch (error) {
+    //       console.error("Error parsing scan result JSON:", error);
+    //     }
+    //   },
+    // };
+  }, []);
 
   return (
     <div className={styles.Home}>
       <div className={styles.HomeTitle}>
         <Text variant="titleLg" color="gradient" align="center" as="h1">
-          {abc && "스캔 완료 테스트용"}
           {`영수증으로\nAI 음식 리뷰 남겨요`}
         </Text>
         <Text variant="bodyLg" color="secondary" align="center">
@@ -75,19 +79,55 @@ const Home = () => {
         <IconButton
           text="카메라"
           iconName="camera"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
+          onClick={() => {
+            send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
+
+            // 네이티브 데이터 수신 핸들러 등록
+            window.response = {
+              receiveScanResult: (jsonData: string) => {
+                try {
+                  const data: ScanResult[] = JSON.parse(jsonData);
+                  receive({
+                    type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
+                    payload: data,
+                  });
+
+                  // 데이터 저장 및 페이지 이동
+                  setScanData(data);
+                  navigateToReceiptEdit();
+                } catch (error) {
+                  console.error("Error parsing scan result JSON:", error);
+                }
+              },
+            };
+          }}
         />
 
-        <button
+        {/* <button
           onClick={() => {
-            if (window.response) {
-              window.response.receiveScanResult(
-                JSON.stringify([{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }]),
-              );
-            }
+            receive({
+              type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
+              payload: [{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }],
+            });
+            // if (window.response) {
+            //   window.response.receiveScanResult(
+            //     JSON.stringify([{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }]),
+            //   );
+            // }
           }}
         >
           테스트 데이터 전송
+        </button> */}
+
+        <button
+          onClick={() => {
+            receive({
+              type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
+              payload: [{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }],
+            });
+          }}
+        >
+          테스트
         </button>
       </div>
     </div>
