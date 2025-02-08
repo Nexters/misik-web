@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import styles from "@/components/Home/Home.module.scss";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
@@ -8,15 +8,17 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
+import { useScanDataStore } from "@/store/useScanDataStore";
+
+export interface ScanResult {
+  [key: string]: string;
+}
+
 const Home = () => {
   const { send } = useAppBridge();
 
-  interface ScanResult {
-    [key: string]: string;
-  }
+  const { setScanData } = useScanDataStore();
 
-  // const [results, setResults] = useState<ScanResult[]>([]);
-  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const { navigateToReceiptEdit } = useRoute();
 
   useEffect(() => {
@@ -27,9 +29,7 @@ const Home = () => {
       window.response.receiveScanResult = (jsonData: string) => {
         try {
           const data: ScanResult[] = JSON.parse(jsonData);
-          // setResults(data);
-          console.log(data);
-          setIsSuccess(true);
+          setScanData(data);
           navigateToReceiptEdit();
         } catch (error) {
           console.error("Error parsing scan result JSON:", error);
@@ -51,7 +51,6 @@ const Home = () => {
       <div className={styles.HomeImage}>
         <img src="/assets/img/img-graphic-logo.png" alt="mainLogo" />
       </div>
-      {isSuccess && <div>성공</div>}
       <div className={styles.HomeBottom}>
         <IconButton
           text="갤러리"
@@ -63,6 +62,18 @@ const Home = () => {
           iconName="camera"
           onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
         />
+
+        <button
+          onClick={() => {
+            if (window.response) {
+              window.response.receiveScanResult(
+                JSON.stringify([{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }]),
+              );
+            }
+          }}
+        >
+          테스트 데이터 전송
+        </button>
       </div>
     </div>
   );

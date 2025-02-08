@@ -1,33 +1,67 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "@/components/ReceiptEdit/ReceiptEdit.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Input from "@/components/ui/Input/Input";
 import Text from "@/components/ui/Text/Text";
 
-import { useFocus } from "@/hooks/common/useFocus";
 import { useRoute } from "@/hooks/common/useRoute";
 
 import { useCreateReviewStore } from "@/store/useReviewStore";
+import { useScanDataStore } from "@/store/useScanDataStore";
 
 const ReceiptEdit = () => {
   const { navigateToSelectTag } = useRoute();
 
+  const { scanData } = useScanDataStore();
+
   const { setOcrText } = useCreateReviewStore();
 
-  const [placeName, setPlaceName] = useState("청담커피 앤 토스트");
-  const [foodName, setFoodName] = useState("카야토스트+음료세트");
+  const [formData, setFormData] = useState<{ [key: string]: string }[]>([]);
+  const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
-  const {
-    isFocus: isPlaceFocus,
-    onFocus: handlePlaceFocus,
-    onBlur: handlePlaceBlur,
-  } = useFocus({});
-  const { isFocus: isFoodFocus, onFocus: handleFoodFocus, onBlur: handleFoodBlur } = useFocus({});
+  useEffect(() => {
+    if (Array.isArray(scanData) && scanData.length > 0) {
+      setFormData(scanData);
+
+      const initialFocusState = scanData.reduce(
+        (acc, data) => {
+          const keys = Object.keys(data);
+          keys.forEach((key) => (acc[key] = false));
+          return acc;
+        },
+        {} as { [key: string]: boolean },
+      );
+      setFocusState(initialFocusState);
+    }
+  }, [scanData]);
+
+  const handleFocus = (key: string) => {
+    setFocusState((prevState) => ({ ...prevState, [key]: true }));
+  };
+
+  const handleBlur = (key: string) => {
+    setFocusState((prevState) => ({ ...prevState, [key]: false }));
+  };
+
+  const handleInputChange = (index: number, key: string, value: string) => {
+    setFormData((prevData) =>
+      prevData.map((item, idx) => (idx === index ? { ...item, [key]: value } : item)),
+    );
+  };
 
   const handleInfoRightClick = () => {
-    const ocrText = `${placeName} ${foodName}`;
-    setOcrText(ocrText);
+    const formattedText =
+      formData &&
+      formData
+        .map((item) =>
+          Object.entries(item)
+            .map(([key, value]) => `${key} ${value}`)
+            .join(", "),
+        )
+        .join(" ");
+
+    setOcrText(formattedText);
 
     navigateToSelectTag();
   };
@@ -37,7 +71,9 @@ const ReceiptEdit = () => {
       <div className={styles.Top}>
         <div className={styles.TitleBox}>
           <Text variant="titleM" color="primary" as="h1" truncated>
-            {placeName}
+            {formData.length > 0 &&
+              Object.keys(formData[0]).length > 0 &&
+              formData[0][Object.keys(formData[0])[0]]}
           </Text>
           <Text variant="titleM" color="primary" as="h1">
             에
@@ -48,44 +84,40 @@ const ReceiptEdit = () => {
         </Text>
 
         <div className={styles.InfoList}>
-          <div className={styles.InfoItem}>
-            <Text variant="bodyXsm" color="secondary">
-              가게명
-            </Text>
-            <Input
-              placeholder="가게 이름"
-              value={placeName}
-              onChange={(e) => setPlaceName(e.target.value)}
-              onFocus={handlePlaceFocus}
-              onBlur={handlePlaceBlur}
-              isFocus={isPlaceFocus}
-            />
-          </div>
-          <div className={styles.InfoItem}>
-            <Text variant="bodyXsm" color="secondary">
-              음식명
-            </Text>
-            <Input
-              placeholder="음식 이름"
-              value={foodName}
-              onChange={(e) => setFoodName(e.target.value)}
-              onFocus={handleFoodFocus}
-              onBlur={handleFoodBlur}
-              isFocus={isFoodFocus}
-            />
-          </div>
+          {formData.map((data, index) => (
+            <div key={index} className={styles.InfoItem}>
+              {Object.keys(data).map((key) => (
+                <div key={key} className={styles.InfoItem}>
+                  <Text variant="bodyXsm" color="secondary">
+                    {key}
+                  </Text>
+                  <Input
+                    placeholder={`${key} 입력`}
+                    value={data[key]}
+                    onFocus={() => handleFocus(key)}
+                    onBlur={() => handleBlur(key)}
+                    isFocus={focusState[key] || false}
+                    onChange={(e) => handleInputChange(index, key, e.target.value)}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
       <div className={styles.Bottom}>
-        {isPlaceFocus || isFoodFocus ? (
-          <Button text="수정하기" disabled={!placeName || !foodName} />
+        {Object.values(focusState).some((isFocus) => isFocus) ? (
+          <Button
+            text="수정하기"
+            disabled={formData.some((item) => Object.values(item).some((value) => !value))}
+          />
         ) : (
           <>
             <Button text="다시 스캔하기" variant="secondary" />
             <Button
               text="정보가 맞아요"
-              disabled={!placeName || !foodName}
+              disabled={formData.some((item) => Object.values(item).some((value) => !value))}
               onClick={handleInfoRightClick}
             />
           </>
