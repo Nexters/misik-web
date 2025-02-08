@@ -33,7 +33,7 @@ const Home = () => {
         }
       },
     };
-  }, [setScanData, navigateToReceiptEdit]);
+  }, [scanData, setScanData, navigateToReceiptEdit]);
 
   return (
     <div className={styles.Home}>
