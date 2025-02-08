@@ -11,6 +11,9 @@ type MessageHandler<T = void> = {
 
 declare global {
   interface Window {
+    response?: {
+      receiveScanResult: (jsonData: string) => void;
+    };
     webkit?: {
       messageHandlers: {
         openCamera: MessageHandler<string>;

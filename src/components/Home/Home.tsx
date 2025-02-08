@@ -22,11 +22,8 @@ const Home = () => {
   const { navigateToReceiptEdit } = useRoute();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.response =
-        window.response || ({} as { receiveScanResult: (jsonData: string) => void });
-
-      window.response.receiveScanResult = (jsonData: string) => {
+    window.response = {
+      receiveScanResult: (jsonData: string) => {
         try {
           const data: ScanResult[] = JSON.parse(jsonData);
           setScanData(data);
@@ -34,8 +31,8 @@ const Home = () => {
         } catch (error) {
           console.error("Error parsing scan result JSON:", error);
         }
-      };
-    }
+      },
+    };
   }, []);
 
   return (
