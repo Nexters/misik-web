@@ -11,7 +11,7 @@ import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
 const ReceiptEdit = () => {
-  const { navigateToSelectTag } = useRoute();
+  const { navigateToSelectTag, navigateToHome } = useRoute();
 
   const { scanData } = useScanDataStore();
 
@@ -116,7 +116,7 @@ const ReceiptEdit = () => {
           />
         ) : (
           <>
-            <Button text="다시 스캔하기" variant="secondary" />
+            <Button text="다시 스캔하기" variant="secondary" onClick={navigateToHome} />
             <Button
               text="정보가 맞아요"
               disabled={formData.some((item) => Object.values(item).some((value) => !value))}
