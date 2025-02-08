@@ -1,15 +1,6 @@
 import type { ReactNode } from "react";
 import { createContext, useContext, useEffect } from "react";
 
-declare global {
-  interface Window {
-    response: {
-      receiveScanResult: (jsonData: string) => void;
-    };
-  }
-}
-// window.response = window.response || {};
-
 interface WebBridgeMessage {
   type: string;
   payload?: unknown;
@@ -41,7 +32,13 @@ export function WebBridgeProvider({ children }: WebBridgeProviderProps) {
   };
 
   useEffect(() => {
-    window.response = window.response || {};
+    if (typeof window !== "undefined" && !window.response) {
+      window.response = {
+        receiveScanResult: (jsonData: string) => {
+          console.log("Received scan result:", jsonData);
+        },
+      };
+    }
   }, []);
 
   return <WebBridgeContext.Provider value={{ receive }}>{children}</WebBridgeContext.Provider>;
