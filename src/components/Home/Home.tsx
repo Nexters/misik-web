@@ -16,17 +16,22 @@ export interface ScanResult {
 
 const Home = () => {
   const { send, receive } = useAppBridge();
+
   const { setScanData } = useScanDataStore();
+
   const { navigateToReceiptEdit } = useRoute();
 
   const handleScanResult = (jsonData: string) => {
     try {
       const data: ScanResult[] = JSON.parse(jsonData);
+
       receive({
         type: AppBridgeMessageType.RECEIVE_SCAN_RESULT,
         payload: data,
       });
+
       setScanData(data);
+
       navigateToReceiptEdit();
     } catch (error) {
       console.error("스캔 결과 JSON 파싱 오류:", error);
@@ -35,13 +40,12 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !window.response) {
-      window.response = {
-        receiveScanResult: handleScanResult,
-        receiveGeneratedReview: (jsonData: string) => {
-          console.log("Generated review received:", jsonData);
-        },
-      };
+    const responseHandler = {
+      receiveScanResult: handleScanResult,
+    };
+
+    if (typeof window !== "undefined") {
+      window.response = Object.assign({}, window.response, responseHandler);
     }
 
     return () => {
@@ -50,10 +54,6 @@ const Home = () => {
       }
     };
   }, [receive, navigateToReceiptEdit, setScanData]);
-
-  const handleCameraClick = () => {
-    send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
-  };
 
   return (
     <div className={styles.Home}>
@@ -74,7 +74,11 @@ const Home = () => {
           iconName="gallery"
           onClick={() => send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" })}
         />
-        <IconButton text="카메라" iconName="camera" onClick={handleCameraClick} />
+        <IconButton
+          text="카메라"
+          iconName="camera"
+          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
+        />
       </div>
     </div>
   );
