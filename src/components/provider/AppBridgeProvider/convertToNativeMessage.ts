@@ -12,6 +12,10 @@ const iosHandlers = {
     window.webkit?.messageHandlers.createReview.postMessage(message.payload.json),
   [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
     window.webkit?.messageHandlers.copy.postMessage(message.payload.json),
+  [AppBridgeMessageType.RECEIVE_SCAN_RESULT]: (message: { payload: { result: string } }) =>
+    window.response?.receiveScanResult(message.payload.result),
+  [AppBridgeMessageType.RECEIVE_GENERATED_REVIEW]: (message: { payload: { result: string } }) =>
+    window.response?.receiveGeneratedReview(message.payload.result),
 };
 
 const androidHandlers = {
@@ -22,6 +26,10 @@ const androidHandlers = {
     window.AndroidBridge?.createReview(message.payload.json),
   [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
     window.AndroidBridge?.copy(message.payload.json),
+  [AppBridgeMessageType.RECEIVE_SCAN_RESULT]: (message: { payload: { result: string } }) =>
+    window.response?.receiveScanResult(message.payload.result),
+  [AppBridgeMessageType.RECEIVE_GENERATED_REVIEW]: (message: { payload: { result: string } }) =>
+    window.response?.receiveGeneratedReview(message.payload.result),
 };
 
 export function convertToIOSAppBridge(message: AppBridgeMessage) {

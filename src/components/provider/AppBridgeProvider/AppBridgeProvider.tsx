@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 
 import type { AppBridgeMessage } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import {
@@ -8,17 +8,22 @@ import {
 } from "@/components/provider/AppBridgeProvider/convertToNativeMessage";
 import { useUserAgent } from "@/components/provider/UserAgentProvider";
 
+import { useScanDataStore } from "@/store/useScanDataStore";
+
 interface AppBridgeProviderProps {
   children: ReactNode;
 }
 
 interface AppBridge {
   send: (message: AppBridgeMessage) => void;
+  receive: (message: AppBridgeMessage) => void;
 }
 
 export const AppBridgeContext = createContext<null | AppBridge>(null);
 
 export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
+  const { setScanData } = useScanDataStore();
+
   const userAgent = useUserAgent();
 
   const isIOS = userAgent.isIOS;
@@ -32,7 +37,41 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
     }
   };
 
-  return <AppBridgeContext.Provider value={{ send }}>{children}</AppBridgeContext.Provider>;
+  const receive = (message: AppBridgeMessage) => {
+    try {
+      if (isIOS) return convertToIOSAppBridge(message);
+      return convertToAndroidAppBridge(message);
+    } catch {
+      alert("App Bridge API called: " + message.type);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.response = {
+        receiveScanResult: (jsonData: string) => {
+          try {
+            const data = JSON.parse(jsonData);
+            setScanData(data);
+          } catch (error) {
+            console.error("Invalid JSON data for scan result:", error);
+          }
+        },
+        receiveGeneratedReview: (jsonData: string) => {
+          try {
+            const data = JSON.parse(jsonData);
+            alert(`Generated Review: ${data.review}`);
+          } catch (error) {
+            console.error("Invalid JSON data for generated review:", error);
+          }
+        },
+      };
+    }
+  }, []);
+
+  return (
+    <AppBridgeContext.Provider value={{ send, receive }}>{children}</AppBridgeContext.Provider>
+  );
 }
 
 export function useAppBridge() {

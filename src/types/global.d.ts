@@ -13,6 +13,7 @@ declare global {
   interface Window {
     response?: {
       receiveScanResult: (jsonData: string) => void;
+      receiveGeneratedReview: (jsonData: string) => void;
     };
     webkit?: {
       messageHandlers: {
