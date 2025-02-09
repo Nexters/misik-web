@@ -8,6 +8,7 @@ import {
 } from "@/components/provider/AppBridgeProvider/convertToNativeMessage";
 import { useUserAgent } from "@/components/provider/UserAgentProvider";
 
+import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
 interface AppBridgeProviderProps {
@@ -22,6 +23,7 @@ export const AppBridgeContext = createContext<null | AppBridge>(null);
 
 export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
   const { setScanData } = useScanDataStore();
+  const { setGenerateReviewData } = useGenerateReviewStore();
 
   const userAgent = useUserAgent();
 
@@ -50,7 +52,7 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
         receiveGeneratedReview: (jsonData: string) => {
           try {
             const data = JSON.parse(jsonData);
-            alert(`Generated Review: ${data.review}`);
+            setGenerateReviewData(data);
           } catch (error) {
             console.error("Invalid JSON data for generated review:", error);
           }

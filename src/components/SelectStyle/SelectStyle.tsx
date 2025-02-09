@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import classNames from "classnames";
 
@@ -9,6 +9,9 @@ import Button from "@/components/ui/Button/Button";
 import Icon from "@/components/ui/Icon/Icon";
 import Text from "@/components/ui/Text/Text";
 
+import { useRoute } from "@/hooks/common/useRoute";
+
+import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
 interface StyleProps {
@@ -27,6 +30,9 @@ const SelectStyle = () => {
   const { send } = useAppBridge();
 
   const { createReviewData, setReviewStyle } = useCreateReviewStore();
+  const { generateReviewData } = useGenerateReviewStore();
+
+  const { navigateToReviewResult } = useRoute();
 
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
 
@@ -45,7 +51,18 @@ const SelectStyle = () => {
       type: AppBridgeMessageType.CREATE_REVIEW,
       payload: { ocrText, hashTag, reviewStyle },
     });
+
+    send({
+      type: AppBridgeMessageType.RECEIVE_GENERATED_REVIEW,
+      payload: { result: String(generateReviewData) },
+    });
   };
+
+  useEffect(() => {
+    if (generateReviewData.length > 0) {
+      navigateToReviewResult();
+    }
+  }, [generateReviewData]);
 
   return (
     <div className={styles.SelectStyle}>
