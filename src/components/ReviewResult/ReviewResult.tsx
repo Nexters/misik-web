@@ -14,16 +14,17 @@ import Toast from "@/components/ui/Toast/Toast";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import useToast from "@/hooks/common/useToast";
 
+import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
 const ReviewResult = () => {
   const { send } = useAppBridge();
 
+  const { generateReviewData } = useGenerateReviewStore();
+
   const { isOpen, handleClose, handleOpen } = useOverlay();
   const { isToast } = useToast(1000);
-
-  const reviewText = `오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요!
-    음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.`;
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -54,7 +55,7 @@ const ReviewResult = () => {
         </div>
 
         <Text variant="bodyLg" color="primary">
-          {reviewText}
+          {generateReviewData}
         </Text>
         <div className={styles.IconBtn}>
           <IconButton
@@ -62,7 +63,7 @@ const ReviewResult = () => {
             iconName="paste"
             size="sm"
             onClick={() =>
-              send({ type: AppBridgeMessageType.COPY, payload: { review: reviewText } })
+              send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } })
             }
           />
         </div>

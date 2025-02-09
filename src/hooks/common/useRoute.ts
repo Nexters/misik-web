@@ -11,6 +11,7 @@ export const useRoute = () => {
     navigateToReceiptEdit: () => navigate(PATH.RECEIPT_EDIT),
     navigateToSelectStyle: () => navigate(PATH.SELECT_STYLE),
     navigateToSelectTag: () => navigate(PATH.SELECT_TAG),
+    navigateToReviewResult: () => navigate(PATH.REVIEW_RESULT),
   };
 
   return routes;
