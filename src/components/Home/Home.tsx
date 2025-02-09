@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import styles from "@/components/Home/Home.module.scss";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
+import { WebBridgeMessageType } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
+import { useWebBridge } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
@@ -17,23 +19,34 @@ export interface ScanResult {
 const Home = () => {
   const { send } = useAppBridge();
 
+  const { receive } = useWebBridge();
+
   const { setScanData } = useScanDataStore();
 
   const { navigateToReceiptEdit } = useRoute();
 
   useEffect(() => {
-    window.response = {
-      receiveScanResult: (jsonData: string) => {
-        try {
-          const data: ScanResult[] = JSON.parse(jsonData);
-          setScanData(data);
-          navigateToReceiptEdit();
-        } catch (error) {
-          console.error("Error parsing scan result JSON:", error);
-        }
-      },
-    };
-  }, []);
+    if (typeof window !== "undefined" && !window.response) {
+      window.response = {
+        receiveScanResult: (jsonData: string) => {
+          try {
+            const data: ScanResult[] = JSON.parse(jsonData);
+            receive({
+              type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
+              payload: data,
+            });
+
+            setScanData(data);
+            setTimeout(() => {
+              navigateToReceiptEdit();
+            }, 0);
+          } catch (error) {
+            console.error("Error parsing scan result JSON:", error);
+          }
+        },
+      };
+    }
+  }, [receive, navigateToReceiptEdit, setScanData]);
 
   return (
     <div className={styles.Home}>
@@ -57,20 +70,30 @@ const Home = () => {
         <IconButton
           text="카메라"
           iconName="camera"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
-        />
-
-        <button
           onClick={() => {
-            if (window.response) {
-              window.response.receiveScanResult(
-                JSON.stringify([{ sampleKey: "sampleValue" }, { sampleKey2: "sampleValue2" }]),
-              );
+            send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
+            if (typeof window !== "undefined" && !window.response) {
+              window.response = {
+                receiveScanResult: (jsonData: string) => {
+                  try {
+                    const data: ScanResult[] = JSON.parse(jsonData);
+                    receive({
+                      type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
+                      payload: data,
+                    });
+
+                    setScanData(data);
+                    setTimeout(() => {
+                      navigateToReceiptEdit();
+                    }, 0);
+                  } catch (error) {
+                    console.error("Error parsing scan result JSON:", error);
+                  }
+                },
+              };
             }
           }}
-        >
-          테스트 데이터 전송
-        </button>
+        />
       </div>
     </div>
   );
