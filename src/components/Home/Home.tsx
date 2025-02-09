@@ -15,45 +15,17 @@ export interface ScanResult {
 }
 
 const Home = () => {
-  const { send, receive } = useAppBridge();
+  const { send } = useAppBridge();
 
-  const { setScanData } = useScanDataStore();
+  const { scanData } = useScanDataStore();
 
   const { navigateToReceiptEdit } = useRoute();
 
-  const handleScanResult = (jsonData: string) => {
-    try {
-      const data: ScanResult[] = JSON.parse(jsonData);
-
-      receive({
-        type: AppBridgeMessageType.RECEIVE_SCAN_RESULT,
-        payload: data,
-      });
-
-      setScanData(data);
-
-      navigateToReceiptEdit();
-    } catch (error) {
-      console.error("스캔 결과 JSON 파싱 오류:", error);
-      alert("스캔 데이터를 처리하는 중 오류가 발생했습니다. 다시 시도해 주세요.");
-    }
-  };
-
   useEffect(() => {
-    const responseHandler = {
-      receiveScanResult: handleScanResult,
-    };
-
-    if (typeof window !== "undefined") {
-      window.response = Object.assign({}, window.response, responseHandler);
+    if (scanData.length > 0) {
+      navigateToReceiptEdit();
     }
-
-    return () => {
-      if (typeof window !== "undefined") {
-        delete window.response;
-      }
-    };
-  }, [receive, navigateToReceiptEdit, setScanData]);
+  }, [scanData]);
 
   return (
     <div className={styles.Home}>
@@ -72,12 +44,20 @@ const Home = () => {
         <IconButton
           text="갤러리"
           iconName="gallery"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" })}
+          onClick={() => {
+            send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" });
+
+            send({ type: AppBridgeMessageType.RECEIVE_SCAN_RESULT, payload: scanData });
+          }}
         />
         <IconButton
           text="카메라"
           iconName="camera"
-          onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
+          onClick={() => {
+            send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
+
+            send({ type: AppBridgeMessageType.RECEIVE_SCAN_RESULT, payload: scanData });
+          }}
         />
       </div>
     </div>
