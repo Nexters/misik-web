@@ -16,7 +16,6 @@ interface AppBridgeProviderProps {
 
 interface AppBridge {
   send: (message: AppBridgeMessage) => void;
-  receive: (message: AppBridgeMessage) => void;
 }
 
 export const AppBridgeContext = createContext<null | AppBridge>(null);
@@ -29,15 +28,6 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
   const isIOS = userAgent.isIOS;
 
   const send = (message: AppBridgeMessage) => {
-    try {
-      if (isIOS) return convertToIOSAppBridge(message);
-      return convertToAndroidAppBridge(message);
-    } catch {
-      alert("App Bridge API called: " + message.type);
-    }
-  };
-
-  const receive = (message: AppBridgeMessage) => {
     try {
       if (isIOS) return convertToIOSAppBridge(message);
       return convertToAndroidAppBridge(message);
@@ -69,9 +59,7 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
     }
   }, []);
 
-  return (
-    <AppBridgeContext.Provider value={{ send, receive }}>{children}</AppBridgeContext.Provider>
-  );
+  return <AppBridgeContext.Provider value={{ send }}>{children}</AppBridgeContext.Provider>;
 }
 
 export function useAppBridge() {
