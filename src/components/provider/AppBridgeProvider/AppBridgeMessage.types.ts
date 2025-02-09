@@ -4,6 +4,8 @@ export enum AppBridgeMessageType {
   SHARE = "share",
   CREATE_REVIEW = "createReview",
   COPY = "copy",
+  RECEIVE_SCAN_RESULT = "receiveScanResult",
+  RECEIVE_GENERATED_REVIEW = "receiveGeneratedReview",
 }
 
 export type AppBridgeMessage =
@@ -11,7 +13,9 @@ export type AppBridgeMessage =
   | OpenGalleryMessage
   | ShareMessage
   | CreateReviewMessage
-  | CopyMessage;
+  | CopyMessage
+  | ReceiveScanResultMessage
+  | ReceiveGeneratedReviewMessage;
 
 export interface OpenCameraMessage {
   type: AppBridgeMessageType.OPEN_CAMERA;
@@ -41,5 +45,17 @@ export interface CopyMessage {
   type: AppBridgeMessageType.COPY;
   payload: {
     review: string;
+  };
+}
+
+export interface ReceiveScanResultMessage {
+  type: AppBridgeMessageType.RECEIVE_SCAN_RESULT;
+  payload: Array<{ [key: string]: string }>;
+}
+
+export interface ReceiveGeneratedReviewMessage {
+  type: AppBridgeMessageType.RECEIVE_GENERATED_REVIEW;
+  payload: {
+    result: string;
   };
 }

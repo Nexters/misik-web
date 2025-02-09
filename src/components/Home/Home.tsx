@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import styles from "@/components/Home/Home.module.scss";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
-import { WebBridgeMessageType } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
-import { useWebBridge } from "@/components/provider/WebBridgeProvider/WebBridgeProvider";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
@@ -17,36 +15,45 @@ export interface ScanResult {
 }
 
 const Home = () => {
-  const { send } = useAppBridge();
-
-  const { receive } = useWebBridge();
-
+  const { send, receive } = useAppBridge();
   const { setScanData } = useScanDataStore();
-
   const { navigateToReceiptEdit } = useRoute();
+
+  const handleScanResult = (jsonData: string) => {
+    try {
+      const data: ScanResult[] = JSON.parse(jsonData);
+      receive({
+        type: AppBridgeMessageType.RECEIVE_SCAN_RESULT,
+        payload: data,
+      });
+      setScanData(data);
+      navigateToReceiptEdit();
+    } catch (error) {
+      console.error("스캔 결과 JSON 파싱 오류:", error);
+      alert("스캔 데이터를 처리하는 중 오류가 발생했습니다. 다시 시도해 주세요.");
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined" && !window.response) {
       window.response = {
-        receiveScanResult: (jsonData: string) => {
-          try {
-            const data: ScanResult[] = JSON.parse(jsonData);
-            receive({
-              type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
-              payload: data,
-            });
-
-            setScanData(data);
-            setTimeout(() => {
-              navigateToReceiptEdit();
-            }, 0);
-          } catch (error) {
-            console.error("Error parsing scan result JSON:", error);
-          }
+        receiveScanResult: handleScanResult,
+        receiveGeneratedReview: (jsonData: string) => {
+          console.log("Generated review received:", jsonData);
         },
       };
     }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        delete window.response;
+      }
+    };
   }, [receive, navigateToReceiptEdit, setScanData]);
+
+  const handleCameraClick = () => {
+    send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
+  };
 
   return (
     <div className={styles.Home}>
@@ -67,33 +74,7 @@ const Home = () => {
           iconName="gallery"
           onClick={() => send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" })}
         />
-        <IconButton
-          text="카메라"
-          iconName="camera"
-          onClick={() => {
-            send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
-            if (typeof window !== "undefined" && !window.response) {
-              window.response = {
-                receiveScanResult: (jsonData: string) => {
-                  try {
-                    const data: ScanResult[] = JSON.parse(jsonData);
-                    receive({
-                      type: WebBridgeMessageType.RECEIVE_SCAN_RESULT,
-                      payload: data,
-                    });
-
-                    setScanData(data);
-                    setTimeout(() => {
-                      navigateToReceiptEdit();
-                    }, 0);
-                  } catch (error) {
-                    console.error("Error parsing scan result JSON:", error);
-                  }
-                },
-              };
-            }
-          }}
-        />
+        <IconButton text="카메라" iconName="camera" onClick={handleCameraClick} />
       </div>
     </div>
   );
