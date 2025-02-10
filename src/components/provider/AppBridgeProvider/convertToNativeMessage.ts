@@ -11,8 +11,8 @@ const iosHandlers = {
   [AppBridgeMessageType.CREATE_REVIEW]: (message: {
     payload: { ocrText: string; hashTag: string[]; reviewStyle: string };
   }) => window.webkit?.messageHandlers.createReview.postMessage(message.payload),
-  [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
-    window.webkit?.messageHandlers.copy.postMessage(message.payload.json),
+  [AppBridgeMessageType.COPY]: (message: { payload: { review: string } }) =>
+    window.webkit?.messageHandlers.copy.postMessage(message.payload),
   [AppBridgeMessageType.RECEIVE_SCAN_RESULT]: (message: { payload: { result: string } }) =>
     window.response?.receiveScanResult(message.payload.result),
   [AppBridgeMessageType.RECEIVE_GENERATED_REVIEW]: (message: { payload: { result: string } }) =>
@@ -23,10 +23,11 @@ const androidHandlers = {
   [AppBridgeMessageType.OPEN_CAMERA]: () => window.AndroidBridge?.openCamera(),
   [AppBridgeMessageType.OPEN_GALLERY]: () => window.AndroidBridge?.openGallery(),
   [AppBridgeMessageType.SHARE]: () => window.AndroidBridge?.share(),
-  [AppBridgeMessageType.CREATE_REVIEW]: (message: { payload: { json: string } }) =>
-    window.AndroidBridge?.createReview(message.payload.json),
-  [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
-    window.AndroidBridge?.copy(message.payload.json),
+  [AppBridgeMessageType.CREATE_REVIEW]: (message: {
+    payload: { ocrText: string; hashTag: string[]; reviewStyle: string };
+  }) => window.AndroidBridge?.createReview(message.payload),
+  [AppBridgeMessageType.COPY]: (message: { payload: { review: string } }) =>
+    window.AndroidBridge?.copy(message.payload),
   [AppBridgeMessageType.RECEIVE_SCAN_RESULT]: (message: { payload: { result: string } }) =>
     window.response?.receiveScanResult(message.payload.result),
   [AppBridgeMessageType.RECEIVE_GENERATED_REVIEW]: (message: { payload: { result: string } }) =>

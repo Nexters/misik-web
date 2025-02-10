@@ -13,7 +13,7 @@ import { useScanDataStore } from "@/store/useScanDataStore";
 const ReceiptEdit = () => {
   const { navigateToHome, navigateToSelectTag } = useRoute();
 
-  const { scanData } = useScanDataStore();
+  const { scanData, resetScanData } = useScanDataStore();
 
   const { setOcrText } = useCreateReviewStore();
 
@@ -66,6 +66,11 @@ const ReceiptEdit = () => {
     navigateToSelectTag();
   };
 
+  const handleReScanClick = () => {
+    resetScanData();
+    navigateToHome();
+  };
+
   return (
     <div className={styles.ReceiptEdit}>
       <div className={styles.Top}>
@@ -114,7 +119,7 @@ const ReceiptEdit = () => {
           />
         ) : (
           <>
-            <Button text="다시 스캔하기" variant="secondary" onClick={navigateToHome} />
+            <Button text="다시 스캔하기" variant="secondary" onClick={handleReScanClick} />
             <Button
               text="정보가 맞아요"
               disabled={formData.some((item) => Object.values(item).some((value) => !value))}
