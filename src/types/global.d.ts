@@ -10,6 +10,11 @@ type MessageHandler<T = void> = {
 };
 
 declare global {
+  interface CreateReviewPayload {
+    ocrText: string;
+    hashTag: string[];
+    reviewStyle: string;
+  }
   interface Window {
     response?: {
       receiveScanResult: (jsonData: string) => void;
@@ -20,7 +25,7 @@ declare global {
         openCamera: MessageHandler<string>;
         openGallery: MessageHandler<string>;
         share: MessageHandler<string>;
-        createReview: MessageHandler<string>;
+        createReview: MessageHandler<CreateReviewPayload>;
         copy: MessageHandler<string>;
       };
     };

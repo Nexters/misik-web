@@ -16,7 +16,7 @@ interface CreateReviewDataStore {
 export const CREATE_REVIEW_DATA = {
   ocrText: "",
   hashTag: [],
-  reviewStyle: "",
+  reviewStyle: "FRIENDLY",
 };
 
 export const useCreateReviewStore = create<CreateReviewDataStore>((set) => ({

@@ -51,8 +51,8 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
         },
         receiveGeneratedReview: (jsonData: string) => {
           try {
-            const data = JSON.parse(jsonData);
-            setGenerateReviewData(data);
+            const data = JSON.parse(jsonData); // 데이터를 파싱한 후
+            setGenerateReviewData(data.result); // result 값을 저장
           } catch (error) {
             console.error("Invalid JSON data for generated review:", error);
           }
