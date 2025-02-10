@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import classNames from "classnames";
 
@@ -20,11 +20,16 @@ interface StyleProps {
 }
 
 const IMG_STYLE_DATA = [
-  { name: "default", image: "/assets/img/img-graphic-logo.png" },
   { name: "친절한 미식가", image: "/assets/img/img-style-friendly.png" },
   { name: "믿음직한 미식가", image: "/assets/img/img-style-trust.png" },
   { name: "귀여운 미식가", image: "/assets/img/img-style-cute.png" },
 ];
+
+const STYLE_NAME_MAPPING: { [key: string]: string } = {
+  "친절한 미식가": "FRIENDLY",
+  "귀여운 미식가": "CUTE",
+  "믿음직한 미식가": "PROFESSIONAL",
+};
 
 const SelectStyle = () => {
   const { send } = useAppBridge();
@@ -43,8 +48,10 @@ const SelectStyle = () => {
   };
 
   const handleCreateReview = () => {
-    if (selectedStyle.name !== "default") {
-      setReviewStyle(selectedStyle.name);
+    const mappedStyle = STYLE_NAME_MAPPING[selectedStyle.name];
+
+    if (mappedStyle) {
+      setReviewStyle(mappedStyle);
     }
 
     send({
@@ -56,15 +63,11 @@ const SelectStyle = () => {
       type: AppBridgeMessageType.RECEIVE_GENERATED_REVIEW,
       payload: { result: String(generateReviewData) },
     });
-  };
 
-  useEffect(() => {
     if (generateReviewData.length > 0) {
       navigateToReviewResult();
     }
-  }, [generateReviewData]);
-
-  alert(generateReviewData);
+  };
 
   return (
     <div className={styles.SelectStyle}>
@@ -82,7 +85,7 @@ const SelectStyle = () => {
       </div>
 
       <div className={styles.StyleButtonList}>
-        {IMG_STYLE_DATA.slice(1, 4).map((style) => (
+        {IMG_STYLE_DATA.map((style) => (
           <div
             key={style.name}
             className={classNames({
