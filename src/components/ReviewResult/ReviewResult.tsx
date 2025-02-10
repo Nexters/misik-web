@@ -72,7 +72,7 @@ const ReviewResult = () => {
       </div>
 
       <div className={styles.Bottom}>
-        {isToast && <Toast text="링크가 복사되었어요." />}
+        {isToast && <Toast text="리뷰가 복사되었어요." />}
         <div className={styles.ButtonBox}>
           <Button text="다시생성" variant="secondary" />
           <Button text="홈으로 가기" onClick={handleOpen} />
