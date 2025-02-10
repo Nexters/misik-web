@@ -10,6 +10,10 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
+import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useCreateReviewStore } from "@/store/useReviewStore";
+import { useScanDataStore } from "@/store/useScanDataStore";
+
 interface HomeNavigateConfirmModalProps {
   isOpen: boolean;
   handleClose: () => void;
@@ -17,6 +21,10 @@ interface HomeNavigateConfirmModalProps {
 
 const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmModalProps) => {
   const { navigateToHome } = useRoute();
+
+  const { resetGenerateReviewData } = useGenerateReviewStore();
+  const { resetCreateReviewData } = useCreateReviewStore();
+  const { resetScanData } = useScanDataStore();
 
   // 이후 상태 초기값 재설정
   const [isShowButtonChecked, setIsShowButtonChecked] = useState(false);
@@ -27,6 +35,9 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
 
   const handleNavigateHome = () => {
     handleClose();
+    resetGenerateReviewData();
+    resetCreateReviewData();
+    resetScanData();
     navigateToHome();
   };
 
