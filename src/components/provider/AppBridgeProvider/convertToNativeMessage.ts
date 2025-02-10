@@ -8,8 +8,9 @@ const iosHandlers = {
     window.webkit?.messageHandlers.openGallery.postMessage(message),
   [AppBridgeMessageType.SHARE]: (message: string) =>
     window.webkit?.messageHandlers.share.postMessage(message),
-  [AppBridgeMessageType.CREATE_REVIEW]: (message: { payload: { json: string } }) =>
-    window.webkit?.messageHandlers.createReview.postMessage(message.payload.json),
+  [AppBridgeMessageType.CREATE_REVIEW]: (message: {
+    payload: { ocrText: string; hashTag: string[]; reviewStyle: string };
+  }) => window.webkit?.messageHandlers.createReview.postMessage(message.payload),
   [AppBridgeMessageType.COPY]: (message: { payload: { json: string } }) =>
     window.webkit?.messageHandlers.copy.postMessage(message.payload.json),
   [AppBridgeMessageType.RECEIVE_SCAN_RESULT]: (message: { payload: { result: string } }) =>

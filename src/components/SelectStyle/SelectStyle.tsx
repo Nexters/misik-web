@@ -64,6 +64,8 @@ const SelectStyle = () => {
     }
   }, [generateReviewData]);
 
+  alert(generateReviewData);
+
   return (
     <div className={styles.SelectStyle}>
       <div className={styles.Title}>
