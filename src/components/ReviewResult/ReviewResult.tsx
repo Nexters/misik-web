@@ -24,7 +24,7 @@ const ReviewResult = () => {
   const { generateReviewData } = useGenerateReviewStore();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
-  const { isToast } = useToast(1000);
+  const { isToast, showToast } = useToast(1000);
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -62,9 +62,11 @@ const ReviewResult = () => {
             text="복사하기"
             iconName="paste"
             size="sm"
-            onClick={() =>
-              send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } })
-            }
+            onClick={() => {
+              send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
+
+              showToast();
+            }}
           />
         </div>
       </div>

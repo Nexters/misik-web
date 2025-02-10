@@ -15,6 +15,10 @@ declare global {
     hashTag: string[];
     reviewStyle: string;
   }
+
+  interface CopyMessagePayload {
+    review: string;
+  }
   interface Window {
     response?: {
       receiveScanResult: (jsonData: string) => void;
@@ -26,15 +30,15 @@ declare global {
         openGallery: MessageHandler<string>;
         share: MessageHandler<string>;
         createReview: MessageHandler<CreateReviewPayload>;
-        copy: MessageHandler<string>;
+        copy: MessageHandler<CopyMessagePayload>;
       };
     };
     AndroidBridge?: {
       openCamera: () => void;
       openGallery: () => void;
       share: () => void;
-      createReview: (json: string) => void;
-      copy: (json: string) => void;
+      createReview: (json: CreateReviewPayload) => void;
+      copy: (json: CopyMessagePayload) => void;
     };
   }
 }
