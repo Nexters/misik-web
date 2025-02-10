@@ -11,6 +11,7 @@ interface CreateReviewDataStore {
   setOcrText: (ocrText: string) => void;
   setHashTag: (hashTag: string[]) => void;
   setReviewStyle: (reviewStyle: string) => void;
+  resetCreateReviewData: () => void;
 }
 
 export const CREATE_REVIEW_DATA = {
@@ -33,4 +34,5 @@ export const useCreateReviewStore = create<CreateReviewDataStore>((set) => ({
     set((state) => ({
       createReviewData: { ...state.createReviewData, reviewStyle },
     })),
+  resetCreateReviewData: () => set({ createReviewData: { ...CREATE_REVIEW_DATA } }),
 }));
