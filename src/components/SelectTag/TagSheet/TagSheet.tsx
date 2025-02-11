@@ -15,16 +15,19 @@ import { useFocus } from "@/hooks/common/useFocus";
 
 interface TagSheetProps {
   isOpen: boolean;
+  tagList: string[];
   handleClose: () => void;
   handleTagAdd: (newTag: string) => void;
 }
 
-const TagSheet = ({ isOpen, handleClose, handleTagAdd }: TagSheetProps) => {
+const TagSheet = ({ isOpen, tagList, handleClose, handleTagAdd }: TagSheetProps) => {
   const { isFocus, onFocus, onBlur } = useFocus({ defaultFocus: true });
 
   const [newTag, setNewTag] = useState("");
 
-  const isInputError = newTag.length > 20;
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const isInputError = newTag.length > 20 || tagList.includes(newTag);
   const isInputEmpty = newTag.length === 0;
 
   useEffect(() => {
@@ -37,7 +40,12 @@ const TagSheet = ({ isOpen, handleClose, handleTagAdd }: TagSheetProps) => {
     setNewTag(e.target.value);
   };
 
-  const modalRef = useRef<HTMLDivElement>(null);
+  const handleAddTag = () => {
+    if (!isInputError) {
+      handleTagAdd(newTag);
+      setNewTag("");
+    }
+  };
 
   useOnClickOutside(modalRef, handleClose);
 
@@ -78,7 +86,7 @@ const TagSheet = ({ isOpen, handleClose, handleTagAdd }: TagSheetProps) => {
           <div className={styles.LengthText}>
             {isInputError ? (
               <Text variant="bodyXsm" color="error">
-                *20글자 이내로 입력할 수 있어요.
+                *{newTag.length > 20 ? "20글자 이내로 입력할 수 있어요." : "이미 있는 키워드에요."}
               </Text>
             ) : (
               <>
@@ -95,11 +103,7 @@ const TagSheet = ({ isOpen, handleClose, handleTagAdd }: TagSheetProps) => {
             )}
           </div>
 
-          <Button
-            text="추가하기"
-            disabled={isInputError || isInputEmpty}
-            onClick={() => handleTagAdd(newTag)}
-          />
+          <Button text="추가하기" disabled={isInputError || isInputEmpty} onClick={handleAddTag} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
