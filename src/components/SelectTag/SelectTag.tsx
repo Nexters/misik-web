@@ -87,6 +87,7 @@ const SelectTag = () => {
 
       <TagSheet
         isOpen={isBottomSheetOpen}
+        tagList={tagList}
         handleClose={handleSheetClose}
         handleTagAdd={handleTagAdd}
       />
