@@ -14,7 +14,7 @@ Navbar.LeftButton = ({
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <button {...props} className={className}>
+    <button {...props} className={classNames(styles.NavbarButton, className)}>
       {children}
     </button>
   );

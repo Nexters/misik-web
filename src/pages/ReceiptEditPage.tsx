@@ -5,7 +5,6 @@ import Icon from "@/components/ui/Icon/Icon";
 import { useRoute } from "@/hooks/common/useRoute";
 
 const ReceiptEditPage = () => {
-  // 이후 영수증 인식 네이티브 라우팅으로 변경
   const { navigateToHome } = useRoute();
 
   return (
