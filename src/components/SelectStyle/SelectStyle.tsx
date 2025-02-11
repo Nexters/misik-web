@@ -73,10 +73,10 @@ const SelectStyle = () => {
     <div className={styles.SelectStyle}>
       <div className={styles.Title}>
         <Text variant="titleM" color="primary" align="center" as="h1">
-          나는 어떤 미식가인가요?
+          어떤 말투로 작성할까요?
         </Text>
         <Text variant="bodyLg" color="secondary" align="center" as="h2">
-          선택지에 따라 리뷰 어조가 달라져요
+          선택지에 따라 리뷰 말투가 달라져요
         </Text>
       </div>
 
