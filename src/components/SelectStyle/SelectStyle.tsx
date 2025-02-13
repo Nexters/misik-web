@@ -20,15 +20,15 @@ interface StyleProps {
 }
 
 const IMG_STYLE_DATA = [
-  { name: "친절한 미식가", image: "/assets/img/img-style-friendly.png" },
-  { name: "믿음직한 미식가", image: "/assets/img/img-style-trust.png" },
-  { name: "귀여운 미식가", image: "/assets/img/img-style-cute.png" },
+  { name: "친근한 말투", image: "/assets/img/img-style-friendly.png" },
+  { name: "믿음직한 말투", image: "/assets/img/img-style-trust.png" },
+  { name: "유쾌한 말투", image: "/assets/img/img-style-cute.png" },
 ];
 
 const STYLE_NAME_MAPPING: { [key: string]: string } = {
-  "친절한 미식가": "FRIENDLY",
-  "귀여운 미식가": "CUTE",
-  "믿음직한 미식가": "PROFESSIONAL",
+  "친근한 말투": "FRIENDLY",
+  "유쾌한 말투": "CUTE",
+  "믿음직한 말투": "PROFESSIONAL",
 };
 
 const SelectStyle = () => {
@@ -72,7 +72,7 @@ const SelectStyle = () => {
   return (
     <div className={styles.SelectStyle}>
       <div className={styles.Title}>
-        <Text variant="titleM" color="primary" align="center" as="h1">
+        <Text variant="titleM" color="purpleGradient" align="center" as="h1">
           어떤 말투로 작성할까요?
         </Text>
         <Text variant="bodyLg" color="secondary" align="center" as="h2">

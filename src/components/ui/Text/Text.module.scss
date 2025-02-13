@@ -4,11 +4,28 @@
   line-height: 1.5;
 
   @each $color-name
-    in ("white", "black", "primary", "secondary", "tertiary", "quarternary", "gradient", "error")
+    in (
+      "white",
+      "black",
+      "primary",
+      "secondary",
+      "tertiary",
+      "quarternary",
+      "gradient",
+      "error",
+      "purpleGradient"
+    )
   {
     @if $color-name == "gradient" {
       &.color-#{$color-name} {
         background: var(--color-text-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    } @else if $color-name == "purpleGradient" {
+      &.color-#{$color-name} {
+        background: var(--color-text-purpleGradient);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
