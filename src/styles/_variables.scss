@@ -24,6 +24,11 @@
     var(--color-primary-purple)
   );
   --color-text-error: #d45085;
+  --color-text-purpleGradient: linear-gradient(
+    90deg,
+    var(--color-primary-purple),
+    var(--color-gray600)
+  );
 
   --color-white: #ffffff;
   --color-black: #000000;

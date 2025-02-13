@@ -20,7 +20,8 @@ type TextColor =
   | "tertiary"
   | "quarternary"
   | "gradient"
-  | "error";
+  | "error"
+  | "purpleGradient";
 
 export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
   as?: React.ElementType;
