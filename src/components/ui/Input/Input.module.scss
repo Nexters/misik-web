@@ -1,30 +1,46 @@
 @use "@/styles/_mixins.scss" as *;
 
 .InputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  button {
+    position: absolute;
+    right: 0.875rem;
+    color: var(--color-primary-purple);
+    line-height: 1.3125rem;
+
+    @include bodySm;
+  }
+}
+
+.Input {
   width: 100%;
   height: 3rem;
   border-radius: 0.875rem;
   padding: 0.75rem 0.875rem;
   border: 1px solid transparent;
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
+  color: var(--color-text-primary);
+  line-height: 1.5rem;
+
+  @include bodyM;
+
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
 
   &.style-primary {
     background-color: var(--color-white);
     box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.04);
-
-    & > input {
-      width: calc(100% - 2.25rem);
-    }
   }
 
   &.style-secondary {
     background-color: var(--color-gray100);
+  }
 
-    & > input {
-      width: 100%;
-    }
+  &:focus {
+    border-color: var(--color-primary-purple);
   }
 
   &.Focused {
@@ -33,22 +49,6 @@
 
   &.Error {
     border-color: var(--color-text-error);
-  }
-
-  .Input {
-    @include bodyM;
-    color: var(--color-text-primary);
-    line-height: 1.5rem;
-
-    &::placeholder {
-      color: var(--color-text-tertiary);
-    }
-  }
-
-  button {
-    @include bodySm;
-    color: var(--color-primary-purple);
-    line-height: 1.3125rem;
   }
 }
 

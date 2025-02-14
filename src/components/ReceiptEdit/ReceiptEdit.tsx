@@ -17,7 +17,10 @@ const ReceiptEdit = () => {
 
   const { setOcrText } = useCreateReviewStore();
 
-  const [formData, setFormData] = useState<{ [key: string]: string }[]>([]);
+  const [formData, setFormData] = useState<{ [key: string]: string }[]>([
+    { test: "abc" },
+    { test2: "aadsasf" },
+  ]);
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
