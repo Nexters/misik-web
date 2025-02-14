@@ -1,15 +1,16 @@
 import { create } from "zustand";
 
-import type { ScanResult } from "@/components/Home/Home";
-
 interface ScanDataStoreProps {
-  scanData: ScanResult[];
-  setScanData: (scanData: ScanResult[]) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  scanData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setScanData: (scanData: any[]) => void;
   resetScanData: () => void;
 }
 
 export const useScanDataStore = create<ScanDataStoreProps>((set) => ({
   scanData: [],
-  setScanData: (scanData: ScanResult[]) => set({ scanData }),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setScanData: (scanData: any[]) => set({ scanData }),
   resetScanData: () => set({ scanData: [] }),
 }));

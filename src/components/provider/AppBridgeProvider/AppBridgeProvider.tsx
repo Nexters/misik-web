@@ -41,10 +41,11 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.response = {
-        receiveScanResult: (jsonData: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        receiveScanResult: (jsonData: any) => {
           try {
-            const data = JSON.parse(jsonData);
-            setScanData(data);
+            // alert("Scan Result: " + jsonData);
+            setScanData(JSON.parse(jsonData));
           } catch (error) {
             console.error("Invalid JSON data for scan result:", error);
           }
