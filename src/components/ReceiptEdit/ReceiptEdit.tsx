@@ -25,10 +25,8 @@ const ReceiptEdit = () => {
       setFormData(scanData.parsed);
 
       const initialFocusState = scanData.parsed.reduce(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (acc: any, data: any) => {
-          const keys = Object.keys(data);
-          keys.forEach((key) => (acc[key] = false));
+        (acc: { [key: string]: boolean }, data: { key: string; value: string }) => {
+          acc[data.key] = false;
           return acc;
         },
         {} as { [key: string]: boolean },
@@ -45,14 +43,9 @@ const ReceiptEdit = () => {
     setFocusState((prevState) => ({ ...prevState, [key]: false }));
   };
 
-  const handleInputChange = (index: number, key: string, value: string) => {
+  const handleInputChange = (key: string, value: string) => {
     setFormData((prevData) =>
-      prevData.map((item, idx) => {
-        if (idx === index) {
-          return { ...item, [key]: value };
-        }
-        return item;
-      }),
+      prevData.map((item) => (item.key === key ? { ...item, value } : item)),
     );
   };
 
@@ -105,7 +98,7 @@ const ReceiptEdit = () => {
                   onFocus={() => handleFocus(data.key)}
                   onBlur={() => handleBlur(data.key)}
                   isFocus={focusState[data.key] || false}
-                  onChange={(e) => handleInputChange(index, data.key, e.target.value)}
+                  onChange={(e) => handleInputChange(data.key, e.target.value)}
                 />
               </div>
             </div>
