@@ -42,7 +42,7 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
   };
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} onClose={handleClose}>
       <div className={styles.Modal}>
         <Text variant="titleSm" color="primary" align="center" as="h2">
           홈으로 가시겠어요?
