@@ -10,14 +10,54 @@ import { useRoute } from "@/hooks/common/useRoute";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
+const useKeyboardAvoidance = () => {
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  useEffect(() => {
+    const handleVisualViewportChange = () => {
+      // visualViewport.height가 변경되면 키보드가 열렸다고 판단
+      const isKeyboardVisible = !!(
+        window.visualViewport && window.visualViewport.height < window.innerHeight
+      );
+      setKeyboardVisible(isKeyboardVisible);
+
+      if (isKeyboardVisible) {
+        setKeyboardHeight(
+          window.visualViewport ? window.innerHeight - window.visualViewport.height : 0,
+        ); // 키보드 높이 계산
+      } else {
+        setKeyboardHeight(0); // 키보드가 닫히면 높이 리셋
+      }
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleVisualViewportChange);
+      handleVisualViewportChange(); // 초기 상태 확인
+    }
+
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleVisualViewportChange);
+      }
+    };
+  }, []);
+
+  return { keyboardVisible, keyboardHeight };
+};
+
 const ReceiptEdit = () => {
+  const { keyboardVisible, keyboardHeight } = useKeyboardAvoidance();
+
   const { navigateToHome, navigateToSelectTag } = useRoute();
 
   const { scanData, resetScanData } = useScanDataStore();
 
   const { setOcrText } = useCreateReviewStore();
 
-  const [formData, setFormData] = useState<{ key: string; value: string }[]>([]);
+  const [formData, setFormData] = useState<{ key: string; value: string }[]>([
+    { key: "test", value: "tset" },
+  ]);
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
@@ -106,7 +146,12 @@ const ReceiptEdit = () => {
         </div>
       </div>
 
-      <div className={styles.Bottom}>
+      <div
+        className={styles.Bottom}
+        style={{
+          marginBottom: keyboardVisible ? `${keyboardHeight}px` : "0", // 키보드가 올라오면 marginBottom 조정
+        }}
+      >
         {Object.values(focusState).some((isFocus) => isFocus) ? (
           <Button
             text="수정하기"
