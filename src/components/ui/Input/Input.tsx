@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
 import classNames from "classnames";
 
@@ -7,37 +7,42 @@ import type { InputProps } from "@/components/ui/Input/Input.types";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, variant = "primary", onFocus, isFocus, onBlur, isError, ...props }, ref) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    const [focused, setFocused] = useState(isFocus || false);
 
-    const handleDivClick = () => {
-      if (onFocus) {
-        const fakeEvent = { target: inputRef.current } as React.FocusEvent<HTMLInputElement>;
-        onFocus(fakeEvent);
-      }
+    const inputRef = ref as React.RefObject<HTMLInputElement>;
+
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      setFocused(true);
+      onFocus && onFocus(e);
     };
 
-    const handleDivBlur = () => {
-      if (onBlur) {
-        const fakeEvent = { target: inputRef.current } as React.FocusEvent<HTMLInputElement>;
-        onBlur(fakeEvent);
-      }
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      setFocused(false);
+      onBlur && onBlur(e);
     };
+
+    useEffect(() => {
+      if (isFocus !== undefined) {
+        setFocused(isFocus);
+      }
+    }, [isFocus]);
 
     return (
-      <div
-        className={classNames(
-          styles.InputWrapper,
-          styles[`style-${variant}`],
-          {
-            [styles.Focused]: isFocus,
-            [styles.Error]: isError,
-          },
-          className,
-        )}
-        onClick={handleDivClick}
-        onBlur={handleDivBlur}
-      >
-        <input type={type} ref={ref} className={styles.Input} {...props} onBlur={handleDivBlur} />
+      <div className={styles.InputWrapper}>
+        <input
+          type={type}
+          ref={inputRef}
+          className={classNames(
+            styles.Input,
+            styles[`style-${variant}`],
+            focused && styles.Focused,
+            isError && styles.Error,
+            className,
+          )}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          {...props}
+        />
         {variant === "primary" && <button>수정</button>}
       </div>
     );
