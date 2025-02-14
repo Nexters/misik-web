@@ -24,11 +24,12 @@ const ReceiptEdit = () => {
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
-    if (Array.isArray(scanData) && scanData.length > 0) {
-      setFormData(scanData);
+    if (Array.isArray(scanData.parsed) && scanData.parsed.length > 0) {
+      setFormData(scanData.parsed);
 
-      const initialFocusState = scanData.reduce(
-        (acc, data) => {
+      const initialFocusState = scanData.parsed.reduce(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (acc: any, data: any) => {
           const keys = Object.keys(data);
           keys.forEach((key) => (acc[key] = false));
           return acc;
@@ -49,7 +50,12 @@ const ReceiptEdit = () => {
 
   const handleInputChange = (index: number, key: string, value: string) => {
     setFormData((prevData) =>
-      prevData.map((item, idx) => (idx === index ? { ...item, [key]: value } : item)),
+      prevData.map((item, idx) => {
+        if (idx === index) {
+          return { ...item, [key]: value };
+        }
+        return item;
+      }),
     );
   };
 
@@ -79,9 +85,7 @@ const ReceiptEdit = () => {
       <div className={styles.Top}>
         <div className={styles.TitleBox}>
           <Text variant="titleM" color="primary" as="h1" truncated>
-            {formData.length > 0 &&
-              Object.keys(formData[0]).length > 0 &&
-              formData[0][Object.keys(formData[0])[0]]}
+            {formData.length > 0 && Object.keys(formData[0]).length > 0 && formData[0].value}
           </Text>
           <Text variant="titleM" color="primary" as="h1">
             에
@@ -94,21 +98,19 @@ const ReceiptEdit = () => {
         <div className={styles.InfoList}>
           {formData.map((data, index) => (
             <div key={index} className={styles.InfoItem}>
-              {Object.keys(data).map((key) => (
-                <div key={key} className={styles.InfoItem}>
-                  <Text variant="bodyXsm" color="secondary">
-                    {key}
-                  </Text>
-                  <Input
-                    placeholder={`${key} 입력`}
-                    value={data[key]}
-                    onFocus={() => handleFocus(key)}
-                    onBlur={() => handleBlur(key)}
-                    isFocus={focusState[key] || false}
-                    onChange={(e) => handleInputChange(index, key, e.target.value)}
-                  />
-                </div>
-              ))}
+              <div className={styles.InfoItem}>
+                <Text variant="bodyXsm" color="secondary">
+                  {data.key}
+                </Text>
+                <Input
+                  placeholder={`${data.key} 입력`}
+                  value={data.value}
+                  onFocus={() => handleFocus(data.key)}
+                  onBlur={() => handleBlur(data.key)}
+                  isFocus={focusState[data.key] || false}
+                  onChange={(e) => handleInputChange(index, data.key, e.target.value)}
+                />
+              </div>
             </div>
           ))}
         </div>

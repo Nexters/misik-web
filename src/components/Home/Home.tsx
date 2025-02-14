@@ -10,10 +10,6 @@ import { useRoute } from "@/hooks/common/useRoute";
 
 import { useScanDataStore } from "@/store/useScanDataStore";
 
-export interface ScanResult {
-  [key: string]: string;
-}
-
 const Home = () => {
   const { send } = useAppBridge();
 
@@ -22,7 +18,7 @@ const Home = () => {
   const { navigateToReceiptEdit } = useRoute();
 
   useEffect(() => {
-    if (scanData.length > 0) {
+    if (scanData.parsed && scanData.parsed.length > 0) {
       navigateToReceiptEdit();
     }
   }, [scanData]);

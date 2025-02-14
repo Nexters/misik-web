@@ -21,7 +21,8 @@ declare global {
   }
   interface Window {
     response?: {
-      receiveScanResult: (jsonData: string) => void;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      receiveScanResult: (jsonData: any) => void;
       receiveGeneratedReview: (jsonData: string) => void;
     };
     webkit?: {
@@ -37,8 +38,8 @@ declare global {
       openCamera: () => void;
       openGallery: () => void;
       share: () => void;
-      createReview: (json: CreateReviewPayload) => void;
-      copy: (json: CopyMessagePayload) => void;
+      createReview: (json: string) => void;
+      copy: (json: string) => void;
     };
   }
 }
