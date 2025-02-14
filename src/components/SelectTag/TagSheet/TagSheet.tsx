@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -10,6 +10,7 @@ import Icon from "@/components/ui/Icon/Icon";
 import Input from "@/components/ui/Input/Input";
 import Text from "@/components/ui/Text/Text";
 
+import useOnClickOutside from "@/hooks/common/useClickOutside";
 import { useFocus } from "@/hooks/common/useFocus";
 
 interface TagSheetProps {
@@ -36,11 +37,16 @@ const TagSheet = ({ isOpen, handleClose, handleTagAdd }: TagSheetProps) => {
     setNewTag(e.target.value);
   };
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(modalRef, handleClose);
+
   return (
     <Dialog.Root open={isOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content
+          ref={modalRef}
           className={classNames(styles.BottomSheet, {
             [styles.Open]: isOpen,
             [styles.Closed]: !isOpen,
