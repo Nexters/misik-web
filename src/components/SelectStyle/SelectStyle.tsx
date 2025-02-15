@@ -86,7 +86,7 @@ const SelectStyle = () => {
       </div>
 
       <div className={styles.Image}>
-        <img src={selectedStyle.image} alt={`${selectedStyle.name}-img`} />
+        <img src={selectedStyle.image} alt={`${selectedStyle.name}-img`} loading="lazy" />
       </div>
 
       <div className={styles.Bottom}>
