@@ -28,23 +28,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     }, [isFocus]);
 
     return (
-      <div className={styles.InputWrapper}>
-        <input
-          type={type}
-          ref={inputRef}
-          className={classNames(
-            styles.Input,
-            styles[`style-${variant}`],
-            focused && styles.Focused,
-            isError && styles.Error,
-            className,
-          )}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...props}
-        />
-        {variant === "primary" && <button>수정</button>}
-      </div>
+      <input
+        type={type}
+        ref={inputRef}
+        className={classNames(
+          styles.Input,
+          styles[`style-${variant}`],
+          focused && styles.Focused,
+          isError && styles.Error,
+          className,
+        )}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        {...props}
+      />
     );
   },
 );
