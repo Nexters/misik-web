@@ -19,10 +19,13 @@ declare global {
   interface CopyMessagePayload {
     review: string;
   }
+
+  interface ScanResultPayload {
+    parsed: Array<{ key: string; value: string }>;
+  }
   interface Window {
     response?: {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      receiveScanResult: (jsonData: any) => void;
+      receiveScanResult: (jsonData: string) => void;
       receiveGeneratedReview: (jsonData: string) => void;
     };
     webkit?: {

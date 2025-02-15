@@ -46,7 +46,7 @@ const Home = () => {
           onClick={() => {
             send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" });
 
-            send({ type: AppBridgeMessageType.RECEIVE_SCAN_RESULT, payload: scanData });
+            send({ type: AppBridgeMessageType.RECEIVE_SCAN_RESULT, payload: { result: "" } });
           }}
         />
         <IconButton
@@ -55,7 +55,7 @@ const Home = () => {
           onClick={() => {
             send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
 
-            send({ type: AppBridgeMessageType.RECEIVE_SCAN_RESULT, payload: scanData });
+            send({ type: AppBridgeMessageType.RECEIVE_SCAN_RESULT, payload: { result: "" } });
           }}
         />
       </div>

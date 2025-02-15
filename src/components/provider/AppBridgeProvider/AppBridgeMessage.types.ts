@@ -50,9 +50,9 @@ export interface CopyMessage {
 
 export interface ReceiveScanResultMessage {
   type: AppBridgeMessageType.RECEIVE_SCAN_RESULT;
-  // payload: Array<{ [key: string]: string }>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: any;
+  payload: {
+    result: string;
+  };
 }
 
 export interface ReceiveGeneratedReviewMessage {
