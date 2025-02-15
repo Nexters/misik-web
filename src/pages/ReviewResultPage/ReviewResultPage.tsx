@@ -1,11 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import confetti from "canvas-confetti";
 
 import HomeNavigateConfirmModal from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
-import styles from "@/components/ReviewResult/ReviewResult.module.scss";
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
@@ -14,17 +13,21 @@ import Toast from "@/components/ui/Toast/Toast";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import useToast from "@/hooks/common/useToast";
 
+import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
+
 import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
 
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
-const ReviewResult = () => {
+export default function ReviewResultPage() {
   const { send } = useAppBridge();
 
   const { generateReviewData } = useGenerateReviewStore();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
   const { isToast, showToast } = useToast(1000);
+
+  const [isError, setIsError] = useState(false);
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -39,8 +42,16 @@ const ReviewResult = () => {
   };
 
   useEffect(() => {
-    handleConfetti();
-  }, []);
+    if (generateReviewData === "error") {
+      setIsError(true);
+    } else {
+      handleConfetti();
+    }
+  }, [generateReviewData]);
+
+  if (isError) {
+    return <div>에러가 발생했습니다.</div>;
+  }
 
   return (
     <div className={styles.ReviewResult}>
@@ -82,6 +93,4 @@ const ReviewResult = () => {
       <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />
     </div>
   );
-};
-
-export default ReviewResult;
+}
