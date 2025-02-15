@@ -45,6 +45,7 @@ const SelectTag = () => {
     setIsBottomSheetOpen(false);
     if (!tagList.includes(newTag)) {
       setTagList((prevTagList: string[]) => [...prevTagList, newTag]);
+      setSelectedTagList((prevSelectedTags) => [...prevSelectedTags, newTag]);
     }
   };
 
