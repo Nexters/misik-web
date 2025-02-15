@@ -1,19 +1,16 @@
 import type { PropsWithChildren } from "react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import classNames from "classnames";
 
 import styles from "@/components/ui/Modal/Modal.module.scss";
 import Portal from "@/components/ui/Modal/Portal";
 
-import useClickOutside from "@/hooks/common/useClickOutside";
-
 interface ModalProps extends PropsWithChildren {
-  onClose: () => void;
   isOpen: boolean;
 }
 
-const Modal = ({ isOpen, children, onClose }: ModalProps) => {
+const Modal = ({ isOpen, children }: ModalProps) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -21,10 +18,6 @@ const Modal = ({ isOpen, children, onClose }: ModalProps) => {
       document.body.style.overflow = "auto";
     };
   }, []);
-
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useClickOutside(modalRef, onClose);
 
   return (
     <>
@@ -37,7 +30,6 @@ const Modal = ({ isOpen, children, onClose }: ModalProps) => {
           />
 
           <div
-            ref={modalRef}
             className={classNames(styles.Modal, {
               [styles.Open]: isOpen,
             })}

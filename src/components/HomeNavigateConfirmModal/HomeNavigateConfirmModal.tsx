@@ -22,7 +22,6 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateHome = () => {
-    handleClose();
     resetGenerateReviewData();
     resetCreateReviewData();
     resetScanData();
@@ -30,7 +29,7 @@ const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmMo
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose}>
+    <Modal isOpen={isOpen}>
       <div className={styles.Modal}>
         <Text variant="titleSm" color="primary" align="center" as="h2">
           홈으로 가시겠어요?
