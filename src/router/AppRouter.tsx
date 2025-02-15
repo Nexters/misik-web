@@ -5,9 +5,10 @@ import App from "@/App";
 import { PATH } from "@/constants/path";
 
 import HomePage from "@/pages/HomePage";
+import LoadingPage from "@/pages/LoadingPage/LoadingPage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
-import ReviewResultPage from "@/pages/ReviewResultPage";
+import ReviewResultPage from "@/pages/ReviewResultPage/ReviewResultPage";
 import SelectStylePage from "@/pages/SelectStylePage";
 import SelectTagPage from "@/pages/SelectTagPage";
 
@@ -36,6 +37,10 @@ const AppRouter = () => {
         {
           path: PATH.SELECT_STYLE,
           element: <SelectStylePage />,
+        },
+        {
+          path: PATH.LOADING,
+          element: <LoadingPage />,
         },
         {
           path: PATH.REVIEW_RESULT,

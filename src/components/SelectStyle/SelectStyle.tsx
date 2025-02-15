@@ -11,7 +11,6 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
-import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
 interface StyleProps {
@@ -35,9 +34,8 @@ const SelectStyle = () => {
   const { send } = useAppBridge();
 
   const { createReviewData, setReviewStyle } = useCreateReviewStore();
-  const { generateReviewData } = useGenerateReviewStore();
 
-  const { navigateToReviewResult } = useRoute();
+  const { navigateToLoading } = useRoute();
 
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
 
@@ -59,14 +57,7 @@ const SelectStyle = () => {
       payload: { ocrText, hashTag, reviewStyle: mappedStyle },
     });
 
-    send({
-      type: AppBridgeMessageType.RECEIVE_GENERATED_REVIEW,
-      payload: { result: String(generateReviewData) },
-    });
-
-    if (generateReviewData.length > 0) {
-      navigateToReviewResult();
-    }
+    navigateToLoading();
   };
 
   return (
