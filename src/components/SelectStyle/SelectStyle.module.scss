@@ -51,7 +51,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.25rem;
+  z-index: 1;
 
   & > img {
     width: 13.125rem;

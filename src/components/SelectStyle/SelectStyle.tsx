@@ -83,10 +83,10 @@ const SelectStyle = () => {
             </Text>
           </button>
         </div>
+      </div>
 
-        <div className={styles.Image}>
-          <img src={selectedStyle.image} alt={`${selectedStyle.name}-img`} />
-        </div>
+      <div className={styles.Image}>
+        <img src={selectedStyle.image} alt={`${selectedStyle.name}-img`} />
       </div>
 
       <div className={styles.Bottom}>
