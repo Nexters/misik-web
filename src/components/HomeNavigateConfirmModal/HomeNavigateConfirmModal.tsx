@@ -9,12 +9,12 @@ import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
-interface HomeNavigateConfirmModalProps {
+export interface ModalProps {
   isOpen: boolean;
   handleClose: () => void;
 }
 
-const HomeNavigateConfirmModal = ({ isOpen, handleClose }: HomeNavigateConfirmModalProps) => {
+const HomeNavigateConfirmModal = ({ isOpen, handleClose }: ModalProps) => {
   const { navigateToHome } = useRoute();
 
   const { resetGenerateReviewData } = useGenerateReviewStore();

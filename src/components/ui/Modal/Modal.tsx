@@ -8,9 +8,11 @@ import Portal from "@/components/ui/Modal/Portal";
 
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean;
+  handleClose?: () => void;
+  isBackdropClose?: boolean;
 }
 
-const Modal = ({ isOpen, children }: ModalProps) => {
+const Modal = ({ isOpen, isBackdropClose, handleClose, children }: ModalProps) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -27,6 +29,7 @@ const Modal = ({ isOpen, children }: ModalProps) => {
             className={classNames(styles.ModalBackdrop, {
               [styles.Open]: isOpen,
             })}
+            onClick={() => isBackdropClose && handleClose && handleClose()}
           />
 
           <div
