@@ -111,3 +111,48 @@
     justify-content: center;
   }
 }
+
+.TitleWrapper {
+  height: 5.25rem;
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .letter {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.appear {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes textBlur {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.space {
+  width: 0.4rem;
+  opacity: 1;
+  visibility: visible;
+}

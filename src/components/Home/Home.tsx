@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import styles from "@/components/Home/Home.module.scss";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
+import AnimationText from "@/components/ui/AnimationText/AnimationText";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
@@ -27,9 +28,7 @@ const Home = () => {
     <div className={styles.Home}>
       <div className={styles.HomeTop}>
         <div className={styles.HomeTitle}>
-          <Text variant="titleLg" color="gradient" align="center" as="h1">
-            {`영수증으로\nAI 음식 리뷰 남겨요`}
-          </Text>
+          <AnimationText />
           <Text variant="bodyLg" color="secondary" align="center">
             손쉬운 음식 리뷰 작성
           </Text>
