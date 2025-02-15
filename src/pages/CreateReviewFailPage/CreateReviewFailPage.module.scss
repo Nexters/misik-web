@@ -1,0 +1,28 @@
+.CreateReviewFail {
+  padding: 5rem 1.25rem 2.5rem;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-bg-gradient);
+}
+
+.Top {
+  h2 {
+    white-space: pre-line;
+    margin-top: 0.625rem;
+  }
+}
+
+.Image {
+  margin-top: 6.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > img {
+    width: 13.125rem;
+    height: 13.125rem;
+  }
+}

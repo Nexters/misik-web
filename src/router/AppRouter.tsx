@@ -4,6 +4,7 @@ import App from "@/App";
 
 import { PATH } from "@/constants/path";
 
+import CreateReviewFailPage from "@/pages/CreateReviewFailPage/CreateReviewFailPage";
 import HomePage from "@/pages/HomePage";
 import LoadingPage from "@/pages/LoadingPage/LoadingPage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
@@ -46,6 +47,7 @@ const AppRouter = () => {
           path: PATH.REVIEW_RESULT,
           element: <ReviewResultPage />,
         },
+        { path: PATH.CREATE_REVIEW_FAIL, element: <CreateReviewFailPage /> },
       ],
     },
   ]);
