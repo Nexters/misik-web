@@ -41,7 +41,7 @@ const SelectStyle = () => {
 
   const [selectedStyle, setSelectedStyle] = useState(IMG_STYLE_DATA[0]);
 
-  const { ocrText, hashTag, reviewStyle } = createReviewData;
+  const { ocrText, hashTag } = createReviewData;
 
   const handleStyleClick = (style: StyleProps) => {
     setSelectedStyle((prevStyle) => (prevStyle.name === style.name ? IMG_STYLE_DATA[0] : style));
@@ -56,7 +56,7 @@ const SelectStyle = () => {
 
     send({
       type: AppBridgeMessageType.CREATE_REVIEW,
-      payload: { ocrText, hashTag, reviewStyle },
+      payload: { ocrText, hashTag, reviewStyle: mappedStyle },
     });
 
     send({
