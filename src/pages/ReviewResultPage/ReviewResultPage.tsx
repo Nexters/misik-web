@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import confetti from "canvas-confetti";
 
@@ -11,6 +11,7 @@ import Text from "@/components/ui/Text/Text";
 import Toast from "@/components/ui/Toast/Toast";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
+import { useRoute } from "@/hooks/common/useRoute";
 import useToast from "@/hooks/common/useToast";
 
 import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
@@ -24,10 +25,10 @@ export default function ReviewResultPage() {
 
   const { generateReviewData } = useGenerateReviewStore();
 
+  const { navigateToCreateReviewFail } = useRoute();
+
   const { isOpen, handleClose, handleOpen } = useOverlay();
   const { isToast, showToast } = useToast(1000);
-
-  const [isError, setIsError] = useState(false);
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -43,15 +44,11 @@ export default function ReviewResultPage() {
 
   useEffect(() => {
     if (generateReviewData === "error") {
-      setIsError(true);
+      navigateToCreateReviewFail();
     } else {
       handleConfetti();
     }
   }, [generateReviewData]);
-
-  if (isError) {
-    return <div>에러가 발생했습니다.</div>;
-  }
 
   return (
     <div className={styles.ReviewResult}>

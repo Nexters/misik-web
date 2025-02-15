@@ -14,6 +14,7 @@ export const useRoute = () => {
     navigateToSelectTag: () => navigate(PATH.SELECT_TAG),
     navigateToReviewResult: () => navigate(PATH.REVIEW_RESULT),
     navigateToLoading: () => navigate(PATH.LOADING),
+    navigateToCreateReviewFail: () => navigate(PATH.CREATE_REVIEW_FAIL),
   };
 
   return routes;
