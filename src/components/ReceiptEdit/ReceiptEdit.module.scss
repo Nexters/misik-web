@@ -4,6 +4,7 @@
   padding-bottom: 2.5rem;
   height: calc(100vh - 2.75rem);
   overflow: hidden;
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -52,4 +53,5 @@
   align-items: center;
   gap: 0.875rem;
   z-index: 1;
+  margin-top: 2.5rem;
 }
