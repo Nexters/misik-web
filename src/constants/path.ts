@@ -6,4 +6,5 @@ export const PATH = {
   SELECT_STYLE: "/select-style",
   REVIEW_RESULT: "/review-result",
   LOADING: "/loading",
+  CREATE_REVIEW_FAIL: "/create-review-fail",
 };
