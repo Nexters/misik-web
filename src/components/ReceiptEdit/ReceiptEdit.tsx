@@ -16,7 +16,6 @@ const useKeyboardAvoidance = () => {
 
   useEffect(() => {
     const handleVisualViewportChange = () => {
-      // visualViewport.height가 변경되면 키보드가 열렸다고 판단
       const isKeyboardVisible = !!(
         window.visualViewport && window.visualViewport.height < window.innerHeight
       );
@@ -25,15 +24,15 @@ const useKeyboardAvoidance = () => {
       if (isKeyboardVisible) {
         setKeyboardHeight(
           window.visualViewport ? window.innerHeight - window.visualViewport.height : 0,
-        ); // 키보드 높이 계산
+        );
       } else {
-        setKeyboardHeight(0); // 키보드가 닫히면 높이 리셋
+        setKeyboardHeight(0);
       }
     };
 
     if (window.visualViewport) {
       window.visualViewport.addEventListener("resize", handleVisualViewportChange);
-      handleVisualViewportChange(); // 초기 상태 확인
+      handleVisualViewportChange();
     }
 
     return () => {
@@ -55,9 +54,7 @@ const ReceiptEdit = () => {
 
   const { setOcrText } = useCreateReviewStore();
 
-  const [formData, setFormData] = useState<{ key: string; value: string }[]>([
-    { key: "test", value: "tset" },
-  ]);
+  const [formData, setFormData] = useState<{ key: string; value: string }[]>([]);
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
@@ -149,7 +146,7 @@ const ReceiptEdit = () => {
       <div
         className={styles.Bottom}
         style={{
-          marginBottom: keyboardVisible ? `${keyboardHeight}px` : "0", // 키보드가 올라오면 marginBottom 조정
+          marginBottom: keyboardVisible ? `${keyboardHeight}px` : "0",
         }}
       >
         {Object.values(focusState).some((isFocus) => isFocus) ? (
