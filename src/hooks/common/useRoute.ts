@@ -9,6 +9,7 @@ export const useRoute = () => {
     navigateToHome: () => navigate(PATH.HOME),
     navigateToBack: () => navigate(-1),
     navigateToReceiptEdit: () => navigate(PATH.RECEIPT_EDIT),
+    navigateToRecognitionFail: () => navigate(PATH.RECOGNITION_FAIL),
     navigateToSelectStyle: () => navigate(PATH.SELECT_STYLE),
     navigateToSelectTag: () => navigate(PATH.SELECT_TAG),
     navigateToReviewResult: () => navigate(PATH.REVIEW_RESULT),
