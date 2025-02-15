@@ -58,7 +58,11 @@ const ReceiptEdit = () => {
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
-    if (Array.isArray(scanData.parsed) && scanData.parsed.length > 0) {
+    if (
+      typeof scanData !== "string" &&
+      Array.isArray(scanData.parsed) &&
+      scanData.parsed.length > 0
+    ) {
       setFormData(scanData.parsed);
 
       const initialFocusState = scanData.parsed.reduce(

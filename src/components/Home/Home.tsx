@@ -15,10 +15,14 @@ const Home = () => {
 
   const { scanData } = useScanDataStore();
 
-  const { navigateToReceiptEdit } = useRoute();
+  const { navigateToReceiptEdit, navigateToRecognitionFail } = useRoute();
 
   useEffect(() => {
-    if (scanData.parsed && scanData.parsed.length > 0) {
+    if (scanData === "error") {
+      navigateToRecognitionFail();
+    }
+
+    if (typeof scanData !== "string" && scanData.parsed && scanData.parsed.length > 0) {
       navigateToReceiptEdit();
     }
   }, [scanData]);

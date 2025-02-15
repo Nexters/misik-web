@@ -43,7 +43,11 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
       window.response = {
         receiveScanResult: (jsonData: string) => {
           try {
-            setScanData(JSON.parse(jsonData));
+            if (jsonData === "error") {
+              setScanData("error");
+            } else {
+              setScanData(JSON.parse(jsonData));
+            }
           } catch (error) {
             console.error("Invalid JSON data for scan result:", error);
           }
