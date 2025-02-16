@@ -82,13 +82,13 @@ const ReceiptInputPage = () => {
           <Text variant="titleM" color="primary" align="center" as="h1">
             {formData.find((item) => item.key === "place")?.value
               ? `${formData.find((item) => item.key === "place")?.value}에`
-              : "영수증 정보를 입력해 주세요!"}
+              : "영수증 정보를"}
           </Text>
-          {formData.find((item) => item.key === "place")?.value && (
-            <Text variant="titleM" color="primary" as="h1" align="center">
-              다녀오셨네요!
-            </Text>
-          )}
+          <Text variant="titleM" color="primary" as="h1" align="center">
+            {formData.find((item) => item.key === "place")?.value
+              ? "다녀오셨네요!"
+              : "입력해주세요!"}
+          </Text>
 
           <div className={styles.InfoList}>
             {formData.map(({ key, value }) => (
@@ -114,7 +114,7 @@ const ReceiptInputPage = () => {
           ) : (
             <Button
               key="confirm"
-              text="정보가 맞아요"
+              text="다음"
               disabled={formData.some((item) => Object.values(item).some((value) => !value))}
               onClick={handleInfoRightClick}
             />
