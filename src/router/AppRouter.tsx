@@ -8,6 +8,7 @@ import CreateReviewFailPage from "@/pages/CreateReviewFailPage/CreateReviewFailP
 import HomePage from "@/pages/HomePage";
 import LoadingPage from "@/pages/LoadingPage/LoadingPage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage";
+import ReceiptInputPage from "@/pages/ReceiptInputPage/ReceiptInputPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
 import ReviewResultPage from "@/pages/ReviewResultPage/ReviewResultPage";
 import SelectStylePage from "@/pages/SelectStylePage";
@@ -30,6 +31,10 @@ const AppRouter = () => {
         {
           path: PATH.RECEIPT_EDIT,
           element: <ReceiptEditPage />,
+        },
+        {
+          path: PATH.RECEIPT_INPUT,
+          element: <ReceiptInputPage />,
         },
         {
           path: PATH.SELECT_TAG,

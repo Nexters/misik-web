@@ -9,7 +9,7 @@ import { useRoute } from "@/hooks/common/useRoute";
 const RecognitionFail = () => {
   const { send } = useAppBridge();
 
-  const { navigateToReceiptEdit } = useRoute();
+  const { navgateToReceiptInput } = useRoute();
 
   return (
     <div className={styles.RecognitionFail}>
@@ -25,7 +25,7 @@ const RecognitionFail = () => {
         <img src="/assets/img/img-recognition-fail.png" alt="recognitionFailImg" />
       </div>
       <div className={styles.Bottom}>
-        <Button text="직접 입력하기" variant="secondary" onClick={navigateToReceiptEdit} />
+        <Button text="직접 입력하기" variant="secondary" onClick={navgateToReceiptInput} />
         <Button
           text="다시 촬영하기"
           variant="secondary"
