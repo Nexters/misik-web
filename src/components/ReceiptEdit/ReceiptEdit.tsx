@@ -82,9 +82,9 @@ const ReceiptEdit = () => {
     setFocusState((prevState) => ({ ...prevState, [key]: false }));
   };
 
-  const handleInputChange = (key: string, value: string) => {
+  const handleInputChange = (index: number, value: string) => {
     setFormData((prevData) =>
-      prevData.map((item) => (item.key === key ? { ...item, value } : item)),
+      prevData.map((item, idx) => (idx === index ? { ...item, value } : item)),
     );
   };
 
@@ -133,10 +133,10 @@ const ReceiptEdit = () => {
               <Input
                 placeholder={`${data.key} 입력`}
                 value={data.value}
-                onFocus={() => handleFocus(data.key)}
-                onBlur={() => handleBlur(data.key)}
-                isFocus={focusState[data.key] || false}
-                onChange={(e) => handleInputChange(data.key, e.target.value)}
+                onFocus={() => handleFocus(index.toString())}
+                onBlur={() => handleBlur(index.toString())}
+                isFocus={focusState[index.toString()] || false}
+                onChange={(e) => handleInputChange(index, e.target.value)}
               />
             </div>
           ))}
