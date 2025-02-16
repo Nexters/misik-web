@@ -43,6 +43,8 @@ export default function ReviewResultPage() {
   };
 
   useEffect(() => {
+    if (!generateReviewData) return;
+
     if (generateReviewData === "error") {
       navigateToCreateReviewFail();
     } else {
