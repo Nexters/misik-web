@@ -37,65 +37,11 @@ const SelectTag = () => {
     setHashTag([...hashTag, newTag]);
   };
 
-  // const [selectedTagList, setSelectedTagList] = useState<string[]>(createReviewData.hashTag);
-
-  // const [tagList, setTagList] = useState<string[]>([
-  //   "음식이 맛있어요",
-  //   "양이 많아요",
-  //   "가성비가 좋아요",
-  //   "메뉴 구성이 알차요",
-  //   "매장이 넓어요",
-  //   "단체모임 하기 좋아요",
-  //   "뷰가 좋아요",
-  //   "아늑해요",
-  //   "분위기가 좋아요",
-  //   "친절해요",
-  //   "매장이 청결해요",
-  // ]);
-
-  // useEffect(() => {
-  //   setSelectedTagList(createReviewData.hashTag);
-  // }, [createReviewData.hashTag]);
-
-  // const handleTagClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  //   const tag = e.currentTarget.textContent || "";
-
-  //   setSelectedTagList((prevSelectedTags) => {
-  //     const newSelectedTags = prevSelectedTags.includes(tag)
-  //       ? prevSelectedTags.filter((selectedTag) => selectedTag !== tag)
-  //       : [...prevSelectedTags, tag];
-
-  //     setHashTag(newSelectedTags);
-  //     return newSelectedTags;
-  //   });
-  // };
-
-  // const handleTagAdd = (newTag: string) => {
-  //   setIsBottomSheetOpen(false);
-
-  //   setTagList((prevTagList) => {
-  //     if (!prevTagList.includes(newTag)) {
-  //       return [...prevTagList, newTag];
-  //     }
-  //     return prevTagList;
-  //   });
-
-  //   setSelectedTagList((prevSelectedTags) => {
-  //     if (!prevSelectedTags.includes(newTag)) {
-  //       const newSelectedTags = [...prevSelectedTags, newTag];
-  //       setHashTag(newSelectedTags);
-  //       return newSelectedTags;
-  //     }
-  //     return prevSelectedTags;
-  //   });
-  // };
-
   const handleSheetClose = () => {
     setIsBottomSheetOpen(false);
   };
 
   const handleNextClick = () => {
-    // setHashTag(selectedTagList);
     navigateToSelectStyle();
   };
 
