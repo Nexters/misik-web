@@ -25,7 +25,7 @@ export default function ReviewResultPage() {
   const { send } = useAppBridge();
 
   const { createReviewData } = useCreateReviewStore();
-  const { generateReviewData } = useGenerateReviewStore();
+  const { generateReviewData, resetGenerateReviewData } = useGenerateReviewStore();
 
   const { navigateToCreateReviewFail, navigateToLoading } = useRoute();
 
@@ -47,6 +47,8 @@ export default function ReviewResultPage() {
   };
 
   const handleRetryCreateReview = () => {
+    resetGenerateReviewData();
+
     send({
       type: AppBridgeMessageType.CREATE_REVIEW,
       payload: { ocrText, hashTag, reviewStyle },
