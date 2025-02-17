@@ -10,6 +10,9 @@ type MessageHandler<T = void> = {
 };
 
 declare global {
+  interface ShareTextPayload {
+    shareText: string;
+  }
   interface CreateReviewPayload {
     ocrText: string;
     hashTag: string[];
@@ -32,7 +35,7 @@ declare global {
       messageHandlers: {
         openCamera: MessageHandler<string>;
         openGallery: MessageHandler<string>;
-        share: MessageHandler<string>;
+        share: MessageHandler<ShareTextPayload>;
         createReview: MessageHandler<CreateReviewPayload>;
         copy: MessageHandler<CopyMessagePayload>;
       };
@@ -40,7 +43,7 @@ declare global {
     AndroidBridge?: {
       openCamera: () => void;
       openGallery: () => void;
-      share: () => void;
+      share: (json: string) => void;
       createReview: (json: string) => void;
       copy: (json: string) => void;
     };

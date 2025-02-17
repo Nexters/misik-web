@@ -29,7 +29,9 @@ export interface OpenGalleryMessage {
 
 export interface ShareMessage {
   type: AppBridgeMessageType.SHARE;
-  payload: "";
+  payload: {
+    shareText: string;
+  };
 }
 
 export interface CreateReviewMessage {

@@ -6,8 +6,8 @@ const iosHandlers = {
     window.webkit?.messageHandlers.openCamera.postMessage(message),
   [AppBridgeMessageType.OPEN_GALLERY]: (message: string) =>
     window.webkit?.messageHandlers.openGallery.postMessage(message),
-  [AppBridgeMessageType.SHARE]: (message: string) =>
-    window.webkit?.messageHandlers.share.postMessage(message),
+  [AppBridgeMessageType.SHARE]: (message: { payload: { shareText: string } }) =>
+    window.webkit?.messageHandlers.share.postMessage(message.payload),
   [AppBridgeMessageType.CREATE_REVIEW]: (message: {
     payload: { ocrText: string; hashTag: string[]; reviewStyle: string };
   }) => window.webkit?.messageHandlers.createReview.postMessage(message.payload),
@@ -22,7 +22,8 @@ const iosHandlers = {
 const androidHandlers = {
   [AppBridgeMessageType.OPEN_CAMERA]: () => window.AndroidBridge?.openCamera(),
   [AppBridgeMessageType.OPEN_GALLERY]: () => window.AndroidBridge?.openGallery(),
-  [AppBridgeMessageType.SHARE]: () => window.AndroidBridge?.share(),
+  [AppBridgeMessageType.SHARE]: (message: { payload: { shareText: string } }) =>
+    window.AndroidBridge?.share(JSON.stringify(message.payload)),
   [AppBridgeMessageType.CREATE_REVIEW]: (message: {
     payload: { ocrText: string; hashTag: string[]; reviewStyle: string };
   }) => window.AndroidBridge?.createReview(JSON.stringify(message.payload)),
