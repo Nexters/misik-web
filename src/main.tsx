@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import AppRouter from "@/router/AppRouter";
 
+import SafeAreaWrapper from "@/components/common/SafeAreaWrapper/SafeAreaWrapper";
 import { AppBridgeProvider } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import ReactQueryClientProvider from "@/components/provider/ReactQueryClientProvider";
 import { UserAgentProvider } from "@/components/provider/UserAgentProvider";
@@ -17,8 +18,10 @@ ReactDom.createRoot(document.getElementById("root")!).render(
     <ReactQueryClientProvider>
       <UserAgentProvider>
         <AppBridgeProvider>
-          <AppRouter />
-          <ReactQueryDevtools initialIsOpen={false} />
+          <SafeAreaWrapper>
+            <AppRouter />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </SafeAreaWrapper>
         </AppBridgeProvider>
       </UserAgentProvider>
     </ReactQueryClientProvider>
