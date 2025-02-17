@@ -4,13 +4,22 @@ import Icon from "@/components/ui/Icon/Icon";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
+import { useScanDataStore } from "@/store/useScanDataStore";
+
 const RecognitionFailPage = () => {
   const { navigateToHome } = useRoute();
+
+  const { resetScanData } = useScanDataStore();
+
+  const handleNavigateToHome = () => {
+    resetScanData();
+    navigateToHome();
+  };
 
   return (
     <>
       <Navbar>
-        <Navbar.RightButton onClick={navigateToHome}>
+        <Navbar.RightButton onClick={handleNavigateToHome}>
           <Icon name="close" />
         </Navbar.RightButton>
       </Navbar>

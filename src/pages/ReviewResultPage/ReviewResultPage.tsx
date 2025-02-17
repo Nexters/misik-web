@@ -17,18 +17,22 @@ import useToast from "@/hooks/common/useToast";
 import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
 
 import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useCreateReviewStore } from "@/store/useReviewStore";
 
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
 export default function ReviewResultPage() {
   const { send } = useAppBridge();
 
+  const { createReviewData } = useCreateReviewStore();
   const { generateReviewData } = useGenerateReviewStore();
 
-  const { navigateToCreateReviewFail } = useRoute();
+  const { navigateToCreateReviewFail, navigateToLoading } = useRoute();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
   const { isToast, showToast } = useToast(1000);
+
+  const { ocrText, hashTag, reviewStyle } = createReviewData;
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -40,6 +44,15 @@ export default function ReviewResultPage() {
     };
 
     confetti(setting);
+  };
+
+  const handleRetryCreateReview = () => {
+    send({
+      type: AppBridgeMessageType.CREATE_REVIEW,
+      payload: { ocrText, hashTag, reviewStyle },
+    });
+
+    navigateToLoading();
   };
 
   useEffect(() => {
@@ -84,7 +97,7 @@ export default function ReviewResultPage() {
       <div className={styles.Bottom}>
         {isToast && <Toast text="리뷰가 복사되었어요." />}
         <div className={styles.ButtonBox}>
-          <Button text="다시생성" variant="secondary" />
+          <Button text="다시생성" variant="secondary" onClick={handleRetryCreateReview} />
           <Button text="홈으로 가기" onClick={handleOpen} />
         </div>
       </div>
