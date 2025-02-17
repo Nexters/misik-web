@@ -12,6 +12,7 @@ import Text from "@/components/ui/Text/Text";
 
 import useOnClickOutside from "@/hooks/common/useClickOutside";
 import { useFocus } from "@/hooks/common/useFocus";
+import { useKeyboardResize } from "@/hooks/common/useKeyboardResize";
 
 interface TagSheetProps {
   isOpen: boolean;
@@ -22,6 +23,8 @@ interface TagSheetProps {
 
 const TagSheet = ({ isOpen, tagList, handleClose, handleTagAdd }: TagSheetProps) => {
   const { isFocus, onFocus, onBlur } = useFocus({ defaultFocus: true });
+
+  const { keyboardVisible, keyboardHeight } = useKeyboardResize();
 
   const [newTag, setNewTag] = useState("");
 
@@ -103,7 +106,14 @@ const TagSheet = ({ isOpen, tagList, handleClose, handleTagAdd }: TagSheetProps)
             )}
           </div>
 
-          <Button text="추가하기" disabled={isInputError || isInputEmpty} onClick={handleAddTag} />
+          <Button
+            text="추가하기"
+            disabled={isInputError || isInputEmpty}
+            onClick={handleAddTag}
+            style={{
+              transform: `translateY(-${keyboardVisible ? keyboardHeight : 0}px)`,
+            }}
+          />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
