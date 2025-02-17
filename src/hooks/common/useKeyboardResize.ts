@@ -9,13 +9,25 @@ export const useKeyboardResize = () => {
 
     const handleVisualViewportChange = () => {
       clearTimeout(timeoutId);
+
       timeoutId = setTimeout(() => {
         if (window.visualViewport) {
           const isKeyboardVisible = window.visualViewport.height < window.innerHeight;
+          const newKeyboardHeight = isKeyboardVisible
+            ? window.innerHeight - window.visualViewport.height
+            : 0;
+
+          if (isKeyboardVisible && newKeyboardHeight === 0) {
+            setTimeout(() => {
+              if (window.visualViewport) {
+                setKeyboardHeight(window.innerHeight - window.visualViewport.height);
+              }
+            }, 300);
+          } else {
+            setKeyboardHeight(newKeyboardHeight);
+          }
+
           setKeyboardVisible(isKeyboardVisible);
-          setKeyboardHeight(
-            isKeyboardVisible ? window.innerHeight - window.visualViewport.height : 0,
-          );
         }
       }, 100);
     };
