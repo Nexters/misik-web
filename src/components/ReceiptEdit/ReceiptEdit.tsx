@@ -10,41 +10,6 @@ import { useRoute } from "@/hooks/common/useRoute";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
-// const useKeyboardAvoidance = () => {
-//   const [keyboardVisible, setKeyboardVisible] = useState(false);
-//   const [keyboardHeight, setKeyboardHeight] = useState(0);
-
-//   useEffect(() => {
-//     const handleVisualViewportChange = () => {
-//       const isKeyboardVisible = !!(
-//         window.visualViewport && window.visualViewport.height < window.innerHeight
-//       );
-//       setKeyboardVisible(isKeyboardVisible);
-
-//       if (isKeyboardVisible) {
-//         setKeyboardHeight(
-//           window.visualViewport ? window.innerHeight - window.visualViewport.height : 0,
-//         );
-//       } else {
-//         setKeyboardHeight(0);
-//       }
-//     };
-
-//     if (window.visualViewport) {
-//       window.visualViewport.addEventListener("resize", handleVisualViewportChange);
-//       handleVisualViewportChange();
-//     }
-
-//     return () => {
-//       if (window.visualViewport) {
-//         window.visualViewport.removeEventListener("resize", handleVisualViewportChange);
-//       }
-//     };
-//   }, []);
-
-//   return { keyboardVisible, keyboardHeight };
-// };
-
 const ReceiptEdit = () => {
   const { navigateToHome, navigateToSelectTag } = useRoute();
 
