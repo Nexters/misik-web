@@ -5,8 +5,23 @@ import { useRoute } from "@/hooks/common/useRoute";
 
 import styles from "@/pages/CreateReviewFailPage/CreateReviewFailPage.module.scss";
 
+import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useCreateReviewStore } from "@/store/useReviewStore";
+import { useScanDataStore } from "@/store/useScanDataStore";
+
 const CreateReviewFailPage = () => {
   const { navigateToHome } = useRoute();
+
+  const { resetGenerateReviewData } = useGenerateReviewStore();
+  const { resetCreateReviewData } = useCreateReviewStore();
+  const { resetScanData } = useScanDataStore();
+
+  const handleNavigateHome = () => {
+    resetGenerateReviewData();
+    resetCreateReviewData();
+    resetScanData();
+    navigateToHome();
+  };
 
   return (
     <div className={styles.CreateReviewFail}>
@@ -22,7 +37,7 @@ const CreateReviewFailPage = () => {
           <img src="/assets/img/img-graphic-logo-blur.png" alt="createReviewFailImg" />
         </div>
       </div>
-      <Button text="홈으로 가기" onClick={navigateToHome} />
+      <Button text="홈으로 가기" onClick={handleNavigateHome} />
     </div>
   );
 };
