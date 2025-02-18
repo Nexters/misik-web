@@ -4,12 +4,18 @@
   padding-bottom: 2.5rem;
   height: calc(100vh - 2.75rem);
   overflow: hidden;
-  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: var(--color-bg-gradient);
+
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   &::before {
     content: "";
