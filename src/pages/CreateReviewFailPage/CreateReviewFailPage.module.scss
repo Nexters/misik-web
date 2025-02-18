@@ -16,13 +16,12 @@
 }
 
 .Image {
-  margin-top: 6.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
   & > img {
-    width: 22.5rem;
-    height: 22.5rem;
+    width: 20rem;
+    height: 20rem;
   }
 }
