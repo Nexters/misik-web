@@ -32,10 +32,10 @@ const CreateReviewFailPage = () => {
         <Text color="secondary" variant="bodyLg" align="center" as="h2">
           {`네트워크 오류로 인해 리뷰 생성에\n실패했어요. 다시 시도해주세요.`}
         </Text>
+      </div>
 
-        <div className={styles.Image}>
-          <img src="/assets/img/img-graphic-logo-blur.png" alt="createReviewFailImg" />
-        </div>
+      <div className={styles.Image}>
+        <img src="/assets/img/img-graphic-logo-blur.webp" alt="createReviewFailImg" />
       </div>
       <Button text="홈으로 가기" onClick={handleNavigateHome} />
     </div>

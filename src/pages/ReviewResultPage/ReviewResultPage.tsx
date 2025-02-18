@@ -70,8 +70,8 @@ export default function ReviewResultPage() {
   return (
     <div className={styles.ReviewResult}>
       <div className={styles.Top}>
-        <div className={styles.ReceiptImage}>
-          <img src="/assets/img/img-style-cute-circle.png" alt="mainLogo" />
+        <div className={styles.Image}>
+          <img src="/assets/img/img-style-friendly-circle.webp" alt="mainLogo" />
         </div>
         <div className={styles.TitleBox}>
           <Text variant="titleM" color="gradient" as="h1" truncated>
@@ -80,7 +80,19 @@ export default function ReviewResultPage() {
         </div>
 
         <Text variant="bodyLg" color="primary">
-          {generateReviewData}
+          {generateReviewData}오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고
+          직원들도 친절해요! 음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!!
+          다음에도 또 시켜먹을 거예요.오늘 처음으로 청담커피 앤 토스트에서 주문했어요.. 매장도
+          깔끔하고 직원들도 친절해요! 음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고 양도
+          많아요!! 다음에도 또 시켜먹을 거예요.오늘 처음으로 청담커피 앤 토스트에서 주문했어요..
+          매장도 깔끔하고 직원들도 친절해요! 음료랑 토스트 세트 시켰는데 가성비가 좋네요… 맛도 좋고
+          양도 많아요!! 다음에도 또 시켜먹을 거예요.오늘 처음으로 청담커피 앤 토스트에서
+          주문했어요.. 매장도 깔끔하고 직원들도 친절해요! 음료랑 토스트 세트 시켰는데 가성비가
+          좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.오늘 처음으로 청담커피 앤
+          토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요! 음료랑 토스트 세트 시켰는데
+          가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.오늘 처음으로
+          청담커피 앤 토스트에서 주문했어요.. 매장도 깔끔하고 직원들도 친절해요! 음료랑 토스트 세트
+          시켰는데 가성비가 좋네요… 맛도 좋고 양도 많아요!! 다음에도 또 시켜먹을 거예요.
         </Text>
         <div className={styles.IconBtn}>
           <IconButton
