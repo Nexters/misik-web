@@ -22,6 +22,7 @@ const LoadingPage = () => {
       type: AppBridgeMessageType.RECEIVE_GENERATED_REVIEW,
       payload: { result: String(generateReviewData) },
     });
+    alert("디버깅 메시지: generateReviewData" + generateReviewData);
 
     if (generateReviewData.length > 0) {
       navigateToReviewResult();
