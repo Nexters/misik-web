@@ -38,7 +38,6 @@ const LoadingPage = () => {
           최대 30초까지 소요될 수 있어요
         </Text>
       </div>
-
       <div className={styles.Image}>
         <img src="/assets/img/img-loading.webp" alt="createReviewImg" />
       </div>

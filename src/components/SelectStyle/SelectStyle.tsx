@@ -28,8 +28,8 @@ const IMG_STYLE_DATA = [
 
 const STYLE_NAME_MAPPING: { [key: string]: string } = {
   "친근한 말투": "FRIENDLY",
-  "유쾌한 말투": "CUTE",
-  "귀여운 말투": "PROFESSIONAL",
+  "믿음직한 말투": "PROFESSIONAL",
+  "귀여운 말투": "CUTE",
 };
 
 const SelectStyle = () => {
