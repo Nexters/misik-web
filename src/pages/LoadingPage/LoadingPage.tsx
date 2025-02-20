@@ -45,10 +45,7 @@ const LoadingPage = () => {
           borderRadius: "8px",
           marginTop: "20px",
         }}
-      >
-        <h3>🔍 디버깅용 데이터</h3>
-        <pre>{JSON.stringify(generateReviewData, null, 2)}</pre>
-      </div>
+      ></div>
 
       <div className={styles.Image}>
         <img src="/assets/img/img-loading.webp" alt="createReviewImg" />
