@@ -9,7 +9,6 @@ const SHARE_TEXT =
 
 const HomePage = () => {
   const { send } = useAppBridge();
-  alert("디버깅 메시지: 홈 " + JSON.stringify(SHARE_TEXT));
 
   return (
     <>

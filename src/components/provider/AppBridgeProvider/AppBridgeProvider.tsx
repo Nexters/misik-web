@@ -56,7 +56,6 @@ export function AppBridgeProvider({ children }: AppBridgeProviderProps) {
           try {
             const data = JSON.parse(jsonData);
             setGenerateReviewData(data.result);
-            alert("디버깅 메시지: " + JSON.stringify(data.result));
           } catch (error) {
             console.error("Invalid JSON data for generated review:", error);
           }
