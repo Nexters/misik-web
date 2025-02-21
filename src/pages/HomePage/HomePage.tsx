@@ -55,7 +55,7 @@ const HomePage = () => {
             </Text>
           </div>
           <div className={styles.HomeImage}>
-            <img src="/assets/img/img-graphic-logo.png" alt="mainLogo" />
+            <img src="/assets/img/img-graphic-logo.webp" alt="mainLogo" />
           </div>
         </div>
 
