@@ -1,13 +1,15 @@
-import * as React from "react";
+import { forwardRef } from "react";
 
 import * as ToastPrimitives from "@radix-ui/react-toast";
 import classNames from "classnames";
 
 import styles from "@/components/ui/Toast/Toast.module.scss";
 
+import { useToast } from "@/hooks/common/useToast";
+
 const ToastProvider = ToastPrimitives.Provider;
 
-const ToastViewport = React.forwardRef<
+const ToastViewport = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Viewport>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
 >(({ className, ...props }, ref) => (
@@ -19,17 +21,29 @@ const ToastViewport = React.forwardRef<
 ));
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
-const Toast = React.forwardRef<
+const Toast = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root>
->(({ className, ...props }, ref) => {
+>(({ className, open, id, ...props }, ref) => {
+  const { removeToast } = useToast();
+
   return (
-    <ToastPrimitives.Root ref={ref} className={classNames(styles.Toast, className)} {...props} />
+    <ToastPrimitives.Root
+      ref={ref}
+      open={open}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          setTimeout(() => removeToast(id), 400); // 0.4초 뒤 제거
+        }
+      }}
+      className={classNames(styles.Toast, className)}
+      {...props}
+    />
   );
 });
 Toast.displayName = ToastPrimitives.Root.displayName;
 
-const ToastTitle = React.forwardRef<
+const ToastTitle = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Title>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(({ className, ...props }, ref) => (

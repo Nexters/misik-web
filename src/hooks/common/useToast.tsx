@@ -11,7 +11,7 @@ type ToastType = {
 type ToastContextType = {
   toasts: ToastType[];
   addToast: (title: string, duration?: number) => string;
-  removeToast: (id: string) => void;
+  removeToast: (id?: string) => void;
 };
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -21,6 +21,12 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   const addToast = (title: string, duration = 3000): string => {
     const id = crypto.randomUUID();
+
+    const isToastOpen = toasts.some((toast) => toast.open);
+
+    if (isToastOpen) {
+      return "";
+    }
 
     const newToast: ToastType = {
       id,
@@ -33,8 +39,8 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     return id;
   };
 
-  const removeToast = (id: string) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  const removeToast = (id?: string) => {
+    setToasts((prev) => prev.map((toast) => (toast.id === id ? { ...toast, open: false } : toast)));
   };
 
   return (
