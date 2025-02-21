@@ -82,12 +82,10 @@ const ReceiptInputPage = () => {
           <Text variant="titleM" color="primary" align="center" as="h1">
             {formData.find((item) => item.key === "place")?.value
               ? `${formData.find((item) => item.key === "place")?.value}에`
-              : "영수증 정보를"}
+              : "가게명과 메뉴명을"}
           </Text>
           <Text variant="titleM" color="primary" as="h1" align="center">
-            {formData.find((item) => item.key === "place")?.value
-              ? "다녀오셨네요!"
-              : "입력해주세요!"}
+            {formData.find((item) => item.key === "place")?.value ? "다녀오셨네요!" : "알려주세요!"}
           </Text>
 
           <div className={styles.InfoList}>
@@ -110,7 +108,7 @@ const ReceiptInputPage = () => {
 
         <div className={styles.Bottom}>
           {Object.values(focusState).some((isFocus) => isFocus) ? (
-            <Button key="edit" text="수정하기" />
+            <Button key="edit" text="다음" />
           ) : (
             <Button
               key="confirm"
