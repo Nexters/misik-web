@@ -9,7 +9,7 @@ interface NavbarProps extends PropsWithChildren {
 }
 
 const Navbar = ({ children, className }: NavbarProps) => {
-  return <div className={(classNames(styles.Navbar), className)}>{children}</div>;
+  return <div className={classNames(styles.Navbar, className)}>{children}</div>;
 };
 
 Navbar.LeftButton = ({
