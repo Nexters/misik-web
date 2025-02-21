@@ -8,7 +8,7 @@ import {
 } from "@/components/provider/AppBridgeProvider/convertToNativeMessage";
 import { useUserAgent } from "@/components/provider/UserAgentProvider";
 
-import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
 interface AppBridgeProviderProps {
