@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
-import styles from "@/components/ReceiptEdit/ReceiptEdit.module.scss";
+import Navbar from "@/components/common/Navbar/Navbar";
 import Button from "@/components/ui/Button/Button";
+import Icon from "@/components/ui/Icon/Icon";
 import Input from "@/components/ui/Input/Input";
 import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
+import styles from "@/pages/ReceiptEditPage/ReceiptEditPage.module.scss";
+
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
-const ReceiptEdit = () => {
+const ReceiptEditPage = () => {
   const { navigateToHome, navigateToSelectTag } = useRoute();
 
   const { scanData, resetScanData } = useScanDataStore();
@@ -74,37 +77,50 @@ const ReceiptEdit = () => {
     navigateToHome();
   };
 
+  const handleNavigateToHome = () => {
+    resetScanData();
+    navigateToHome();
+  };
+
   return (
     <div className={styles.ReceiptEdit}>
-      <div className={styles.Top}>
-        <div className={styles.TitleBox}>
-          <Text variant="titleM" color="primary" as="h1" truncated>
-            {formData.length > 0 && Object.keys(formData[0]).length > 0 && formData[0].value}
-          </Text>
-          <Text variant="titleM" color="primary" as="h1">
-            에
-          </Text>
-        </div>
-        <Text variant="titleM" color="primary" as="h1" align="center">
-          다녀오셨네요!
-        </Text>
+      <div className={styles.Container}>
+        <Navbar className={styles.Navbar}>
+          <Navbar.LeftButton onClick={handleNavigateToHome}>
+            <Icon name="leftArrow" />
+          </Navbar.LeftButton>
+        </Navbar>
 
-        <div className={styles.InfoList}>
-          {formData.map((data, index) => (
-            <div key={index} className={styles.InfoItem}>
-              <Text variant="bodyXsm" color="secondary">
-                {data.key}
-              </Text>
-              <Input
-                placeholder={`${data.key} 입력`}
-                value={data.value}
-                onFocus={() => handleFocus(index.toString())}
-                onBlur={() => handleBlur(index.toString())}
-                isFocus={focusState[index.toString()] || false}
-                onChange={(e) => handleInputChange(index, e.target.value)}
-              />
-            </div>
-          ))}
+        <div className={styles.Top}>
+          <div className={styles.TitleBox}>
+            <Text variant="titleM" color="primary" as="h1" truncated>
+              {formData.length > 0 && Object.keys(formData[0]).length > 0 && formData[0].value}
+            </Text>
+            <Text variant="titleM" color="primary" as="h1">
+              에
+            </Text>
+          </div>
+          <Text variant="titleM" color="primary" as="h1" align="center">
+            다녀오셨네요!
+          </Text>
+
+          <div className={styles.InfoList}>
+            {formData.map((data, index) => (
+              <div key={index} className={styles.InfoItem}>
+                <Text variant="bodyXsm" color="secondary">
+                  {data.key}
+                </Text>
+                <Input
+                  placeholder={`${data.key} 입력`}
+                  value={data.value}
+                  onFocus={() => handleFocus(index.toString())}
+                  onBlur={() => handleBlur(index.toString())}
+                  isFocus={focusState[index.toString()] || false}
+                  onChange={(e) => handleInputChange(index, e.target.value)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -136,4 +152,4 @@ const ReceiptEdit = () => {
   );
 };
 
-export default ReceiptEdit;
+export default ReceiptEditPage;

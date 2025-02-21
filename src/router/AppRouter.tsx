@@ -7,7 +7,7 @@ import { PATH } from "@/constants/path";
 import CreateReviewFailPage from "@/pages/CreateReviewFailPage/CreateReviewFailPage";
 import HomePage from "@/pages/HomePage";
 import LoadingPage from "@/pages/LoadingPage/LoadingPage";
-import ReceiptEditPage from "@/pages/ReceiptEditPage";
+import ReceiptEditPage from "@/pages/ReceiptEditPage/ReceiptEditPage";
 import ReceiptInputPage from "@/pages/ReceiptInputPage/ReceiptInputPage";
 import RecognitionFailPage from "@/pages/RecognitionFailPage";
 import ReviewResultPage from "@/pages/ReviewResultPage/ReviewResultPage";
