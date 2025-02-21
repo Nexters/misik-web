@@ -1,5 +1,5 @@
 import type { ModalProps } from "@/components/HomeNavigateConfirmModal/HomeNavigateConfirmModal";
-import styles from "@/components/SelectStyle/StyleExampleModal.module.scss";
+import styles from "@/components/StyleExampleModal/StyleExampleModal.module.scss";
 import Icon from "@/components/ui/Icon/Icon";
 import Modal from "@/components/ui/Modal/Modal";
 import Text from "@/components/ui/Text/Text";

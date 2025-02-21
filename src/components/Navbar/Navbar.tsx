@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
 
 import classNames from "classnames";
 
-import styles from "@/components/common/Navbar/Navbar.module.scss";
+import styles from "@/components/Navbar/Navbar.module.scss";
 
 interface NavbarProps extends PropsWithChildren {
   className?: string;

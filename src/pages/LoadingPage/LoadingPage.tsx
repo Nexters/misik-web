@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import Navbar from "@/components/common/Navbar/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
 import Icon from "@/components/ui/Icon/Icon";

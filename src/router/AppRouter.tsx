@@ -5,14 +5,14 @@ import App from "@/App";
 import { PATH } from "@/constants/path";
 
 import CreateReviewFailPage from "@/pages/CreateReviewFailPage/CreateReviewFailPage";
-import HomePage from "@/pages/HomePage";
+import HomePage from "@/pages/HomePage/HomePage";
 import LoadingPage from "@/pages/LoadingPage/LoadingPage";
 import ReceiptEditPage from "@/pages/ReceiptEditPage/ReceiptEditPage";
 import ReceiptInputPage from "@/pages/ReceiptInputPage/ReceiptInputPage";
-import RecognitionFailPage from "@/pages/RecognitionFailPage";
+import RecognitionFailPage from "@/pages/RecognitionFailPage/RecognitionFailPage";
 import ReviewResultPage from "@/pages/ReviewResultPage/ReviewResultPage";
-import SelectStylePage from "@/pages/SelectStylePage";
-import SelectTagPage from "@/pages/SelectTagPage";
+import SelectStylePage from "@/pages/SelectStylePage/SelectStylePage";
+import SelectTagPage from "@/pages/SelectTagPage/SelectTagPage";
 
 const AppRouter = () => {
   const router = createBrowserRouter([

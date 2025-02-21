@@ -4,7 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import classNames from "classnames";
 
-import styles from "@/components/SelectTag/TagSheet/TagSheet.module.scss";
+import styles from "@/components/TagSheet/TagSheet.module.scss";
 import Button from "@/components/ui/Button/Button";
 import Icon from "@/components/ui/Icon/Icon";
 import Input from "@/components/ui/Input/Input";
