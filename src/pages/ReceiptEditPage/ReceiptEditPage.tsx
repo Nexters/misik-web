@@ -18,7 +18,7 @@ const ReceiptEditPage = () => {
 
   const { scanData, resetScanData } = useScanDataStore();
 
-  const { setOcrText } = useCreateReviewStore();
+  const { setOcrText, resetCreateReviewData } = useCreateReviewStore();
 
   const [formData, setFormData] = useState<{ key: string; value: string }[]>([]);
   const [focusState, setFocusState] = useState<{ [key: string]: boolean }>({});
@@ -72,13 +72,9 @@ const ReceiptEditPage = () => {
     navigateToSelectTag();
   };
 
-  const handleReScanClick = () => {
-    resetScanData();
-    navigateToHome();
-  };
-
   const handleNavigateToHome = () => {
     resetScanData();
+    resetCreateReviewData();
     navigateToHome();
   };
 
@@ -137,7 +133,7 @@ const ReceiptEditPage = () => {
               key="scan"
               text="다시 스캔하기"
               variant="secondary"
-              onClick={handleReScanClick}
+              onClick={handleNavigateToHome}
             />
             <Button
               key="confirm"
