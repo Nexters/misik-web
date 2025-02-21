@@ -8,11 +8,9 @@ import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeP
 import Button from "@/components/ui/Button/Button";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
-import Toast from "@/components/ui/Toast/Toast";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useRoute } from "@/hooks/common/useRoute";
-import useToast from "@/hooks/common/useToast";
 
 import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
 
@@ -30,7 +28,6 @@ export default function ReviewResultPage() {
   const { navigateToCreateReviewFail, navigateToLoading } = useRoute();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
-  const { isToast, showToast } = useToast(1000);
 
   const { ocrText, hashTag, reviewStyle } = createReviewData;
 
@@ -89,19 +86,14 @@ export default function ReviewResultPage() {
             size="sm"
             onClick={() => {
               send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
-
-              showToast();
             }}
           />
         </div>
       </div>
 
       <div className={styles.Bottom}>
-        {isToast && <Toast text="리뷰가 복사되었어요." />}
-        <div className={styles.ButtonBox}>
-          <Button text="다시생성" variant="secondary" onClick={handleRetryCreateReview} />
-          <Button text="홈으로 가기" onClick={handleOpen} />
-        </div>
+        <Button text="다시생성" variant="secondary" onClick={handleRetryCreateReview} />
+        <Button text="홈으로 가기" onClick={handleOpen} />
       </div>
 
       <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />
