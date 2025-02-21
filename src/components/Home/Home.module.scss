@@ -1,3 +1,5 @@
+@use "@/styles/_mixins.scss" as *;
+
 .Home {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -24,6 +26,22 @@
   }
 }
 
+.Title {
+  @include titleLg;
+
+  line-height: 1.5;
+  background-image: var(--color-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  white-space: pre-line;
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 4s linear infinite;
+}
+
 .HomeTop {
   z-index: 1;
 }
@@ -33,10 +51,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-
-  & > h1 {
-    white-space: pre-line;
-  }
 }
 
 .HomeImage {
@@ -58,4 +72,13 @@
   align-items: center;
   gap: 0.875rem;
   z-index: 1;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
