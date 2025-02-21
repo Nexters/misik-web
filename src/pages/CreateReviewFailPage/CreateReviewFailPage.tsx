@@ -5,7 +5,7 @@ import { useRoute } from "@/hooks/common/useRoute";
 
 import styles from "@/pages/CreateReviewFailPage/CreateReviewFailPage.module.scss";
 
-import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 

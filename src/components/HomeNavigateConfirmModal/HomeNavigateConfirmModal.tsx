@@ -5,7 +5,7 @@ import Text from "@/components/ui/Text/Text";
 
 import { useRoute } from "@/hooks/common/useRoute";
 
-import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 

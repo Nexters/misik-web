@@ -16,7 +16,7 @@ import useToast from "@/hooks/common/useToast";
 
 import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
 
-import { useGenerateReviewStore } from "@/store/useGenerateReviewStore";
+import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
 import type { Options as ConfettiOptions } from "canvas-confetti";

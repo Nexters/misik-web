@@ -1,8 +1,6 @@
 .CreateReviewLoading {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-bottom: 2.5rem;
-  height: 100vh;
+  padding: 0 1.25rem 2.5rem;
+  height: calc(100vh - 2.75rem);
   overflow: hidden;
   background: var(--color-bg-gradient);
   display: flex;
