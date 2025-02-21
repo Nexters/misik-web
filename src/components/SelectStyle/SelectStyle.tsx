@@ -21,9 +21,9 @@ interface StyleProps {
 }
 
 const IMG_STYLE_DATA = [
-  { name: "친근한 말투", image: "/assets/img/img-style-friendly.webp" },
-  { name: "믿음직한 말투", image: "/assets/img/img-style-trust.webp" },
-  { name: "귀여운 말투", image: "/assets/img/img-style-cute.webp" },
+  { name: "친근한 말투", image: "/assets/img/img-style-friendly.png" },
+  { name: "믿음직한 말투", image: "/assets/img/img-style-trust.png" },
+  { name: "귀여운 말투", image: "/assets/img/img-style-cute.png" },
 ];
 
 const STYLE_NAME_MAPPING: { [key: string]: string } = {
