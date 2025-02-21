@@ -15,11 +15,11 @@
 
   &.style-tertiary {
     background-color: var(--color-gray200);
-    color: var(--color-text-secondary);
+    color: var(--color-text-tertiary);
   }
 
   &:disabled {
-    background-color: var(--color-gray350);
+    background-color: var(--color-disabled);
     color: var(--color-text-tertiary);
     cursor: not-allowed;
   }
