@@ -30,7 +30,9 @@
   @include titleLg;
 
   line-height: 1.5;
-  background-image: var(--color-text-gradient);
+
+  background-image: linear-gradient(90deg, #7953cd 20%, #d444ba 30%, #b544d4 70%, #764ada 80%);
+
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -39,7 +41,7 @@
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 4s linear infinite;
+  animation: gradient 3s linear infinite;
 }
 
 .HomeTop {
@@ -76,9 +78,9 @@
 
 @keyframes gradient {
   0% {
-    background-position: 0% center;
+    background-position: 200% center;
   }
   100% {
-    background-position: 200% center;
+    background-position: 0% center;
   }
 }
