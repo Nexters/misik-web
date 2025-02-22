@@ -79,14 +79,14 @@ const ReceiptEditPage = () => {
   };
 
   return (
-    <div className={styles.ReceiptEdit}>
-      <div className={styles.Container}>
-        <Navbar className={styles.Navbar}>
-          <Navbar.LeftButton onClick={handleNavigateToHome}>
-            <Icon name="leftArrow" />
-          </Navbar.LeftButton>
-        </Navbar>
+    <>
+      <Navbar>
+        <Navbar.LeftButton onClick={handleNavigateToHome}>
+          <Icon name="leftArrow" />
+        </Navbar.LeftButton>
+      </Navbar>
 
+      <div className={styles.ReceiptEdit}>
         <div className={styles.Top}>
           <div className={styles.TitleBox}>
             <Text variant="titleM" color="primary" as="h1" truncated>
@@ -118,33 +118,33 @@ const ReceiptEditPage = () => {
             ))}
           </div>
         </div>
-      </div>
 
-      <div className={styles.Bottom}>
-        {Object.values(focusState).some((isFocus) => isFocus) ? (
-          <Button
-            key="edit"
-            text="수정하기"
-            disabled={formData.some((item) => Object.values(item).some((value) => !value))}
-          />
-        ) : (
-          <>
+        <div className={styles.Bottom}>
+          {Object.values(focusState).some((isFocus) => isFocus) ? (
             <Button
-              key="scan"
-              text="다시 스캔하기"
-              variant="secondary"
-              onClick={handleNavigateToHome}
-            />
-            <Button
-              key="confirm"
-              text="정보가 맞아요"
+              key="edit"
+              text="수정하기"
               disabled={formData.some((item) => Object.values(item).some((value) => !value))}
-              onClick={handleInfoRightClick}
             />
-          </>
-        )}
+          ) : (
+            <>
+              <Button
+                key="scan"
+                text="다시 스캔하기"
+                variant="secondary"
+                onClick={handleNavigateToHome}
+              />
+              <Button
+                key="confirm"
+                text="정보가 맞아요"
+                disabled={formData.some((item) => Object.values(item).some((value) => !value))}
+                onClick={handleInfoRightClick}
+              />
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
