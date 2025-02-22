@@ -4,12 +4,8 @@ import classNames from "classnames";
 
 import styles from "@/components/Navbar/Navbar.module.scss";
 
-interface NavbarProps extends PropsWithChildren {
-  className?: string;
-}
-
-const Navbar = ({ children, className }: NavbarProps) => {
-  return <div className={classNames(styles.Navbar, className)}>{children}</div>;
+const Navbar = ({ children }: PropsWithChildren) => {
+  return <div className={styles.Navbar}>{children}</div>;
 };
 
 Navbar.LeftButton = ({
