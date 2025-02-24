@@ -66,4 +66,4 @@ jobs:
           npm install --global vercel@latest
           vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
           vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --alias misik-web.vercel.app
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
