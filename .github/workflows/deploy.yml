@@ -8,7 +8,7 @@ on:
     types:
       - closed
     branches:
-      - develop
+      - main
 
 jobs:
   project-build:
