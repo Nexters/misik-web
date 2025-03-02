@@ -2,6 +2,7 @@
 
 .Button {
   @include buttonSecondary;
+  white-space: nowrap;
 
   &.style-primary {
     background-color: var(--color-text-primary);
