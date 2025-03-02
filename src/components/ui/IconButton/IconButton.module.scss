@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
 
   &.size-md {
     gap: 0.375rem;
