@@ -13,6 +13,8 @@ import styles from "@/pages/SelectTagPage/SelectTagPage.module.scss";
 
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 const SelectTagPage = () => {
   const { navigateToSelectStyle, navigateToBack } = useRoute();
 
@@ -75,7 +77,13 @@ const SelectTagPage = () => {
                 isSelect={hashTag.includes(tag)}
               />
             ))}
-            <Tag variant="add" onClick={() => setIsBottomSheetOpen(true)} />
+            <Tag
+              variant="add"
+              onClick={() => {
+                gTagLogEvent("add_tag_button");
+                setIsBottomSheetOpen(true);
+              }}
+            />
           </div>
         </div>
 

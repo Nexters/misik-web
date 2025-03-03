@@ -11,6 +11,8 @@ import styles from "@/pages/RecognitionFailPage/RecognitionFailPage.module.scss"
 
 import { useScanDataStore } from "@/store/useScanDataStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 const RecognitionFailPage = () => {
   const { send } = useAppBridge();
 
@@ -19,8 +21,15 @@ const RecognitionFailPage = () => {
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateToHome = () => {
+    gTagLogEvent("recognition_fail_close_button");
     resetScanData();
     navigateToHome();
+  };
+
+  const handleNavgateToReceiptInput = () => {
+    gTagLogEvent("receipt_input_button");
+    resetScanData();
+    navgateToReceiptInput();
   };
 
   return (
@@ -44,11 +53,15 @@ const RecognitionFailPage = () => {
           <img src="/assets/img/img-recognition-fail.png" alt="recognitionFailImg" />
         </div>
         <div className={styles.Bottom}>
-          <Button text="직접 입력하기" variant="secondary" onClick={navgateToReceiptInput} />
+          <Button text="직접 입력하기" variant="secondary" onClick={handleNavgateToReceiptInput} />
           <Button
             text="다시 촬영하기"
             variant="secondary"
-            onClick={() => send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" })}
+            onClick={() => {
+              gTagLogEvent("camera_retry_button");
+
+              send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
+            }}
           />
         </div>
       </div>

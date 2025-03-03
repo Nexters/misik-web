@@ -13,6 +13,8 @@ import styles from "@/pages/ReceiptEditPage/ReceiptEditPage.module.scss";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 const ReceiptEditPage = () => {
   const { navigateToHome, navigateToSelectTag } = useRoute();
 
@@ -81,7 +83,13 @@ const ReceiptEditPage = () => {
   return (
     <>
       <Navbar>
-        <Navbar.LeftButton onClick={handleNavigateToHome}>
+        <Navbar.LeftButton
+          onClick={() => {
+            gTagLogEvent("receipt_edit_home_button");
+
+            handleNavigateToHome();
+          }}
+        >
           <Icon name="leftArrow" />
         </Navbar.LeftButton>
       </Navbar>
@@ -132,7 +140,11 @@ const ReceiptEditPage = () => {
                 key="scan"
                 text="다시 스캔하기"
                 variant="secondary"
-                onClick={handleNavigateToHome}
+                onClick={() => {
+                  gTagLogEvent("receipt_edit_rescan_button");
+
+                  handleNavigateToHome();
+                }}
               />
               <Button
                 key="confirm"

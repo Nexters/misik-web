@@ -13,6 +13,8 @@ import styles from "@/pages/ReceiptInputPage/ReceiptInputPage.module.scss";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 const ReceiptInputPage = () => {
   const { navigateToHome, navigateToSelectTag } = useRoute();
 
@@ -65,6 +67,7 @@ const ReceiptInputPage = () => {
   };
 
   const handleHomeClick = () => {
+    gTagLogEvent("receipt_input_back_button");
     resetScanData();
     navigateToHome();
   };

@@ -17,15 +17,18 @@ import styles from "@/pages/SelectStylePage/SelectStylePage.module.scss";
 
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 interface StyleProps {
   name: string;
   image: string;
+  tagId: string;
 }
 
 const IMG_STYLE_DATA = [
-  { name: "친근한 말투", image: "/assets/img/img-style-friendly.webp" },
-  { name: "믿음직한 말투", image: "/assets/img/img-style-trust.webp" },
-  { name: "귀여운 말투", image: "/assets/img/img-style-cute.webp" },
+  { name: "친근한 말투", image: "/assets/img/img-style-friendly.webp", tagId: "friendly_button" },
+  { name: "믿음직한 말투", image: "/assets/img/img-style-trust.webp", tagId: "trust_button" },
+  { name: "귀여운 말투", image: "/assets/img/img-style-cute.webp", tagId: "cute_button" },
 ];
 
 const STYLE_NAME_MAPPING: { [key: string]: string } = {
@@ -52,6 +55,8 @@ const SelectStylePage = () => {
   };
 
   const handleCreateReview = () => {
+    gTagLogEvent("create_review_button");
+
     const mappedStyle = STYLE_NAME_MAPPING[selectedStyle.name];
 
     if (mappedStyle) {
@@ -85,7 +90,12 @@ const SelectStylePage = () => {
           </div>
 
           <div className={styles.ExampleButtonBox}>
-            <button onClick={handleOpen}>
+            <button
+              onClick={() => {
+                gTagLogEvent("style_example_button");
+                handleOpen();
+              }}
+            >
               <Text variant="bodyXsm" color="secondary">
                 말투 예시보기
               </Text>
@@ -105,7 +115,10 @@ const SelectStylePage = () => {
                 className={classNames({
                   [styles.isSelected]: selectedStyle.name === style.name,
                 })}
-                onClick={() => handleStyleClick(style)}
+                onClick={() => {
+                  gTagLogEvent(style.tagId);
+                  handleStyleClick(style);
+                }}
               >
                 <Text
                   color={selectedStyle.name === style.name ? "white" : "secondary"}

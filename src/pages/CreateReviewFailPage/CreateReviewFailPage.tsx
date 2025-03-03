@@ -9,6 +9,8 @@ import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 const CreateReviewFailPage = () => {
   const { navigateToHome } = useRoute();
 
@@ -17,6 +19,7 @@ const CreateReviewFailPage = () => {
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateHome = () => {
+    gTagLogEvent("create_review_fail_home_button");
     resetGenerateReviewData();
     resetCreateReviewData();
     resetScanData();

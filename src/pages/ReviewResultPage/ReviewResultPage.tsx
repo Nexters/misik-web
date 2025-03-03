@@ -18,6 +18,8 @@ import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
 import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 import type { Options as ConfettiOptions } from "canvas-confetti";
 
 export default function ReviewResultPage() {
@@ -47,6 +49,8 @@ export default function ReviewResultPage() {
   };
 
   const handleRetryCreateReview = () => {
+    gTagLogEvent("review_retry_button");
+
     resetGenerateReviewData();
 
     send({
@@ -88,6 +92,8 @@ export default function ReviewResultPage() {
             iconName="paste"
             size="sm"
             onClick={() => {
+              gTagLogEvent("copy_button");
+
               send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
 
               addToast("리뷰가 복사되었어요");
@@ -97,7 +103,13 @@ export default function ReviewResultPage() {
       </div>
       <div className={styles.Bottom}>
         <Button text="다시생성" variant="secondary" onClick={handleRetryCreateReview} />
-        <Button text="홈으로 가기" onClick={handleOpen} />
+        <Button
+          text="홈으로 가기"
+          onClick={() => {
+            gTagLogEvent("home_button");
+            handleOpen();
+          }}
+        />
       </div>
 
       <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />
