@@ -32,12 +32,12 @@ const initializeGA4 = () => {
   script.onload = () => {
     (window as any).dataLayer = (window as any).dataLayer || [];
 
-    function gtag(...args: any[]) {
+    (window as any).gtag = function (...args: any[]) {
       (window as any).dataLayer.push(args);
-    }
-    gtag("js", new Date());
+    };
 
-    gtag("config", ga4Id);
+    (window as any).gtag("js", new Date());
+    (window as any).gtag("config", ga4Id);
   };
 };
 
