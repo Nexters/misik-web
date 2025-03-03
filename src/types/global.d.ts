@@ -27,6 +27,8 @@ declare global {
     parsed: Array<{ key: string; value: string }>;
   }
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gtag: (...args: any[]) => void;
     response?: {
       receiveScanResult: (jsonData: string) => void;
       receiveGeneratedReview: (jsonData: string) => void;
