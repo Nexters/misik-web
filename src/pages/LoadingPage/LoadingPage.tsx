@@ -14,6 +14,8 @@ import { useGenerateReviewStore } from "@/store/useCreateReviewStore";
 import { useCreateReviewStore } from "@/store/useReviewStore";
 import { useScanDataStore } from "@/store/useScanDataStore";
 
+import { gTagLogEvent } from "@/utils/gtag";
+
 const LoadingPage = () => {
   const { send } = useAppBridge();
 
@@ -24,6 +26,8 @@ const LoadingPage = () => {
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateToHome = () => {
+    gTagLogEvent("loading_close_button");
+
     resetGenerateReviewData();
     resetCreateReviewData();
     resetScanData();
