@@ -26,7 +26,10 @@ const LoadingPage = () => {
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateToHome = () => {
-    gTagLogEvent("loading_close_button");
+    gTagLogEvent("loading_close_button_click", {
+      category: "Button",
+      label: "loading_close_button",
+    });
 
     resetGenerateReviewData();
     resetCreateReviewData();

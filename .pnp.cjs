@@ -48,7 +48,6 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:22.10.7"],\
           ["@types/react", "npm:18.3.18"],\
           ["@types/react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.5"],\
-          ["@types/react-gtm-module", "npm:2.0.4"],\
           ["@typescript-eslint/eslint-plugin", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@typescript-eslint/parser", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@vitejs/plugin-react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:4.3.4"],\
@@ -69,7 +68,6 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.1"],\
-          ["react-gtm-module", "npm:2.0.11"],\
           ["react-router-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:7.1.3"],\
           ["sass", "npm:1.83.4"],\
           ["sass-loader", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:16.0.4"],\
@@ -4689,15 +4687,6 @@ const RAW_RUNTIME_STATE =
         ],\
         "packagePeers": [\
           "@types/react"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["@types/react-gtm-module", [\
-      ["npm:2.0.4", {\
-        "packageLocation": "./.yarn/cache/@types-react-gtm-module-npm-2.0.4-ba9b45b661-0bba7b8416.zip/node_modules/@types/react-gtm-module/",\
-        "packageDependencies": [\
-          ["@types/react-gtm-module", "npm:2.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10803,7 +10792,6 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:22.10.7"],\
           ["@types/react", "npm:18.3.18"],\
           ["@types/react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.5"],\
-          ["@types/react-gtm-module", "npm:2.0.4"],\
           ["@typescript-eslint/eslint-plugin", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@typescript-eslint/parser", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:8.20.0"],\
           ["@vitejs/plugin-react", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:4.3.4"],\
@@ -10824,7 +10812,6 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:18.3.1"],\
-          ["react-gtm-module", "npm:2.0.11"],\
           ["react-router-dom", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:7.1.3"],\
           ["sass", "npm:1.83.4"],\
           ["sass-loader", "virtual:bf4b7fdd92a9723d0b8b3c0ad1d9b3bf177b06bda2d8d90eee6bb9b559bcf7f6a4e86d3e1e4088168d00f3b758fa58c40c57bffe4a3e68627cd86f7a3c1c2191#npm:16.0.4"],\
@@ -11869,15 +11856,6 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/react",\
           "react"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["react-gtm-module", [\
-      ["npm:2.0.11", {\
-        "packageLocation": "./.yarn/cache/react-gtm-module-npm-2.0.11-99adaedaa9-ceedf296a1.zip/node_modules/react-gtm-module/",\
-        "packageDependencies": [\
-          ["react-gtm-module", "npm:2.0.11"]\
         ],\
         "linkType": "HARD"\
       }]\

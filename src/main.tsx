@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { StrictMode } from "react";
 import ReactDom from "react-dom/client";
-import TagManager from "react-gtm-module";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -17,33 +16,28 @@ import { ToastProvider } from "@/hooks/common/useToast";
 import "@/styles/reset.scss";
 import "@/styles/global.scss";
 
-const gtmTag = {
-  gtmId: import.meta.env.VITE_GTM_ID,
-};
+const GA4_ID = import.meta.env.VITE_GA4_ID;
 
-const initializeGA4 = () => {
-  const ga4Id = import.meta.env.VITE_GA4_ID;
+const addGtagScript = () => {
+  if (!GA4_ID) return;
 
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`;
-  document.head.appendChild(script);
+  const script1 = document.createElement("script");
+  script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+  script1.async = true;
+  document.head.appendChild(script1);
 
-  script.onload = () => {
-    (window as any).dataLayer = (window as any).dataLayer || [];
-
-    (window as any).gtag = function (...args: any[]) {
-      (window as any).dataLayer.push(args);
-    };
-
-    (window as any).gtag("js", new Date());
-    (window as any).gtag("config", ga4Id);
-  };
+  const script2 = document.createElement("script");
+  script2.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '${GA4_ID}');
+  `;
+  document.head.appendChild(script2);
 };
 
 if (import.meta.env.MODE === "production") {
-  TagManager.initialize(gtmTag);
-  initializeGA4();
+  addGtagScript();
 }
 
 ReactDom.createRoot(document.getElementById("root")!).render(

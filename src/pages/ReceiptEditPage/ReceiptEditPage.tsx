@@ -85,7 +85,10 @@ const ReceiptEditPage = () => {
       <Navbar>
         <Navbar.LeftButton
           onClick={() => {
-            gTagLogEvent("receipt_edit_home_button");
+            gTagLogEvent("receipt_edit_home_button_click", {
+              category: "Button",
+              label: "receipt_edit_home_button",
+            });
 
             handleNavigateToHome();
           }}
@@ -141,7 +144,10 @@ const ReceiptEditPage = () => {
                 text="다시 스캔하기"
                 variant="secondary"
                 onClick={() => {
-                  gTagLogEvent("receipt_edit_rescan_button");
+                  gTagLogEvent("receipt_edit_rescan_button_click", {
+                    category: "Button",
+                    label: "receipt_edit_rescan_button",
+                  });
 
                   handleNavigateToHome();
                 }}

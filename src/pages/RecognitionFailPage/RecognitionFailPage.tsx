@@ -21,13 +21,21 @@ const RecognitionFailPage = () => {
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateToHome = () => {
-    gTagLogEvent("recognition_fail_close_button");
+    gTagLogEvent("recognition_fail_close_button_click", {
+      category: "Button",
+      label: "recognition_fail_close_button",
+    });
+
     resetScanData();
     navigateToHome();
   };
 
   const handleNavgateToReceiptInput = () => {
-    gTagLogEvent("receipt_input_button");
+    gTagLogEvent("receipt_input_button_click", {
+      category: "Button",
+      label: "receipt_input_button",
+    });
+
     resetScanData();
     navgateToReceiptInput();
   };
@@ -58,7 +66,10 @@ const RecognitionFailPage = () => {
             text="다시 촬영하기"
             variant="secondary"
             onClick={() => {
-              gTagLogEvent("camera_retry_button");
+              gTagLogEvent("camera_retry_button_click", {
+                category: "Button",
+                label: "camera_retry_button",
+              });
 
               send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
             }}

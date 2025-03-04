@@ -49,7 +49,10 @@ export default function ReviewResultPage() {
   };
 
   const handleRetryCreateReview = () => {
-    gTagLogEvent("review_retry_button");
+    gTagLogEvent("review_retry_button_click", {
+      category: "Button",
+      label: "review_retry_button",
+    });
 
     resetGenerateReviewData();
 
@@ -92,7 +95,10 @@ export default function ReviewResultPage() {
             iconName="paste"
             size="sm"
             onClick={() => {
-              gTagLogEvent("copy_button");
+              gTagLogEvent("copy_button_click", {
+                category: "Button",
+                label: "copy_button",
+              });
 
               send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
 
@@ -106,7 +112,10 @@ export default function ReviewResultPage() {
         <Button
           text="홈으로 가기"
           onClick={() => {
-            gTagLogEvent("home_button");
+            gTagLogEvent("home_button_click", {
+              category: "Button",
+              label: "home_button",
+            });
             handleOpen();
           }}
         />
