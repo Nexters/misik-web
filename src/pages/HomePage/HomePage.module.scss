@@ -1,5 +1,27 @@
 @use "@/styles/_mixins.scss" as *;
 
+.FeedbackButton {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-gray200);
+  border-radius: 0.75rem;
+  height: 2.25rem;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+  line-height: 1.5rem;
+  align-items: center;
+  @include bodyM;
+}
+
+.ShareButton {
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: var(--color-gray200);
+  border-radius: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.625rem;
+}
+
 .Home {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -59,7 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3.75rem;
+  z-index: 1;
 
   & > img {
     width: 14.375rem;

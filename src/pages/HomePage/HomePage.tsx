@@ -3,9 +3,11 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
+import Icon from "@/components/ui/Icon/Icon";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
 
+import { useChannelTalk } from "@/hooks/common/useChannelTalk";
 import { useRoute } from "@/hooks/common/useRoute";
 
 import styles from "@/pages/HomePage/HomePage.module.scss";
@@ -18,6 +20,8 @@ const SHARE_TEXT =
   "영수증을 촬영하면 AI가 자동으로 맛집 리뷰를 생성! 🍽️✨ 간편하게 추억을 남기고, 나만의 미식 기록을 완성하세요. 미식 경험을 더욱 스마트하게, 미식 MISIK!";
 
 const HomePage = () => {
+  const { openChannelTalk } = useChannelTalk();
+
   const { send } = useAppBridge();
 
   const { scanData } = useScanDataStore();
@@ -37,16 +41,20 @@ const HomePage = () => {
   return (
     <>
       <Navbar>
-        <Navbar.RightButton
-          onClick={() => {
-            gTagLogEvent("share_button");
+        <Navbar.RightButton>
+          <button className={styles.FeedbackButton} onClick={openChannelTalk}>
+            의견 남기기
+          </button>
+          <button
+            className={styles.ShareButton}
+            onClick={() => {
+              gTagLogEvent("share_button");
 
-            send({ type: AppBridgeMessageType.SHARE, payload: { shareText: SHARE_TEXT } });
-          }}
-        >
-          <Text variant="bodySm" color="secondary">
-            앱 공유하기
-          </Text>
+              send({ type: AppBridgeMessageType.SHARE, payload: { shareText: SHARE_TEXT } });
+            }}
+          >
+            <Icon name="share" />
+          </button>
         </Navbar.RightButton>
       </Navbar>
 
@@ -58,9 +66,10 @@ const HomePage = () => {
               손쉬운 음식 리뷰 작성
             </Text>
           </div>
-          <div className={styles.HomeImage}>
-            <img src="/assets/img/img-graphic-logo.webp" alt="mainLogo" />
-          </div>
+        </div>
+
+        <div className={styles.HomeImage}>
+          <img src="/assets/img/img-graphic-logo.webp" alt="mainLogo" />
         </div>
 
         <div className={styles.HomeBottom}>
