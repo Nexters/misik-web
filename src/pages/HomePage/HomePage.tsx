@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import { AppBridgeMessageType } from "@/components/provider/AppBridgeProvider/AppBridgeMessage.types";
 import { useAppBridge } from "@/components/provider/AppBridgeProvider/AppBridgeProvider";
+import { useUserAgent } from "@/components/provider/UserAgentProvider";
 import Icon from "@/components/ui/Icon/Icon";
 import IconButton from "@/components/ui/IconButton/IconButton";
 import Text from "@/components/ui/Text/Text";
@@ -20,6 +21,8 @@ const SHARE_TEXT =
   "영수증을 촬영하면 AI가 자동으로 맛집 리뷰를 생성! 🍽️✨ 간편하게 추억을 남기고, 나만의 미식 기록을 완성하세요. 미식 경험을 더욱 스마트하게, 미식 MISIK!";
 
 const HomePage = () => {
+  const { isIOS, isAndroid } = useUserAgent();
+
   const { openChannelTalk } = useChannelTalk();
 
   const { send } = useAppBridge();
@@ -27,6 +30,15 @@ const HomePage = () => {
   const { scanData } = useScanDataStore();
 
   const { navigateToReceiptEdit, navigateToRecognitionFail } = useRoute();
+
+  const getShareText = () => {
+    if (isIOS) {
+      return `${SHARE_TEXT} http://apps.apple.com/kr/app/id6741109313`;
+    } else if (isAndroid) {
+      return `${SHARE_TEXT} https://play.google.com/store/apps/details?id=com.nexters.misik`;
+    }
+    return SHARE_TEXT;
+  };
 
   useEffect(() => {
     if (scanData === "error") {
@@ -50,7 +62,7 @@ const HomePage = () => {
             onClick={() => {
               gTagLogEvent("share_button");
 
-              send({ type: AppBridgeMessageType.SHARE, payload: { shareText: SHARE_TEXT } });
+              send({ type: AppBridgeMessageType.SHARE, payload: { shareText: getShareText() } });
             }}
           >
             <Icon name="share" />
