@@ -67,7 +67,10 @@ const ReceiptInputPage = () => {
   };
 
   const handleHomeClick = () => {
-    gTagLogEvent("receipt_input_back_button");
+    gTagLogEvent("receipt_input_back_button_click", {
+      category: "Button",
+      label: "receipt_input_back_button",
+    });
     resetScanData();
     navigateToHome();
   };
