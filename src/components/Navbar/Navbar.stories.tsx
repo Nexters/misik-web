@@ -27,9 +27,6 @@ export const HomeNavbar: Story = {
   name: "HomeNavbar",
   render: () => (
     <Navbar>
-      <Navbar.LeftButton>
-        <Icon name="logo" />
-      </Navbar.LeftButton>
       <Navbar.RightButton>
         <Text variant="bodySm" color="secondary">
           앱 공유하기
