@@ -60,7 +60,10 @@ const HomePage = () => {
           <button
             className={styles.ShareButton}
             onClick={() => {
-              gTagLogEvent("share_button");
+              gTagLogEvent("share_button_click", {
+                category: "Button",
+                label: "share_button",
+              });
 
               send({ type: AppBridgeMessageType.SHARE, payload: { shareText: getShareText() } });
             }}
@@ -89,7 +92,10 @@ const HomePage = () => {
             text="갤러리"
             iconName="gallery"
             onClick={() => {
-              gTagLogEvent("gallery_button");
+              gTagLogEvent("gallery_button_click", {
+                category: "Button",
+                label: "gallery_button",
+              });
 
               send({ type: AppBridgeMessageType.OPEN_GALLERY, payload: "" });
 
@@ -100,7 +106,10 @@ const HomePage = () => {
             text="카메라"
             iconName="camera"
             onClick={() => {
-              gTagLogEvent("camera_button");
+              gTagLogEvent("camera_button_click", {
+                category: "Button",
+                label: "camera_button",
+              });
 
               send({ type: AppBridgeMessageType.OPEN_CAMERA, payload: "" });
 

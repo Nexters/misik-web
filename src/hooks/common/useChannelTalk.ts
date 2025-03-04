@@ -11,7 +11,7 @@ export const useChannelTalk = () => {
     ChannelService.loadScript();
 
     ChannelService.boot({
-      pluginKey: import.meta.env.VITE_CHANNEL_TALK_KEY || "",
+      pluginKey: import.meta.env.VITE_CHANNEL_TALK || "",
       hideChannelButtonOnBoot: true,
     });
   }, []);

@@ -55,7 +55,10 @@ const SelectStylePage = () => {
   };
 
   const handleCreateReview = () => {
-    gTagLogEvent("create_review_button");
+    gTagLogEvent("create_review_button_click", {
+      category: "Button",
+      label: "create_review_button",
+    });
 
     const mappedStyle = STYLE_NAME_MAPPING[selectedStyle.name];
 
@@ -92,7 +95,11 @@ const SelectStylePage = () => {
           <div className={styles.ExampleButtonBox}>
             <button
               onClick={() => {
-                gTagLogEvent("style_example_button");
+                gTagLogEvent("style_example_button_click", {
+                  category: "Button",
+                  label: "style_example_button",
+                });
+
                 handleOpen();
               }}
             >
@@ -116,7 +123,11 @@ const SelectStylePage = () => {
                   [styles.isSelected]: selectedStyle.name === style.name,
                 })}
                 onClick={() => {
-                  gTagLogEvent(style.tagId);
+                  gTagLogEvent(`${style.tagId}_click`, {
+                    category: "Button",
+                    label: `${style.tagId}`,
+                  });
+
                   handleStyleClick(style);
                 }}
               >

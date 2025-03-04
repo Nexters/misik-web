@@ -19,7 +19,10 @@ const CreateReviewFailPage = () => {
   const { resetScanData } = useScanDataStore();
 
   const handleNavigateHome = () => {
-    gTagLogEvent("create_review_fail_home_button");
+    gTagLogEvent("create_review_fail_home_button_click", {
+      category: "Button",
+      label: "create_review_fail_home_button",
+    });
     resetGenerateReviewData();
     resetCreateReviewData();
     resetScanData();

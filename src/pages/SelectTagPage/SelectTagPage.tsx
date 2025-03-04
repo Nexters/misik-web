@@ -80,7 +80,11 @@ const SelectTagPage = () => {
             <Tag
               variant="add"
               onClick={() => {
-                gTagLogEvent("add_tag_button");
+                gTagLogEvent("add_tag_button_click", {
+                  category: "Button",
+                  label: "add_tag_button",
+                });
+
                 setIsBottomSheetOpen(true);
               }}
             />

@@ -4,6 +4,9 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types:
       - closed
