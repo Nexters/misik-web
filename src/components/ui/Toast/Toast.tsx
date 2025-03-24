@@ -33,7 +33,7 @@ const Toast = forwardRef<
       open={open}
       onOpenChange={(isOpen) => {
         if (!isOpen) {
-          setTimeout(() => removeToast(id), 400); // 0.4초 뒤 제거
+          setTimeout(() => removeToast(id), 400);
         }
       }}
       className={classNames(styles.Toast, className)}
