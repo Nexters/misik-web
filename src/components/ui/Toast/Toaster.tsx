@@ -22,7 +22,7 @@ export function Toaster() {
           className={styles.Toaster}
         >
           <Text color="primary" variant="bodyM">
-            링크가 복사되었어요.
+            리뷰가 복사되었어요.
           </Text>
         </Toast>
       ))}
