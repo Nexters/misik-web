@@ -8,4 +8,6 @@ export const PATH = {
   REVIEW_RESULT: "/review-result",
   LOADING: "/loading",
   CREATE_REVIEW_FAIL: "/create-review-fail",
+  APP_DOWNLOAD: "/download",
+
 };
