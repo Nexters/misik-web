@@ -17,6 +17,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       onClick,
       text,
       iconName,
+      variant = "primary",
       ...props
     },
     ref,
@@ -35,7 +36,12 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={classNames(styles.IconButton, styles[`size-${size}`], className)}
+        className={classNames(
+          styles.IconButton,
+          styles[`size-${size}`],
+          styles[`style-${variant}`],
+          className,
+        )}
         disabled={disabled}
         onClick={handleClick}
         {...props}

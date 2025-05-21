@@ -22,6 +22,29 @@
     border-radius: 0.75rem;
     @include buttonTertiary;
   }
+  @include buttonSecondary;
+  white-space: nowrap;
+
+  &.style-primary {
+    background-color: var(--color-text-primary);
+    color: var(--color-white);
+  }
+
+  &.style-secondary {
+    background-color: var(--color-gray400);
+    color: var(--color-white);
+  }
+
+  &.style-tertiary {
+    background-color: var(--color-gray200);
+    color: var(--color-text-tertiary);
+  }
+
+  &:disabled {
+    background-color: var(--color-disabled);
+    color: var(--color-text-tertiary);
+    cursor: not-allowed;
+  }
 }
 
 .IconButtonStory {

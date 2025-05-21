@@ -86,5 +86,10 @@
 .IconBtn {
   width: 6.15625rem;
   margin-top: 0.625rem;
-  margin-left: auto;
+  display: flex;
+  gap: 0.625rem;
+}
+
+.TextBox {
+  width: 100%;
 }

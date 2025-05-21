@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import confetti from "canvas-confetti";
 
@@ -26,15 +26,19 @@ export default function ReviewResultPage() {
   const { send } = useAppBridge();
 
   const { createReviewData } = useCreateReviewStore();
-  const { generateReviewData, resetGenerateReviewData } = useGenerateReviewStore();
+  const { generateReviewData, setGenerateReviewData, resetGenerateReviewData } =
+    useGenerateReviewStore();
+  const [text, setText] = useState(generateReviewData);
 
-  const { navigateToCreateReviewFail, navigateToLoading } = useRoute();
+  const { navigateToCreateReviewFail, navigateToLoading, navigateToSelectStyle } = useRoute();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
   const { addToast } = useToast();
 
   const { ocrText, hashTag, reviewStyle } = createReviewData;
+
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const handleConfetti = () => {
     const setting: ConfettiOptions = {
@@ -46,6 +50,10 @@ export default function ReviewResultPage() {
     };
 
     confetti(setting);
+  };
+
+  const handleSelectStyle = () => {
+    navigateToSelectStyle();
   };
 
   const handleRetryCreateReview = () => {
@@ -74,6 +82,14 @@ export default function ReviewResultPage() {
     }
   }, [generateReviewData]);
 
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(e.target.value);
+  };
+
+  const handleCompleteEdit = () => {
+    setGenerateReviewData(text);
+  };
+
   return (
     <div className={styles.ReviewResult}>
       <div className={styles.Top}>
@@ -85,11 +101,38 @@ export default function ReviewResultPage() {
             리뷰를 만들었어요!
           </Text>
         </div>
+        {isEdit ? (
+          <textarea
+            name=""
+            id=""
+            value={text}
+            onChange={handleTextChange}
+            className={styles.TextBox}
+          ></textarea>
+        ) : (
+          <Text variant="bodyLg" color="primary">
+            {generateReviewData}
+          </Text>
+        )}
 
-        <Text variant="bodyLg" color="primary">
-          {generateReviewData}
-        </Text>
         <div className={styles.IconBtn}>
+          <IconButton
+            text="수정"
+            size="sm"
+            variant="secondary"
+            onClick={() => {
+              setIsEdit(true);
+            }}
+            iconName={"edit"}
+          />
+          <IconButton
+            text="말투"
+            size="sm"
+            variant="secondary"
+            onClick={handleSelectStyle}
+            iconName={"again"}
+          />
+
           <IconButton
             text="복사하기"
             iconName="paste"
@@ -109,16 +152,26 @@ export default function ReviewResultPage() {
       </div>
       <div className={styles.Bottom}>
         <Button text="다시생성" variant="secondary" onClick={handleRetryCreateReview} />
-        <Button
-          text="홈으로 가기"
-          onClick={() => {
-            gTagLogEvent("home_button_click", {
-              category: "Button",
-              label: "home_button",
-            });
-            handleOpen();
-          }}
-        />
+        {isEdit ? (
+          <Button
+            text="완료"
+            onClick={() => {
+              handleCompleteEdit();
+              setIsEdit(false);
+            }}
+          />
+        ) : (
+          <Button
+            text="홈으로 가기"
+            onClick={() => {
+              gTagLogEvent("home_button_click", {
+                category: "Button",
+                label: "home_button",
+              });
+              handleOpen();
+            }}
+          />
+        )}
       </div>
 
       <HomeNavigateConfirmModal isOpen={isOpen} handleClose={handleClose} />

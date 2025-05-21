@@ -114,11 +114,11 @@ const ReceiptInputPage = () => {
 
         <div className={styles.Bottom}>
           {Object.values(focusState).some((isFocus) => isFocus) ? (
-            <Button key="edit" text="다음" />
+            <Button key="edit" text="리뷰 만들기" />
           ) : (
             <Button
               key="confirm"
-              text="다음"
+              text="리뷰 만들기"
               disabled={formData.some((item) => Object.values(item).some((value) => !value))}
               onClick={handleInfoRightClick}
             />

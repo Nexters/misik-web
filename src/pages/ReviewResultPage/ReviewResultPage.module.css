@@ -1,0 +1,83 @@
+.ReviewResult {
+  padding: 2.5rem 1.25rem;
+  padding-bottom: 9rem;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-gradient);
+  justify-content: space-between;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.ReviewResult::-webkit-scrollbar {
+  display: none;
+}
+.ReviewResult::before {
+  content: "";
+  background: url("/src/assets/svg/img-graphic-main.svg") center no-repeat;
+  background-size: 100% 16.375rem;
+  filter: blur(4.625rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.Top {
+  z-index: 1;
+}
+.Top .TitleBox {
+  display: flex;
+  justify-content: center;
+  margin: 1.25rem 0;
+}
+
+.Bottom {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 7rem;
+  left: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 0.875rem;
+  background: linear-gradient(180deg, rgba(220, 220, 232, 0) 0%, rgb(220, 220, 232) 20%, rgb(220, 220, 232) 100%);
+}
+.Bottom > button {
+  margin-top: 1.25rem;
+}
+.Bottom > button:first-of-type {
+  width: calc(100% - 1.25rem);
+  margin-left: 1.25rem;
+}
+.Bottom > button:last-of-type {
+  width: calc(100% - 1.25rem);
+}
+
+.Image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.Image > img {
+  width: 10rem;
+  height: 10rem;
+}
+
+.IconBtn {
+  width: 6.15625rem;
+  margin-top: 0.625rem;
+  display: flex;
+  gap: 0.625rem;
+}
+
+.TextBox {
+  width: 100%;
+}
