@@ -1,4 +1,4 @@
-.RecognitionFail {
+.ReviewGuide {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-bottom: 2.5rem;
@@ -8,42 +8,106 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.RecognitionFail .Title {
-  padding-top: 3.75rem;
+.ReviewGuide .Title {
+  padding-top: 1.875rem;
 }
-.RecognitionFail .Image {
+.ReviewGuide .TitleCont {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  justify-content: center;
+}
+.ReviewGuide .Image {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.RecognitionFail .Bottom {
+.ReviewGuide .Bottom {
   margin-top: 1.25rem;
+}
+
+.ReviewGuideWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .ReviewGuideList {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .ReviewGuideNum {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 1.75rem;
   height: 1.75rem;
   background-color: var(--color-gray200);
   border-radius: 999px;
-  line-height: 1.75rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ReviewGuideItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.ReviewGuideItemBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .ReviewGuideItem {
   display: flex;
-  gap: 8px;
-  padding: 16px 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
   background-color: var(--color-gray200);
   border-radius: 1rem;
 }
 
 .btn {
-  width: 6.15625rem;
+  background-color: var(--color-text-black);
+  color: var(--color-text-white);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.appBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.appInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.appIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+
+.appName {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.appButton {
+  width: 3.4375rem;
+  height: 1.75rem;
 }

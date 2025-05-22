@@ -11,7 +11,6 @@ import Text from "@/components/ui/Text/Text";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useRoute } from "@/hooks/common/useRoute";
-import { useToast } from "@/hooks/common/useToast";
 
 import styles from "@/pages/ReviewResultPage/ReviewResultPage.module.scss";
 
@@ -39,7 +38,6 @@ export default function ReviewResultPage() {
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
-  const { addToast } = useToast();
 
   const { ocrText, hashTag, reviewStyle } = createReviewData;
 
@@ -148,9 +146,6 @@ export default function ReviewResultPage() {
                 label: "copy_button",
               });
               navigateToReviewCopyGuide();
-              // send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
-
-              // addToast("리뷰가 복사되었어요");
             }}
           />
         </div>
