@@ -42,6 +42,7 @@
       titleLg,
       titleM,
       titleSm,
+      titleXsm,
       bodyLg,
       bodyM,
       bodySm,
@@ -58,7 +59,10 @@
         @include titleM;
       } @else if $variant-name == titleSm {
         @include titleSm;
-      } @else if $variant-name == bodyLg {
+      } @else if $variant-name == titleXsm {
+        @include titleXsm;
+      }
+      @else if $variant-name == bodyLg {
         @include bodyLg;
       } @else if $variant-name == bodyM {
         @include bodyM;

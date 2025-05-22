@@ -2,6 +2,7 @@ type TextVariant =
   | "titleLg"
   | "titleM"
   | "titleSm"
+  | "titleXsm"
   | "bodyLg"
   | "bodyM"
   | "bodySm"

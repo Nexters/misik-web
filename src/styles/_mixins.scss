@@ -13,6 +13,11 @@
   font-weight: var(--font-weight-bold);
 }
 
+@mixin titleXsm {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+}
+
 @mixin bodyLg {
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-medium);
