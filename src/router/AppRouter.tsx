@@ -14,6 +14,7 @@ import RecognitionFailPage from "@/pages/RecognitionFailPage/RecognitionFailPage
 import ReviewResultPage from "@/pages/ReviewResultPage/ReviewResultPage";
 import SelectStylePage from "@/pages/SelectStylePage/SelectStylePage";
 import SelectTagPage from "@/pages/SelectTagPage/SelectTagPage";
+import ReviewCopyGuidePage from "@/pages/ReviewCopyGuidePage/ReviewCopyGuidePage";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -55,6 +56,7 @@ const AppRouter = () => {
         },
         { path: PATH.CREATE_REVIEW_FAIL, element: <CreateReviewFailPage /> },
         { path: PATH.APP_DOWNLOAD, element: <DownloadPage /> },
+        { path: PATH.REVIEW_COPY_GUIDE, element: <ReviewCopyGuidePage /> },
       ],
     },
   ]);

@@ -16,6 +16,7 @@ export const useRoute = () => {
     navigateToReviewResult: () => navigate(PATH.REVIEW_RESULT),
     navigateToLoading: () => navigate(PATH.LOADING),
     navigateToCreateReviewFail: () => navigate(PATH.CREATE_REVIEW_FAIL),
+    navigateToReviewCopyGuide: () => navigate(PATH.REVIEW_COPY_GUIDE),
   };
 
   return routes;

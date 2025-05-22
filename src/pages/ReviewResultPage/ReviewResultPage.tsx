@@ -30,7 +30,12 @@ export default function ReviewResultPage() {
     useGenerateReviewStore();
   const [text, setText] = useState(generateReviewData);
 
-  const { navigateToCreateReviewFail, navigateToLoading, navigateToSelectStyle } = useRoute();
+  const {
+    navigateToCreateReviewFail,
+    navigateToLoading,
+    navigateToSelectStyle,
+    navigateToReviewCopyGuide,
+  } = useRoute();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
@@ -142,10 +147,10 @@ export default function ReviewResultPage() {
                 category: "Button",
                 label: "copy_button",
               });
+              navigateToReviewCopyGuide();
+              // send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
 
-              send({ type: AppBridgeMessageType.COPY, payload: { review: generateReviewData } });
-
-              addToast("리뷰가 복사되었어요");
+              // addToast("리뷰가 복사되었어요");
             }}
           />
         </div>

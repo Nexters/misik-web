@@ -1,0 +1,49 @@
+.RecognitionFail {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 2.5rem;
+  height: calc(100vh - 2.75rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.RecognitionFail .Title {
+  padding-top: 3.75rem;
+}
+.RecognitionFail .Image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.RecognitionFail .Bottom {
+  margin-top: 1.25rem;
+}
+
+.ReviewGuideList {
+  display: flex;
+  gap: 12px;
+}
+
+.ReviewGuideNum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--color-gray200);
+  border-radius: 999px;
+  line-height: 1.75rem;
+}
+
+.ReviewGuideItem {
+  display: flex;
+  gap: 8px;
+  padding: 16px 12px;
+  background-color: var(--color-gray200);
+  border-radius: 1rem;
+}
+
+.btn {
+  width: 6.15625rem;
+}

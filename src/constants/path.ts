@@ -9,5 +9,5 @@ export const PATH = {
   LOADING: "/loading",
   CREATE_REVIEW_FAIL: "/create-review-fail",
   APP_DOWNLOAD: "/download",
-
+  REVIEW_COPY_GUIDE: "/review-copy-guide",
 };
